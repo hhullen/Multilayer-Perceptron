@@ -11,15 +11,15 @@ class PerceptronLayer {
   PerceptronLayer() { neurons_ = new vector<Neuron *>; }
   ~PerceptronLayer() { delete neurons_; }
 
-  void setup_new_neuron(double value, double weight) {
+  void set_new_neuron(double value, double weight) {
     neurons_->push_back(new Neuron());
     neurons_->back()->value = value;
     neurons_->back()->weight = weight;
   }
 
-  double get_value(int i) { return neurons_->at(i)->value; }
-
-  double get_weight(int i) { return neurons_->at(i)->weight; }
+  double get_value(int i) { return (*neurons_)[i]->value; }
+  double get_weight(int i) { return (*neurons_)[i]->weight; }
+  int get_neurons_amount() { return neurons_->size(); }
 
  private:
   struct Neuron {
@@ -27,7 +27,6 @@ class PerceptronLayer {
     double weight;
   };
   vector<Neuron *> *neurons_;
-  vector<Neuron> gg;
 };
 
 }  // namespace S21
