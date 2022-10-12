@@ -3,7 +3,10 @@
 
 #include <cmath>
 
+#include "container/vector.h"
 #include "perceptron_layer.h"
+using S21::PerceptronLayer;
+using S21::vector;
 using std::ceil;
 using std::pow;
 
@@ -24,7 +27,6 @@ class Perceptron {
   PerceptronLayer *output_layer_;
   vector<PerceptronLayer *> *hidden_layers_;
 
-  void SetupDefaultLayers(PerceptronLayer *layer, int n);
   int GetNeuronsToHiddenLayer(int layers_amount, int layer_number);
 };
 

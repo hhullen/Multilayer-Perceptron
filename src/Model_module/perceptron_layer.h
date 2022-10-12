@@ -1,38 +1,39 @@
 #ifndef SRC_MODEL_MODULE_PERCEPTRON_LAYER_H
 #define SRC_MODEL_MODULE_PERCEPTRON_LAYER_H
 
-#include <vector>
+#include "matrix/matrix.h"
 
-#include "../include/matrix/matrix.h"
-
-using S21::S21Matrix;
-using std::vector;
+using S21::Matrix;
 
 namespace S21 {
 
 class PerceptronLayer {
  public:
-  // PerceptronLayer() { neurons_ = new vector<Neuron *>; }
-  // ~PerceptronLayer() { delete neurons_; }
+  enum class LayerType { INPUT, OTHER };
+  PerceptronLayer(LayerType is_input_layer, int neurons, int neurons_left = 0) {
+    if (is_input_layer == LayerType::OTHER) {
+      layer_ = new Matrix(neurons, neurons_left);
+    }
+    neurons_ = new Matrix(neurons, 1);
+  }
 
-  // void set_new_neuron(double value, double weight) {
-  //   neurons_->push_back(new Neuron());
-  //   neurons_->back()->value = value;
-  //   neurons_->back()->weight = weight;
-  // }
+  ~PerceptronLayer() {
+    delete neurons_;
+    delete layer_;
+  }
 
-  // double get_value(int i) { return (*neurons_)[i]->value; }
-  // double get_weight(int i) { return (*neurons_)[i]->weight; }
-  // int get_neurons_amount() { return neurons_->size(); }
+  void set_layer(int neurons, int neurons_left) {
+    if (layer_) {
+      layer_->set_rows(neurons);
+      layer_->set_cols(neurons_left);
+    }
+    neurons_->set_rows(neurons);
+    neurons_->set_cols(1);
+  }
 
  private:
-  // struct Neuron {
-  //   double value;
-  //   double weight;
-  // };
-  // vector<Neuron *> *neurons_;
-  S21Matrix layer_;
-  S21Matrix neurons_;
+  Matrix *layer_;
+  Matrix *neurons_;
 };
 
 }  // namespace S21

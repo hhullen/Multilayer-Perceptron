@@ -6,32 +6,25 @@ namespace S21 {
 
 Perceptron::Perceptron(int input_neurons, int output_neurons,
                        int hidden_layers) {
-  input_layer_ = new PerceptronLayer();
-  SetupDefaultLayers(input_layer_, input_neurons);
-  std::cout << input_layer_->get_neurons_amount() << "\n";
-
-  output_layer_ = new PerceptronLayer();
-  SetupDefaultLayers(output_layer_, output_neurons);
+  input_layer_ =
+      new PerceptronLayer(PerceptronLayer::LayerType::INPUT, input_neurons);
 
   hidden_layers_ = new vector<PerceptronLayer *>(hidden_layers);
+  int prev_neurons_amount = input_neurons;
   for (int i = 0; i < hidden_layers; ++i) {
     int neurons = GetNeuronsToHiddenLayer(hidden_layers, i);
-    (*hidden_layers_)[i] = new PerceptronLayer();
-    SetupDefaultLayers((*hidden_layers_)[i], neurons);
-    std::cout << (*hidden_layers_)[i]->get_neurons_amount() << "\n";
+    (*hidden_layers_)[i] = new PerceptronLayer(
+        PerceptronLayer::LayerType::OTHER, neurons, prev_neurons_amount);
+    prev_neurons_amount = neurons;
   }
-  std::cout << output_layer_->get_neurons_amount() << "\n";
+
+  output_layer_ = new PerceptronLayer(PerceptronLayer::LayerType::OTHER,
+                                      output_neurons, prev_neurons_amount);
 }
 
 Perceptron::~Perceptron() {
   delete input_layer_;
   delete output_layer_;
-}
-
-void Perceptron::SetupDefaultLayers(PerceptronLayer *layer, int n) {
-  for (int i = 0; i < n; ++i) {
-    layer->set_new_neuron(0, 0);
-  }
 }
 
 int Perceptron::GetNeuronsToHiddenLayer(int layers_amount, int layer_number) {
