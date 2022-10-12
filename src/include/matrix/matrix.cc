@@ -1,4 +1,6 @@
-#include "s21_matrix_oop.h"
+#include "matrix.h"
+
+namespace S21 {
 
 /*
   Public functions
@@ -7,7 +9,7 @@
  * @brief Construct a new S21Matrix::S21Matrix object
  *
  */
-S21Matrix::S21Matrix() : rows_(4), cols_(4) { init_matrix(FILL_WITH_ZERO); }
+S21Matrix::S21Matrix() : rows_(4), cols_(4) { init_matrix(kFILL_WITH_ZERO); }
 
 /**
  * @brief Construct a new S21Matrix::S21Matrix object
@@ -22,7 +24,7 @@ S21Matrix::S21Matrix(int rows, int cols) {
 
   rows_ = rows;
   cols_ = cols;
-  init_matrix(FILL_WITH_ZERO);
+  init_matrix(kFILL_WITH_ZERO);
 }
 
 /**
@@ -32,7 +34,7 @@ S21Matrix::S21Matrix(int rows, int cols) {
  */
 S21Matrix::S21Matrix(const S21Matrix& other)
     : rows_(other.rows_), cols_(other.cols_) {
-  init_matrix(NO_FILL);
+  init_matrix(kNO_FILL);
   copy_data_other_to_this_matrix(other.matrix_);
 }
 
@@ -83,7 +85,7 @@ bool S21Matrix::eq_matrix(const S21Matrix& other) {
   if (rows_ == other.rows_ && cols_ == other.cols_) {
     for (int i = 0; is_equal && i < rows_; i += 1) {
       for (int j = 0; is_equal && j < cols_; j += 1) {
-        is_equal = fabs(matrix_[i][j] - other.matrix_[i][j]) < ACCURACY;
+        is_equal = fabs(matrix_[i][j] - other.matrix_[i][j]) < kACCURACY;
       }
     }
   } else {
@@ -243,7 +245,7 @@ double S21Matrix::determinant() {
 S21Matrix S21Matrix::inverse_matrix() {
   double det = this->determinant();
 
-  if (fabs(det) < ACCURACY) {
+  if (fabs(det) < kACCURACY) {
     throw std::invalid_argument(
         "Inversion of matrix with determinant equals 0");
   }
@@ -370,7 +372,7 @@ S21Matrix& S21Matrix::operator=(const S21Matrix& other) {
   this->~S21Matrix();
   rows_ = other.rows_;
   cols_ = other.cols_;
-  init_matrix(NO_FILL);
+  init_matrix(kNO_FILL);
   copy_data_other_to_this_matrix(other.matrix_);
 
   return *this;
@@ -538,7 +540,7 @@ void S21Matrix::scan_column_to_find_nonzero_num(S21Matrix* buffer,
   bool found = false;
 
   for (int i = buffer->rows_ - 1; !found && i >= 0; i--) {
-    if (fabs(buffer->matrix_[i][col]) >= ACCURACY) {
+    if (fabs(buffer->matrix_[i][col]) >= kACCURACY) {
       summ_rows(buffer, i, row);
       found = true;
     } else if (i == 0) {
@@ -580,3 +582,5 @@ void S21Matrix::make_matrix_minor(S21Matrix* initial_matrix, int row, int col,
     j += 1;
   }
 }
+
+}  // namespace S21

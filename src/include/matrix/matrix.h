@@ -2,11 +2,12 @@
 #define SRC_S21_MATRIX_OOP_H_
 
 #include <cmath>
-#include <iostream>
 
-#define ACCURACY 0.0000001
-#define FILL_WITH_ZERO true
-#define NO_FILL false
+const double kACCURACY = 0.0000001;
+const bool kFILL_WITH_ZERO = true;
+const bool kNO_FILL = false;
+
+namespace S21 {
 
 class S21Matrix {
  public:
@@ -64,5 +65,7 @@ class S21Matrix {
   void make_matrix_minor(S21Matrix* initial_matrix, int row, int col,
                          S21Matrix* minor);
 };
+
+}  // namespace S21
 
 #endif  // SRC_S21_MATRIX_OOP_H_
