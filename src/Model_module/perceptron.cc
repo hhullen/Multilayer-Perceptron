@@ -27,6 +27,12 @@ Perceptron::~Perceptron() {
   delete output_layer_;
 }
 
+void Perceptron::SaveConfig(string path) {
+  ofstream file(path, ios_base::binary);
+  file.write((char *)hidden_layers_, );
+  !!!
+}
+
 int Perceptron::GetNeuronsToHiddenLayer(int layers_amount, int layer_number) {
   return ceil(
       pow(kEXPONENT, -(kDELTA_CONST / (layers_amount + 1) * (layer_number + 1) +

@@ -13,6 +13,8 @@ class PerceptronLayer {
   PerceptronLayer(LayerType is_input_layer, int neurons, int neurons_left = 0) {
     if (is_input_layer == LayerType::OTHER) {
       layer_ = new Matrix(neurons, neurons_left);
+    } else {
+      layer_ = nullptr;
     }
     neurons_ = new Matrix(neurons, 1);
   }
@@ -30,6 +32,9 @@ class PerceptronLayer {
     neurons_->set_rows(neurons);
     neurons_->set_cols(1);
   }
+
+  Matrix get_neurons();
+  Matrix get_weights();
 
  private:
   Matrix *layer_;

@@ -2,12 +2,15 @@
 #define SRC_MODEL_MODULE_PERCEPTRON_H
 
 #include <cmath>
+#include <fstream>
 
 #include "../include/container/vector.h"
 #include "perceptron_layer.h"
 using S21::PerceptronLayer;
 using S21::vector;
 using std::ceil;
+using std::ios_base;
+using std::ofstream;
 using std::pow;
 
 namespace S21 {
@@ -21,6 +24,8 @@ class Perceptron {
  public:
   Perceptron(int input_neurons, int hidden_neurons, int output_neurons);
   ~Perceptron();
+
+  void SaveConfig(string path);
 
  private:
   PerceptronLayer *input_layer_;
