@@ -1,6 +1,9 @@
 #include "perceptron.h"
 
+using S21::Perceptron;
+
 int main() {
-  S21::Perceptron mlp(784, 26, 5);
+  Perceptron mlp(784, 5, 26);
+  std::cout << "rfgtf\n";
   return 0;
 }

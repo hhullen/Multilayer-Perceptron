@@ -3,7 +3,7 @@
 
 #include <cmath>
 
-#include "container/vector.h"
+#include "../include/container/vector.h"
 #include "perceptron_layer.h"
 using S21::PerceptronLayer;
 using S21::vector;
