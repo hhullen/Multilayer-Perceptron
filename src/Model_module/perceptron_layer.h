@@ -12,7 +12,7 @@ class PerceptronLayer {
   enum class LayerType { INPUT, OTHER };
   PerceptronLayer(LayerType is_input_layer, int neurons, int neurons_left = 0) {
     if (is_input_layer == LayerType::OTHER) {
-      layer_ = new Matrix(neurons, neurons_left);
+      layer_ = new Matrix(neurons_left, neurons);
     } else {
       layer_ = nullptr;
     }
@@ -26,15 +26,15 @@ class PerceptronLayer {
 
   void set_layer(int neurons, int neurons_left) {
     if (layer_) {
-      layer_->set_rows(neurons);
-      layer_->set_cols(neurons_left);
+      layer_->set_rows(neurons_left);
+      layer_->set_cols(neurons);
     }
     neurons_->set_rows(neurons);
     neurons_->set_cols(1);
   }
 
-  Matrix get_neurons();
-  Matrix get_weights();
+  Matrix *get_neurons() { return neurons_; }
+  Matrix *get_weights() { return layer_; }
 
  private:
   Matrix *layer_;
