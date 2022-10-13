@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-namespace S21 {
+namespace s21 {
 
 template <class T>
 class vector {
@@ -264,7 +264,7 @@ size_t vector<value_type>::size() {
 
 template <class value_type>
 size_t vector<value_type>::max_size() {
-  return std::allocator<S21::vector<value_type>::value_type>().max_size();
+  return std::allocator<s21::vector<value_type>::value_type>().max_size();
 }
 
 template <class value_type>
@@ -381,6 +381,6 @@ void vector<value_type>::shift_values_left_to_pos(value_type *current,
   }
 }
 
-}  // namespace S21
+}  // namespace s21
 
 #endif  // SRC_INCLUDE_VECTOR_H

@@ -3,16 +3,17 @@
 
 #include "../include/matrix/matrix.h"
 
-using S21::Matrix;
+using s21::Matrix;
 
-namespace S21 {
+namespace s21 {
+
+enum class LayerType { INPUT, OTHER };
 
 class PerceptronLayer {
  public:
-  enum class LayerType { INPUT, OTHER };
   PerceptronLayer(LayerType is_input_layer, int neurons, int neurons_left = 0) {
     if (is_input_layer == LayerType::OTHER) {
-      layer_ = new Matrix(neurons_left, neurons);
+      layer_ = new Matrix(neurons, neurons_left);
     } else {
       layer_ = nullptr;
     }
@@ -41,6 +42,6 @@ class PerceptronLayer {
   Matrix *neurons_;
 };
 
-}  // namespace S21
+}  // namespace s21
 
 #endif  // SRC_MODEL_MODULE_PERCEPTRON_LAYER_H

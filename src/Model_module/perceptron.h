@@ -7,21 +7,23 @@
 
 #include "../include/container/vector.h"
 #include "perceptron_layer.h"
-using S21::PerceptronLayer;
-using S21::vector;
+using s21::PerceptronLayer;
+using s21::vector;
 using std::ceil;
 using std::ifstream;
 using std::ios_base;
 using std::ofstream;
 using std::pow;
+using std::rand;
 using std::string;
 
-namespace S21 {
+namespace s21 {
 
 const double kINPUT_LAYER_CONST = 4.33769082;
 const double kDELTA_CONST = 3.40634218;
 const double kEXPONENT = 2.71828182845904523536028747135266250;
 const int kFACTOR = 60000;
+const double kRANDOM_FACTOR = 4096.0;
 
 class Perceptron {
  public:
@@ -29,25 +31,29 @@ class Perceptron {
   ~Perceptron();
 
   bool SaveConfig(const string &path);
-  void SaveHiddenLayers(ofstream &file);
-  void SaveOutputLayer(ofstream &file);
-  void WriteMatrix(ofstream &file, Matrix &matrix);
-
   bool UploadConfig(const string &path);
-  bool UploadHiddenLayers(ifstream &file);
-  bool UploadOutputLayer(ifstream &file);
-  bool ReadMatrix(ifstream &file, Matrix &matrix);
-  void GetMatrixAndDataSizes(Matrix &matrix, int *rows, int *cols,
-                             ifstream &file, int *frows, int *fcols);
+  void FillWithRandom();
+  void ClearWeights();
+
+  void PRINT();  // !!!
 
  private:
   PerceptronLayer *input_layer_;
   PerceptronLayer *output_layer_;
-  vector<PerceptronLayer *> *hidden_layers_;
+  vector<PerceptronLayer *> *layers_;
 
+  void FillMatrixRandom(Matrix &matrix);
+  void FillMatrixZero(Matrix &matrix);
   int GetNeuronsToHiddenLayer(int layers_amount, int layer_number);
+  void SaveLayers(ofstream &file);
+  void WriteMAtrixSize(ofstream &file, Matrix &matrix);
+  void WriteMatrix(ofstream &file, Matrix &matrix);
+  bool UploadLayers(ifstream &file);
+  bool ReadMatrix(ifstream &file, Matrix &matrix);
+  void GetMatrixAndDataSizes(Matrix &matrix, int *rows, int *cols,
+                             ifstream &file, int *frows, int *fcols);
 };
 
-}  // namespace S21
+}  // namespace s21
 
 #endif  // SRC_MODEL_MODULE_PERCEPTRON_H
