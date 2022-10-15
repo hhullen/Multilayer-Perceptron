@@ -7,8 +7,8 @@
 
 #include "../include/container/vector.h"
 #include "perceptron_layer.h"
-using s21::PerceptronLayer;
 using hhullen::vector;
+using s21::PerceptronLayer;
 using std::ceil;
 using std::ifstream;
 using std::ios_base;
@@ -34,6 +34,7 @@ class Perceptron {
   bool UploadConfig(const string &path);
   void FillWithRandom();
   void ClearWeights();
+  Matrix *get_input_neurons();
 
   void PRINT();  // !!!
 

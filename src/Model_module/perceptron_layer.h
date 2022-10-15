@@ -25,15 +25,6 @@ class PerceptronLayer {
     delete layer_;
   }
 
-  void set_layer(int neurons, int neurons_left) {
-    if (layer_) {
-      layer_->set_rows(neurons_left);
-      layer_->set_cols(neurons);
-    }
-    neurons_->set_rows(neurons);
-    neurons_->set_cols(1);
-  }
-
   Matrix *get_neurons() { return neurons_; }
   Matrix *get_weights() { return layer_; }
 

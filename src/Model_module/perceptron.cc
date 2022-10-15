@@ -72,13 +72,11 @@ bool Perceptron::SaveConfig(const string &path) {
 }
 
 void Perceptron::SaveLayers(ofstream &file) {
-  Matrix *p_weights, *p_neurons;
+  Matrix *p_weights;
   for (size_t i = 1; i < layers_->size(); ++i) {
     p_weights = (*layers_)[i]->get_weights();
-    p_neurons = (*layers_)[i]->get_neurons();
     WriteMAtrixSize(file, *p_weights);
     WriteMatrix(file, *p_weights);
-    WriteMatrix(file, *p_neurons);
   }
 }
 
@@ -111,17 +109,15 @@ bool Perceptron::UploadConfig(const string &path) {
 }
 
 bool Perceptron::UploadLayers(ifstream &file) {
-  Matrix *p_weights, *p_neurons;
+  Matrix *p_weights;
   int rows, cols, frows, fcols;
   bool returnable = true;
 
   for (size_t i = 1; i < layers_->size() && returnable; ++i) {
     p_weights = (*layers_)[i]->get_weights();
-    p_neurons = (*layers_)[i]->get_neurons();
     GetMatrixAndDataSizes(*p_weights, &rows, &cols, file, &frows, &fcols);
 
-    if (rows == frows && cols == fcols && ReadMatrix(file, *p_weights) &&
-        ReadMatrix(file, *p_neurons)) {
+    if (rows == frows && cols == fcols && ReadMatrix(file, *p_weights)) {
       returnable = true;
     } else {
       returnable = false;
@@ -178,5 +174,6 @@ void Perceptron::PRINT() {
     std::cout << "\n";
   }
 }
+Matrix *Perceptron::get_input_neurons() { return input_layer_->get_neurons(); }
 
 }  // namespace s21
