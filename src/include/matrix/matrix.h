@@ -1,5 +1,5 @@
-#ifndef SRC_INCLUDE_MATRIX_H_
-#define SRC_INCLUDE_MATRIX_H_
+#ifndef SRC_MATRIX_H_
+#define SRC_MATRIX_H_
 
 #include <cmath>
 #include <iostream>
@@ -10,7 +10,7 @@ const double kACCURACY = 0.0000001;
 const bool kFILL_WITH_ZERO = true;
 const bool kNO_FILL = false;
 
-namespace s21 {
+namespace hhullen {
 
 class Matrix {
  public:
@@ -69,6 +69,6 @@ class Matrix {
                          Matrix* minor);
 };
 
-}  // namespace s21
+}  // namespace hhullen
 
-#endif  // SRC_INCLUDE_MATRIX_H_
+#endif  // SRC_MATRIX_H_

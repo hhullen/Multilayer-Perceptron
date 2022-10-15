@@ -8,7 +8,7 @@
 #include "../include/container/vector.h"
 #include "perceptron_layer.h"
 using s21::PerceptronLayer;
-using s21::vector;
+using hhullen::vector;
 using std::ceil;
 using std::ifstream;
 using std::ios_base;

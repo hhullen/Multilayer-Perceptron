@@ -1,0 +1,9 @@
+# ninja log v5
+3	790	1665835042000000000	CMakeFiles/Multilayer_Perceptron.dir/main.cc.o	bcb0521f9d56e052
+827	888	1665835042000000000	Multilayer_Perceptron	ee34b71618fe866d
+3	542	1665834543000000000	CMakeFiles/Multilayer_Perceptron.dir/include/matrix/matrix.cc.o	b6a68f7b6fc90090
+3	827	1665835042000000000	CMakeFiles/Multilayer_Perceptron.dir/Model_module/perceptron.cc.o	696eb8e3bf1c38bd
+2	495	1665835512000000000	CMakeFiles/Multilayer_Perceptron.dir/include/matrix/matrix.cc.o	b6a68f7b6fc90090
+2	598	1665835512000000000	CMakeFiles/Multilayer_Perceptron.dir/main.cc.o	bcb0521f9d56e052
+3	651	1665835512000000000	CMakeFiles/Multilayer_Perceptron.dir/Model_module/perceptron.cc.o	696eb8e3bf1c38bd
+651	705	1665835512000000000	Multilayer_Perceptron	ee34b71618fe866d

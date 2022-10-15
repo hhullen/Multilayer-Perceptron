@@ -3,7 +3,7 @@
 
 #include "../include/matrix/matrix.h"
 
-using s21::Matrix;
+using hhullen::Matrix;
 
 namespace s21 {
 

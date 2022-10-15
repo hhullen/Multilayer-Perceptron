@@ -1,0 +1,4 @@
+/opt/goinfre/hhullen/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/opt/goinfre/hhullen/CLion.app/Contents/bin/ninja/mac/ninja -G Ninja -S /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src -B /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/cmake-build-debug
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/cmake-build-debug

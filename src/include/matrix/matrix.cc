@@ -1,6 +1,6 @@
 #include "matrix.h"
 
-namespace s21 {
+namespace hhullen {
 
 /*
   Public functions
@@ -574,4 +574,4 @@ void Matrix::make_matrix_minor(Matrix* initial_matrix, int row, int col,
   }
 }
 
-}  // namespace s21
+}  // namespace hhullen

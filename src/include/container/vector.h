@@ -1,9 +1,9 @@
-#ifndef SRC_INCLUDE_VECTOR_H
-#define SRC_INCLUDE_VECTOR_H
+#ifndef SRC_INCLUDE_VECTOR_H_
+#define SRC_INCLUDE_VECTOR_H_
 
 #include <iostream>
 
-namespace s21 {
+namespace hhullen {
 
 template <class T>
 class vector {
@@ -45,20 +45,11 @@ class vector {
   void swap(vector &other);
 
   template <class... Args>
-  iterator emplace(const iterator &pos, Args &&...args) {
-    return insert(pos, value_type(args...));
-  }
-
+  iterator emplace(const iterator pos, Args &&...args);
+  template <typename... Args>
+  void emplace_back(Args &&...args);
   template <class... Args>
-  void emplace_back(Args &&...args) {
-    push_back(value_type(args...));
-  }
-
-  template <class... Args>
-  void emplace_front(Args &&...args) {
-    auto pos = begin();
-    insert(pos, value_type(args...));
-  }
+  void emplace_front(Args &&...args);
 
  private:
   value_type *data_ = nullptr;
@@ -264,7 +255,7 @@ size_t vector<value_type>::size() {
 
 template <class value_type>
 size_t vector<value_type>::max_size() {
-  return std::allocator<s21::vector<value_type>::value_type>().max_size();
+  return std::allocator<hhullen::vector<value_type>::value_type>().max_size();
 }
 
 template <class value_type>
@@ -381,6 +372,40 @@ void vector<value_type>::shift_values_left_to_pos(value_type *current,
   }
 }
 
-}  // namespace s21
+template <typename T>
+template <class... Args>
+typename vector<T>::iterator vector<T>::emplace(
+    const typename vector<value_type>::iterator pos, Args &&...args) {
+  iterator new_pos = pos;
+  const int size_arg{sizeof...(args)};
+  T arr[size_arg] = {args...};
+  for (int i = 0; i < size_arg; i++) {
+    new_pos = insert(new_pos, arr[i]);
+  }
+  return new_pos;
+}
 
-#endif  // SRC_INCLUDE_VECTOR_H
+template <typename T>
+template <typename... Args>
+void vector<T>::emplace_back(Args &&...args) {
+  const int size_arg{sizeof...(args)};
+  T arr[size_arg] = {args...};
+  for (int i = 0; i < size_arg; i++) {
+    push_back(arr[i]);
+  }
+}
+
+template <typename T>
+template <class... Args>
+void vector<T>::emplace_front(Args &&...args) {
+  iterator new_pos = begin();
+  const int size_arg{sizeof...(args)};
+  T arr[size_arg] = {args...};
+  for (int i = 0; i < size_arg; i++) {
+    new_pos = insert(new_pos, arr[i]);
+  }
+}
+
+}  // namespace hhullen
+
+#endif  // SRC_INCLUDE_VECTOR_H_
