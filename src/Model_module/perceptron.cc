@@ -37,23 +37,14 @@ void Perceptron::FillWithRandom() {
 }
 
 void Perceptron::FillMatrixRandom(Matrix &matrix) {
-  for (int i = 0; i < matrix.get_rows(); ++i) {
-    for (int j = 0; j < matrix.get_cols(); ++j) {
-      matrix(i, j) = fmod(rand(), kRANDOM_FACTOR) / kRANDOM_FACTOR;
-    }
-  }
-}
+  int cols = matrix.get_cols(), rows = matrix.get_rows();
+  double elements = cols * rows;
+  double value = -1;
 
-void Perceptron::ClearWeights() {
-  for (size_t i = 1; i < layers_->size(); ++i) {
-    FillMatrixZero(*(*layers_)[i]->get_weights());
-  }
-}
-
-void Perceptron::FillMatrixZero(Matrix &matrix) {
-  for (int i = 0; i < matrix.get_rows(); ++i) {
-    for (int j = 0; j < matrix.get_cols(); ++j) {
-      matrix(i, j) = 0.0;
+  for (int i = 0; i < rows; ++i) {
+    for (int j = 0; j < cols; ++j) {
+      matrix(i, j) = (i * cols + j) * 2 / elements + value;
+      // matrix(i, j) = fmod(rand(), kRANDOM_FACTOR) / kRANDOM_FACTOR;
     }
   }
 }
@@ -161,6 +152,43 @@ int Perceptron::GetNeuronsToHiddenLayer(int layers_amount, int layer_number) {
       kFACTOR);
 }
 
+bool Perceptron::set_input_neurons(Matrix &matrix) {
+  Matrix *input = input_layer_->get_neurons();
+  bool returnable = true;
+
+  if (matrix.get_cols() != input->get_cols() ||
+      matrix.get_rows() != input->get_rows()) {
+    returnable = false;
+  } else {
+    *input = matrix;
+  }
+
+  return returnable;
+}
+
+Matrix *Perceptron::get_output_neurons() {
+  return output_layer_->get_neurons();
+}
+
+void Perceptron::Run() {
+  for (size_t i = 1; i < layers_->size(); ++i) {
+    Matrix *layer_out = new Matrix(*(*layers_)[i]->get_weights() *
+                                   *(*layers_)[i - 1]->get_neurons());
+    Activate(*layer_out);
+    *(*layers_)[i]->get_neurons() = *layer_out;
+  }
+}
+
+void Perceptron::Activate(Matrix &matrix) {
+  for (size_t i = 0; i < matrix.get_rows(); ++i) {
+    matrix(i, 0) = Sigmoid(matrix(i, 0));
+  }
+}
+
+double Perceptron::Sigmoid(const double &value) {
+  return 1 / (1 + pow(kEXPONENT, -value));
+}
+
 void Perceptron::PRINT() {
   std::cout << "PRINT\n";
   for (size_t i = 1; i < layers_->size(); ++i) {
@@ -174,6 +202,5 @@ void Perceptron::PRINT() {
     std::cout << "\n";
   }
 }
-Matrix *Perceptron::get_input_neurons() { return input_layer_->get_neurons(); }
 
 }  // namespace s21

@@ -408,13 +408,7 @@ Matrix Matrix::operator*=(const Matrix& other) {
   return *this;
 }
 
-double& Matrix::operator()(int i, int j) {
-  if ((i < 0 || i > rows_) || j < 0 || j > cols_) {
-    throw out_of_range("Setting element that is out of matrix range");
-  }
-
-  return matrix_[i][j];
-}
+double& Matrix::operator()(int i, int j) { return matrix_[i][j]; }
 
 /*
   Private functions

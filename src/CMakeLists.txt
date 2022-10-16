@@ -6,7 +6,6 @@ set(CMAKE_CXX_STANDARD 17)
 set(PROJECT_SOURCES
   include/matrix/matrix.cc
   include/matrix/matrix.h
-  include/container/vector.h
   Model_module/perceptron.cc
   Model_module/perceptron.h
   Model_module/perceptron_layer.h

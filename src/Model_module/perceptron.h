@@ -4,10 +4,9 @@
 #include <cmath>
 #include <fstream>
 #include <string>
+#include <vector>
 
-#include "../include/container/vector.h"
 #include "perceptron_layer.h"
-using hhullen::vector;
 using s21::PerceptronLayer;
 using std::ceil;
 using std::ifstream;
@@ -16,9 +15,9 @@ using std::ofstream;
 using std::pow;
 using std::rand;
 using std::string;
+using std::vector;
 
 namespace s21 {
-
 const double kINPUT_LAYER_CONST = 4.33769082;
 const double kDELTA_CONST = 3.40634218;
 const double kEXPONENT = 2.71828182845904523536028747135266250;
@@ -33,8 +32,11 @@ class Perceptron {
   bool SaveConfig(const string &path);
   bool UploadConfig(const string &path);
   void FillWithRandom();
-  void ClearWeights();
-  Matrix *get_input_neurons();
+  bool set_input_neurons(Matrix &matrix);
+  void Run();
+  void Activate(Matrix &matrix);
+  double Sigmoid(const double &value);
+  Matrix *get_output_neurons();
 
   void PRINT();  // !!!
 
@@ -44,7 +46,6 @@ class Perceptron {
   vector<PerceptronLayer *> *layers_;
 
   void FillMatrixRandom(Matrix &matrix);
-  void FillMatrixZero(Matrix &matrix);
   int GetNeuronsToHiddenLayer(int layers_amount, int layer_number);
   void SaveLayers(ofstream &file);
   void WriteMAtrixSize(ofstream &file, Matrix &matrix);
