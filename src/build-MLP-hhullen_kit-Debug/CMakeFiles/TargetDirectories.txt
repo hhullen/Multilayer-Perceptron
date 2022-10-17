@@ -1,0 +1,4 @@
+/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/CMakeFiles/MLP.dir
+/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/CMakeFiles/edit_cache.dir
+/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/CMakeFiles/rebuild_cache.dir
+/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/CMakeFiles/MLP_autogen.dir
