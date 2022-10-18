@@ -10,10 +10,13 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
@@ -22,6 +25,8 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionMatrix;
+    QAction *actionGraph;
     QWidget *centralwidget;
     QLabel *label_input_area;
     QLabel *label_output_area;
@@ -29,6 +34,8 @@ public:
     QGridLayout *gridLayout;
     QWidget *output_area;
     QStatusBar *statusbar;
+    QMenuBar *menuBar;
+    QMenu *menuRun;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -37,6 +44,18 @@ public:
         MainWindow->resize(1600, 700);
         MainWindow->setMinimumSize(QSize(1600, 700));
         MainWindow->setMaximumSize(QSize(1600, 700));
+        MainWindow->setWindowOpacity(0.970000000000000);
+        MainWindow->setStyleSheet(QString::fromUtf8("QMainWindow {\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(64, 65, 66);\n"
+"	alternate-background-color: rgb(64, 65, 66);\n"
+"}"));
+        actionMatrix = new QAction(MainWindow);
+        actionMatrix->setObjectName(QString::fromUtf8("actionMatrix"));
+        actionMatrix->setCheckable(true);
+        actionGraph = new QAction(MainWindow);
+        actionGraph->setObjectName(QString::fromUtf8("actionGraph"));
+        actionGraph->setCheckable(true);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         label_input_area = new QLabel(centralwidget);
@@ -78,6 +97,16 @@ public:
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         MainWindow->setStatusBar(statusbar);
+        menuBar = new QMenuBar(MainWindow);
+        menuBar->setObjectName(QString::fromUtf8("menuBar"));
+        menuBar->setGeometry(QRect(0, 0, 1600, 24));
+        menuRun = new QMenu(menuBar);
+        menuRun->setObjectName(QString::fromUtf8("menuRun"));
+        MainWindow->setMenuBar(menuBar);
+
+        menuBar->addAction(menuRun->menuAction());
+        menuRun->addAction(actionMatrix);
+        menuRun->addAction(actionGraph);
 
         retranslateUi(MainWindow);
 
@@ -87,8 +116,17 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        actionMatrix->setText(QCoreApplication::translate("MainWindow", "Matrix", nullptr));
+#if QT_CONFIG(shortcut)
+        actionMatrix->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+1", nullptr));
+#endif // QT_CONFIG(shortcut)
+        actionGraph->setText(QCoreApplication::translate("MainWindow", "Graph", nullptr));
+#if QT_CONFIG(shortcut)
+        actionGraph->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+2", nullptr));
+#endif // QT_CONFIG(shortcut)
         label_input_area->setText(QCoreApplication::translate("MainWindow", "Input area", nullptr));
         label_output_area->setText(QCoreApplication::translate("MainWindow", "Output area", nullptr));
+        menuRun->setTitle(QCoreApplication::translate("MainWindow", "Implementation", nullptr));
     } // retranslateUi
 
 };

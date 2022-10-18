@@ -252,6 +252,7 @@
  mdp:/usr/local/Cellar/gcc@10/10.3.0/lib/gcc/10/gcc/x86_64-apple-darwin20/10.3.0/include/stdarg.h
  mdp:/usr/local/Cellar/gcc@10/10.3.0/lib/gcc/10/gcc/x86_64-apple-darwin20/10.3.0/include/stddef.h
  mdp:/usr/local/Cellar/gcc@10/10.3.0/lib/gcc/10/gcc/x86_64-apple-darwin20/10.3.0/include/stdint.h
+ mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/QTimer
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qalgorithms.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qanystringview.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qarraydata.h
@@ -260,6 +261,7 @@
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qatomic.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qatomic_cxx11.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qbasicatomic.h
+ mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qbasictimer.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qbindingstorage.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qbytearray.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qbytearrayalgorithms.h
@@ -316,6 +318,7 @@
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qsystemdetection.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qtaggedpointer.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qtcore-config.h
+ mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qtimer.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qtmetamacros.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qtypeinfo.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qutf8stringview.h
@@ -610,6 +613,7 @@
  mdp:/usr/local/Cellar/gcc@10/10.3.0/lib/gcc/10/gcc/x86_64-apple-darwin20/10.3.0/include/stdarg.h
  mdp:/usr/local/Cellar/gcc@10/10.3.0/lib/gcc/10/gcc/x86_64-apple-darwin20/10.3.0/include/stddef.h
  mdp:/usr/local/Cellar/gcc@10/10.3.0/lib/gcc/10/gcc/x86_64-apple-darwin20/10.3.0/include/stdint.h
+ mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/QTimer
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qalgorithms.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qanystringview.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qarraydata.h
@@ -618,6 +622,7 @@
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qatomic.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qatomic_cxx11.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qbasicatomic.h
+ mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qbasictimer.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qbindingstorage.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qbytearray.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qbytearrayalgorithms.h
@@ -674,6 +679,7 @@
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qsystemdetection.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qtaggedpointer.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qtcore-config.h
+ mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qtimer.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qtmetamacros.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qtypeinfo.h
  mdp:/usr/local/lib/QtCore.framework/Versions/A/Headers/qutf8stringview.h

@@ -25,6 +25,16 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="windowOpacity">
+   <double>0.970000000000000</double>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+	color: rgb(255, 255, 255);
+	background-color: rgb(64, 65, 66);
+	alternate-background-color: rgb(64, 65, 66);
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label_input_area">
     <property name="geometry">
@@ -141,6 +151,46 @@
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1600</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuRun">
+    <property name="title">
+     <string>Implementation</string>
+    </property>
+    <addaction name="actionMatrix"/>
+    <addaction name="actionGraph"/>
+   </widget>
+   <addaction name="menuRun"/>
+  </widget>
+  <action name="actionMatrix">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Matrix</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+1</string>
+   </property>
+  </action>
+  <action name="actionGraph">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Graph</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+2</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

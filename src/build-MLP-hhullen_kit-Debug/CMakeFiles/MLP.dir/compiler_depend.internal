@@ -384,6 +384,9 @@ CMakeFiles/MLP.dir/MLP_autogen/mocs_compilation.cpp.o
  /usr/local/lib/QtGui.framework/Headers/qpainter.h
  /usr/local/lib/QtGui.framework/Headers/qtextoption.h
  /usr/local/lib/QtGui.framework/Headers/qpen.h
+ /usr/local/lib/QtCore.framework/Headers/QTimer
+ /usr/local/lib/QtCore.framework/Headers/qtimer.h
+ /usr/local/lib/QtCore.framework/Headers/qbasictimer.h
  /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/MLP_autogen/CW6BJZZ4FM/moc_mainwindow.cpp
  /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/mainwindow.h
  /usr/local/lib/QtWidgets.framework/Headers/QMainWindow
@@ -1014,6 +1017,9 @@ CMakeFiles/MLP.dir/View_module/inputarea.cc.o
  /usr/local/lib/QtGui.framework/Headers/qpainter.h
  /usr/local/lib/QtGui.framework/Headers/qtextoption.h
  /usr/local/lib/QtGui.framework/Headers/qpen.h
+ /usr/local/lib/QtCore.framework/Headers/QTimer
+ /usr/local/lib/QtCore.framework/Headers/qtimer.h
+ /usr/local/lib/QtCore.framework/Headers/qbasictimer.h
 
 CMakeFiles/MLP.dir/View_module/mainwindow.cc.o
  /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/mainwindow.cc
@@ -1409,6 +1415,9 @@ CMakeFiles/MLP.dir/View_module/mainwindow.cc.o
  /usr/local/lib/QtGui.framework/Headers/qpainter.h
  /usr/local/lib/QtGui.framework/Headers/qtextoption.h
  /usr/local/lib/QtGui.framework/Headers/qpen.h
+ /usr/local/lib/QtCore.framework/Headers/QTimer
+ /usr/local/lib/QtCore.framework/Headers/qtimer.h
+ /usr/local/lib/QtCore.framework/Headers/qbasictimer.h
  /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/MLP_autogen/include/ui_mainwindow.h
  /usr/local/lib/QtCore.framework/Headers/QVariant
  /usr/local/lib/QtCore.framework/Headers/qvariant.h
@@ -1420,6 +1429,9 @@ CMakeFiles/MLP.dir/View_module/mainwindow.cc.o
  /usr/local/lib/QtCore.framework/Headers/qstringconverter.h
  /usr/local/lib/QtCore.framework/Headers/qset.h
  /usr/local/lib/QtCore.framework/Headers/qcontiguouscache.h
+ /usr/local/lib/QtGui.framework/Headers/QAction
+ /usr/local/lib/QtGui.framework/Headers/qaction.h
+ /usr/local/lib/QtCore.framework/Headers/qvariant.h
  /usr/local/lib/QtWidgets.framework/Headers/QApplication
  /usr/local/lib/QtWidgets.framework/Headers/qapplication.h
  /usr/local/lib/QtCore.framework/Headers/qcoreapplication.h
@@ -1430,7 +1442,6 @@ CMakeFiles/MLP.dir/View_module/mainwindow.cc.o
  /usr/local/lib/QtGui.framework/Headers/qguiapplication.h
  /usr/local/lib/QtGui.framework/Headers/qinputmethod.h
  /usr/local/lib/QtCore.framework/Headers/qlocale.h
- /usr/local/lib/QtCore.framework/Headers/qvariant.h
  /usr/local/lib/QtGui.framework/Headers/qguiapplication_platform.h
  /usr/local/lib/QtWidgets.framework/Headers/QGridLayout
  /usr/local/lib/QtWidgets.framework/Headers/QLabel
@@ -1441,6 +1452,12 @@ CMakeFiles/MLP.dir/View_module/mainwindow.cc.o
  /usr/local/lib/QtGui.framework/Headers/qtextdocument.h
  /usr/local/lib/QtCore.framework/Headers/qurl.h
  /usr/local/lib/QtWidgets.framework/Headers/QMainWindow
+ /usr/local/lib/QtWidgets.framework/Headers/QMenu
+ /usr/local/lib/QtWidgets.framework/Headers/qmenu.h
+ /usr/local/lib/QtGui.framework/Headers/qaction.h
+ /usr/local/lib/QtWidgets.framework/Headers/QMenuBar
+ /usr/local/lib/QtWidgets.framework/Headers/qmenubar.h
+ /usr/local/lib/QtWidgets.framework/Headers/qmenu.h
  /usr/local/lib/QtWidgets.framework/Headers/QStatusBar
  /usr/local/lib/QtWidgets.framework/Headers/qstatusbar.h
  /usr/local/lib/QtWidgets.framework/Headers/QWidget
@@ -2060,6 +2077,9 @@ CMakeFiles/MLP.dir/main.cpp.o
  /usr/local/lib/QtGui.framework/Headers/qpainter.h
  /usr/local/lib/QtGui.framework/Headers/qtextoption.h
  /usr/local/lib/QtGui.framework/Headers/qpen.h
+ /usr/local/lib/QtCore.framework/Headers/QTimer
+ /usr/local/lib/QtCore.framework/Headers/qtimer.h
+ /usr/local/lib/QtCore.framework/Headers/qbasictimer.h
  /usr/local/lib/QtWidgets.framework/Headers/QApplication
  /usr/local/lib/QtWidgets.framework/Headers/qapplication.h
  /usr/local/lib/QtCore.framework/Headers/qcoreapplication.h
