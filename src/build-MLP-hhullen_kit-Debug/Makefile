@@ -143,6 +143,30 @@ MLP_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MLP_autogen.dir/build.make CMakeFiles/MLP_autogen.dir/build
 .PHONY : MLP_autogen/fast
 
+Controller_module/mlp_controller.o: Controller_module/mlp_controller.cc.o
+.PHONY : Controller_module/mlp_controller.o
+
+# target to build an object file
+Controller_module/mlp_controller.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MLP.dir/build.make CMakeFiles/MLP.dir/Controller_module/mlp_controller.cc.o
+.PHONY : Controller_module/mlp_controller.cc.o
+
+Controller_module/mlp_controller.i: Controller_module/mlp_controller.cc.i
+.PHONY : Controller_module/mlp_controller.i
+
+# target to preprocess a source file
+Controller_module/mlp_controller.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MLP.dir/build.make CMakeFiles/MLP.dir/Controller_module/mlp_controller.cc.i
+.PHONY : Controller_module/mlp_controller.cc.i
+
+Controller_module/mlp_controller.s: Controller_module/mlp_controller.cc.s
+.PHONY : Controller_module/mlp_controller.s
+
+# target to generate assembly for a file
+Controller_module/mlp_controller.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MLP.dir/build.make CMakeFiles/MLP.dir/Controller_module/mlp_controller.cc.s
+.PHONY : Controller_module/mlp_controller.cc.s
+
 MLP_autogen/mocs_compilation.o: MLP_autogen/mocs_compilation.cpp.o
 .PHONY : MLP_autogen/mocs_compilation.o
 
@@ -297,6 +321,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... MLP_autogen"
 	@echo "... MLP"
+	@echo "... Controller_module/mlp_controller.o"
+	@echo "... Controller_module/mlp_controller.i"
+	@echo "... Controller_module/mlp_controller.s"
 	@echo "... MLP_autogen/mocs_compilation.o"
 	@echo "... MLP_autogen/mocs_compilation.i"
 	@echo "... MLP_autogen/mocs_compilation.s"

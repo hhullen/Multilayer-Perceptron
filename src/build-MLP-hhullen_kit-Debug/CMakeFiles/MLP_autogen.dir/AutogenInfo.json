@@ -363,6 +363,12 @@
 	"HEADERS" : 
 	[
 		[
+			"/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Controller_module/mlp_controller.h",
+			"MU",
+			"MI4TD3MHZU/moc_mlp_controller.cpp",
+			null
+		],
+		[
 			"/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Model_module/perceptron.h",
 			"MU",
 			"P5YW4JW32X/moc_perceptron.cpp",
@@ -448,6 +454,11 @@
 	"SETTINGS_FILE" : "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/CMakeFiles/MLP_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[
+			"/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Controller_module/mlp_controller.cc",
+			"MU",
+			null
+		],
 		[
 			"/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Model_module/perceptron.cc",
 			"MU",

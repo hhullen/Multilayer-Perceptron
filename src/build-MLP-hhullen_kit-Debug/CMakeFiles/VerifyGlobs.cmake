@@ -24,6 +24,7 @@ endif()
 # _directory_contents at /usr/local/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:79 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/*.cc")
 set(OLD_GLOB
+  "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Controller_module/mlp_controller.cc"
   "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Model_module/perceptron.cc"
   "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/inputarea.cc"
   "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/mainwindow.cc"
@@ -106,6 +107,7 @@ endif()
 # _directory_contents at /usr/local/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:79 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/*.h")
 set(OLD_GLOB
+  "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Controller_module/mlp_controller.h"
   "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Model_module/perceptron.h"
   "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Model_module/perceptron_layer.h"
   "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/inputarea.h"

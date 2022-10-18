@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_s21__InputArea_t {
     const uint offsetsAndSize[16];
-    char stringdata0[95];
+    char stringdata0[108];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_s21__InputArea_t, stringdata0) + ofs), len 
@@ -33,15 +33,15 @@ QT_MOC_LITERAL(0, 14), // "s21::InputArea"
 QT_MOC_LITERAL(15, 10), // "line_ended"
 QT_MOC_LITERAL(26, 0), // ""
 QT_MOC_LITERAL(27, 15), // "mousePressEvent"
-QT_MOC_LITERAL(43, 12), // "QMouseEvent*"
-QT_MOC_LITERAL(56, 5), // "event"
-QT_MOC_LITERAL(62, 17), // "mouseReleaseEvent"
-QT_MOC_LITERAL(80, 14) // "mouseMoveEvent"
+QT_MOC_LITERAL(43, 25), // "QGraphicsSceneMouseEvent*"
+QT_MOC_LITERAL(69, 5), // "event"
+QT_MOC_LITERAL(75, 17), // "mouseReleaseEvent"
+QT_MOC_LITERAL(93, 14) // "mouseMoveEvent"
 
     },
     "s21::InputArea\0line_ended\0\0mousePressEvent\0"
-    "QMouseEvent*\0event\0mouseReleaseEvent\0"
-    "mouseMoveEvent"
+    "QGraphicsSceneMouseEvent*\0event\0"
+    "mouseReleaseEvent\0mouseMoveEvent"
 };
 #undef QT_MOC_LITERAL
 
@@ -84,9 +84,9 @@ void s21::InputArea::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         (void)_t;
         switch (_id) {
         case 0: _t->line_ended(); break;
-        case 1: _t->mousePressEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
-        case 2: _t->mouseReleaseEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
-        case 3: _t->mouseMoveEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
+        case 1: _t->mousePressEvent((*reinterpret_cast< QGraphicsSceneMouseEvent*(*)>(_a[1]))); break;
+        case 2: _t->mouseReleaseEvent((*reinterpret_cast< QGraphicsSceneMouseEvent*(*)>(_a[1]))); break;
+        case 3: _t->mouseMoveEvent((*reinterpret_cast< QGraphicsSceneMouseEvent*(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -102,14 +102,14 @@ void s21::InputArea::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
 }
 
 const QMetaObject s21::InputArea::staticMetaObject = { {
-    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    QMetaObject::SuperData::link<QGraphicsScene::staticMetaObject>(),
     qt_meta_stringdata_s21__InputArea.offsetsAndSize,
     qt_meta_data_s21__InputArea,
     qt_static_metacall,
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_s21__InputArea_t
 , QtPrivate::TypeAndForceComplete<InputArea, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QMouseEvent *, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QMouseEvent *, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QMouseEvent *, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QGraphicsSceneMouseEvent *, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QGraphicsSceneMouseEvent *, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QGraphicsSceneMouseEvent *, std::false_type>
 
 
 >,
@@ -127,12 +127,12 @@ void *s21::InputArea::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_s21__InputArea.stringdata0))
         return static_cast<void*>(this);
-    return QWidget::qt_metacast(_clname);
+    return QGraphicsScene::qt_metacast(_clname);
 }
 
 int s21::InputArea::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QWidget::qt_metacall(_c, _id, _a);
+    _id = QGraphicsScene::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {

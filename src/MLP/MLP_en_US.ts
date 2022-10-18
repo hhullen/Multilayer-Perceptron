@@ -19,27 +19,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/mainwindow.ui" line="165"/>
+        <location filename="View_module/mainwindow.ui" line="162"/>
+        <source>PushButton</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="View_module/mainwindow.ui" line="178"/>
         <source>Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/mainwindow.ui" line="177"/>
+        <location filename="View_module/mainwindow.ui" line="190"/>
         <source>Matrix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/mainwindow.ui" line="180"/>
+        <location filename="View_module/mainwindow.ui" line="193"/>
         <source>Ctrl+1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/mainwindow.ui" line="188"/>
+        <location filename="View_module/mainwindow.ui" line="201"/>
         <source>Graph</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/mainwindow.ui" line="191"/>
+        <location filename="View_module/mainwindow.ui" line="204"/>
         <source>Ctrl+2</source>
         <translation type="unfinished"></translation>
     </message>

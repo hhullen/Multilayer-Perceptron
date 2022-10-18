@@ -9,11 +9,13 @@
 
 namespace s21 {
 
-class InputArea : public QWidget, public QGraphicsScene {
+class InputArea : public QGraphicsScene {
     Q_OBJECT
 public:
-    explicit InputArea(QColor color, int size, QWidget *parent = nullptr);
-    virtual void paintEvent(QPaintEvent *event) override;
+    explicit InputArea(QColor color, int size, QObject *parent = nullptr);
+    ~InputArea();
+
+    void Clear();
 
 signals:
     void line_ended();
@@ -26,10 +28,8 @@ private slots:
 private:
     QColor color_;
     int size_;
-    bool lmb_;
-    QPainter *painter_;
     QPen *pen_;
-    QPointF mouse_pos_;
+    QBrush *brush_;
     QRectF circle_;
     QLineF line_;
     QPointF prev_point_;

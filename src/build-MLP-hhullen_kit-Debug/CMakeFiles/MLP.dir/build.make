@@ -69,6 +69,8 @@ include CMakeFiles/MLP.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/MLP.dir/flags.make
 
+/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/MLP_en_US.ts: /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Controller_module/mlp_controller.cc
+/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/MLP_en_US.ts: /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Controller_module/mlp_controller.h
 /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/MLP_en_US.ts: /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Model_module/perceptron.cc
 /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/MLP_en_US.ts: /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Model_module/perceptron.h
 /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/MLP_en_US.ts: /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Model_module/perceptron_layer.h
@@ -198,10 +200,24 @@ CMakeFiles/MLP.dir/View_module/mainwindow.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MLP.dir/View_module/mainwindow.cc.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/mainwindow.cc -o CMakeFiles/MLP.dir/View_module/mainwindow.cc.s
 
+CMakeFiles/MLP.dir/View_module/inputarea.cc.o: CMakeFiles/MLP.dir/flags.make
+CMakeFiles/MLP.dir/View_module/inputarea.cc.o: /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/inputarea.cc
+CMakeFiles/MLP.dir/View_module/inputarea.cc.o: CMakeFiles/MLP.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/MLP.dir/View_module/inputarea.cc.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MLP.dir/View_module/inputarea.cc.o -MF CMakeFiles/MLP.dir/View_module/inputarea.cc.o.d -o CMakeFiles/MLP.dir/View_module/inputarea.cc.o -c /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/inputarea.cc
+
+CMakeFiles/MLP.dir/View_module/inputarea.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MLP.dir/View_module/inputarea.cc.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/inputarea.cc > CMakeFiles/MLP.dir/View_module/inputarea.cc.i
+
+CMakeFiles/MLP.dir/View_module/inputarea.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MLP.dir/View_module/inputarea.cc.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/inputarea.cc -o CMakeFiles/MLP.dir/View_module/inputarea.cc.s
+
 CMakeFiles/MLP.dir/Model_module/perceptron.cc.o: CMakeFiles/MLP.dir/flags.make
 CMakeFiles/MLP.dir/Model_module/perceptron.cc.o: /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Model_module/perceptron.cc
 CMakeFiles/MLP.dir/Model_module/perceptron.cc.o: CMakeFiles/MLP.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/MLP.dir/Model_module/perceptron.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/MLP.dir/Model_module/perceptron.cc.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MLP.dir/Model_module/perceptron.cc.o -MF CMakeFiles/MLP.dir/Model_module/perceptron.cc.o.d -o CMakeFiles/MLP.dir/Model_module/perceptron.cc.o -c /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Model_module/perceptron.cc
 
 CMakeFiles/MLP.dir/Model_module/perceptron.cc.i: cmake_force
@@ -215,7 +231,7 @@ CMakeFiles/MLP.dir/Model_module/perceptron.cc.s: cmake_force
 CMakeFiles/MLP.dir/include/matrix/matrix.cc.o: CMakeFiles/MLP.dir/flags.make
 CMakeFiles/MLP.dir/include/matrix/matrix.cc.o: /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/include/matrix/matrix.cc
 CMakeFiles/MLP.dir/include/matrix/matrix.cc.o: CMakeFiles/MLP.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/MLP.dir/include/matrix/matrix.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/MLP.dir/include/matrix/matrix.cc.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MLP.dir/include/matrix/matrix.cc.o -MF CMakeFiles/MLP.dir/include/matrix/matrix.cc.o.d -o CMakeFiles/MLP.dir/include/matrix/matrix.cc.o -c /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/include/matrix/matrix.cc
 
 CMakeFiles/MLP.dir/include/matrix/matrix.cc.i: cmake_force
@@ -226,28 +242,29 @@ CMakeFiles/MLP.dir/include/matrix/matrix.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MLP.dir/include/matrix/matrix.cc.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/include/matrix/matrix.cc -o CMakeFiles/MLP.dir/include/matrix/matrix.cc.s
 
-CMakeFiles/MLP.dir/View_module/inputarea.cc.o: CMakeFiles/MLP.dir/flags.make
-CMakeFiles/MLP.dir/View_module/inputarea.cc.o: /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/inputarea.cc
-CMakeFiles/MLP.dir/View_module/inputarea.cc.o: CMakeFiles/MLP.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/MLP.dir/View_module/inputarea.cc.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MLP.dir/View_module/inputarea.cc.o -MF CMakeFiles/MLP.dir/View_module/inputarea.cc.o.d -o CMakeFiles/MLP.dir/View_module/inputarea.cc.o -c /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/inputarea.cc
+CMakeFiles/MLP.dir/Controller_module/mlp_controller.cc.o: CMakeFiles/MLP.dir/flags.make
+CMakeFiles/MLP.dir/Controller_module/mlp_controller.cc.o: /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Controller_module/mlp_controller.cc
+CMakeFiles/MLP.dir/Controller_module/mlp_controller.cc.o: CMakeFiles/MLP.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/MLP.dir/Controller_module/mlp_controller.cc.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MLP.dir/Controller_module/mlp_controller.cc.o -MF CMakeFiles/MLP.dir/Controller_module/mlp_controller.cc.o.d -o CMakeFiles/MLP.dir/Controller_module/mlp_controller.cc.o -c /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Controller_module/mlp_controller.cc
 
-CMakeFiles/MLP.dir/View_module/inputarea.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MLP.dir/View_module/inputarea.cc.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/inputarea.cc > CMakeFiles/MLP.dir/View_module/inputarea.cc.i
+CMakeFiles/MLP.dir/Controller_module/mlp_controller.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MLP.dir/Controller_module/mlp_controller.cc.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Controller_module/mlp_controller.cc > CMakeFiles/MLP.dir/Controller_module/mlp_controller.cc.i
 
-CMakeFiles/MLP.dir/View_module/inputarea.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MLP.dir/View_module/inputarea.cc.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/inputarea.cc -o CMakeFiles/MLP.dir/View_module/inputarea.cc.s
+CMakeFiles/MLP.dir/Controller_module/mlp_controller.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MLP.dir/Controller_module/mlp_controller.cc.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Controller_module/mlp_controller.cc -o CMakeFiles/MLP.dir/Controller_module/mlp_controller.cc.s
 
 # Object files for target MLP
 MLP_OBJECTS = \
 "CMakeFiles/MLP.dir/MLP_autogen/mocs_compilation.cpp.o" \
 "CMakeFiles/MLP.dir/main.cpp.o" \
 "CMakeFiles/MLP.dir/View_module/mainwindow.cc.o" \
+"CMakeFiles/MLP.dir/View_module/inputarea.cc.o" \
 "CMakeFiles/MLP.dir/Model_module/perceptron.cc.o" \
 "CMakeFiles/MLP.dir/include/matrix/matrix.cc.o" \
-"CMakeFiles/MLP.dir/View_module/inputarea.cc.o"
+"CMakeFiles/MLP.dir/Controller_module/mlp_controller.cc.o"
 
 # External object files for target MLP
 MLP_EXTERNAL_OBJECTS =
@@ -255,15 +272,16 @@ MLP_EXTERNAL_OBJECTS =
 MLP.app/Contents/MacOS/MLP: CMakeFiles/MLP.dir/MLP_autogen/mocs_compilation.cpp.o
 MLP.app/Contents/MacOS/MLP: CMakeFiles/MLP.dir/main.cpp.o
 MLP.app/Contents/MacOS/MLP: CMakeFiles/MLP.dir/View_module/mainwindow.cc.o
+MLP.app/Contents/MacOS/MLP: CMakeFiles/MLP.dir/View_module/inputarea.cc.o
 MLP.app/Contents/MacOS/MLP: CMakeFiles/MLP.dir/Model_module/perceptron.cc.o
 MLP.app/Contents/MacOS/MLP: CMakeFiles/MLP.dir/include/matrix/matrix.cc.o
-MLP.app/Contents/MacOS/MLP: CMakeFiles/MLP.dir/View_module/inputarea.cc.o
+MLP.app/Contents/MacOS/MLP: CMakeFiles/MLP.dir/Controller_module/mlp_controller.cc.o
 MLP.app/Contents/MacOS/MLP: CMakeFiles/MLP.dir/build.make
 MLP.app/Contents/MacOS/MLP: /usr/local/lib/QtWidgets.framework/Versions/A/QtWidgets
 MLP.app/Contents/MacOS/MLP: /usr/local/lib/QtGui.framework/Versions/A/QtGui
 MLP.app/Contents/MacOS/MLP: /usr/local/lib/QtCore.framework/Versions/A/QtCore
 MLP.app/Contents/MacOS/MLP: CMakeFiles/MLP.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable MLP.app/Contents/MacOS/MLP"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable MLP.app/Contents/MacOS/MLP"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MLP.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

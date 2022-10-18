@@ -17,6 +17,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
@@ -33,6 +34,7 @@ public:
     QWidget *input_area;
     QGridLayout *gridLayout;
     QWidget *output_area;
+    QPushButton *btn_cancel;
     QStatusBar *statusbar;
     QMenuBar *menuBar;
     QMenu *menuRun;
@@ -93,6 +95,9 @@ public:
 "	color: rgb(0, 0, 0);\n"
 "	alternate-background-color: rgb(0, 0, 0);\n"
 "}"));
+        btn_cancel = new QPushButton(centralwidget);
+        btn_cancel->setObjectName(QString::fromUtf8("btn_cancel"));
+        btn_cancel->setGeometry(QRect(200, 590, 100, 32));
         MainWindow->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -126,6 +131,7 @@ public:
 #endif // QT_CONFIG(shortcut)
         label_input_area->setText(QCoreApplication::translate("MainWindow", "Input area", nullptr));
         label_output_area->setText(QCoreApplication::translate("MainWindow", "Output area", nullptr));
+        btn_cancel->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
         menuRun->setTitle(QCoreApplication::translate("MainWindow", "Mode", nullptr));
     } // retranslateUi
 

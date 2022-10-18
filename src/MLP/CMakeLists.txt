@@ -22,13 +22,15 @@ set(PROJECT_SOURCES
         View_module/mainwindow.cc
         View_module/mainwindow.h
         View_module/mainwindow.ui
+        View_module/inputarea.h
+        View_module/inputarea.cc
         Model_module/perceptron.h
         Model_module/perceptron.cc
         Model_module/perceptron_layer.h
         include/matrix/matrix.h
         include/matrix/matrix.cc
-        View_module/inputarea.h
-        View_module/inputarea.cc
+        Controller_module/mlp_controller.h
+        Controller_module/mlp_controller.cc
 
         ${TS_FILES}
 )
