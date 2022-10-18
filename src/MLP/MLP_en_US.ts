@@ -20,7 +20,7 @@
     </message>
     <message>
         <location filename="View_module/mainwindow.ui" line="165"/>
-        <source>Implementation</source>
+        <source>Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

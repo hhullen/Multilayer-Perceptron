@@ -162,7 +162,7 @@
    </property>
    <widget class="QMenu" name="menuRun">
     <property name="title">
-     <string>Implementation</string>
+     <string>Mode</string>
     </property>
     <addaction name="actionMatrix"/>
     <addaction name="actionGraph"/>

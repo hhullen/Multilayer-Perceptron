@@ -126,7 +126,7 @@ public:
 #endif // QT_CONFIG(shortcut)
         label_input_area->setText(QCoreApplication::translate("MainWindow", "Input area", nullptr));
         label_output_area->setText(QCoreApplication::translate("MainWindow", "Output area", nullptr));
-        menuRun->setTitle(QCoreApplication::translate("MainWindow", "Implementation", nullptr));
+        menuRun->setTitle(QCoreApplication::translate("MainWindow", "Mode", nullptr));
     } // retranslateUi
 
 };

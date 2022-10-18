@@ -3,21 +3,32 @@
 
 #include <QWidget>
 #include <QPainter>
-#include <QTimer>
+#include <QMouseEvent>
 
 namespace s21 {
 
 class InputArea : public QWidget {
     Q_OBJECT
 public:
-    explicit InputArea(int r, QWidget *parent = nullptr);
-    virtual void paintEvent(QPaintEvent *event);
+    explicit InputArea(QColor color, int size, QWidget *parent = nullptr);
+    virtual void paintEvent(QPaintEvent *event) override;
 
 signals:
+    void line_ended();
+
+private slots:
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
 
 private:
-    int r_ = 0;
-
+    QColor color_;
+    int size_;
+    bool lmb_;
+    QPainter *painter_;
+    QPen *pen_;
+    QPoint mouse_pos_;
+    QRect circle_;
 };
 
 }

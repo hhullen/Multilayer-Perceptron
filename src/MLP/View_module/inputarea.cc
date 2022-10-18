@@ -2,30 +2,36 @@
 
 namespace s21 {
 
-InputArea::InputArea(int r, QWidget *parent)
-    : QWidget{parent} {
-    r_ = r;
+InputArea::InputArea(QColor color, int size, QWidget *parent)
+    : color_(color), size_(size), QWidget{parent} {
 }
 
 void InputArea::paintEvent(QPaintEvent *event) {
-    QPainter *painter = new QPainter(this);
-    QPen pen;
-    pen.setColor(QColor::fromRgb(255,255,255));
-    painter->setPen(pen);
-    painter->drawEllipse(r_,10, 20, 20);
-    painter->end();
+    if (lmb_) {
+        painter_ = new QPainter(this);
+        pen_ = new QPen();
+        pen_->setColor(color_);
+        painter_->setPen(*pen_);
+        painter_->drawEllipse(circle_);
+        painter_->end();
+    }
+}
 
+void InputArea::mousePressEvent(QMouseEvent *event) {
+    lmb_ = event->button() == Qt::LeftButton;
+    mouse_pos_ = event->pos();
+    circle_.setRect(event->pos().x() - size_ / 2, event->pos().y() - size_ / 2, event->pos().x() + size_, event->pos().y() + size_);
+}
 
-    QPainter painter1(this);
-    QPen pen1;
-    pen1.setColor(QColor::fromRgb(255,255,255));
-    painter1.setPen(pen1);
-    painter1.drawEllipse(r_, 10, 40, 40);
-    painter1.end();
+void InputArea::mouseReleaseEvent(QMouseEvent *event) {
+    lmb_ = !(event->button() == Qt::LeftButton);
+    delete painter_;
+    delete pen_;
+    emit line_ended();
+}
 
-//    QTimer t;
-//    connect(&t, &QTimer::timeout, &painter, &QPainter::restore);
-//    t.start(2000);
+void InputArea::mouseMoveEvent(QMouseEvent *event) {
+    circle_.setRect(event->pos().x() - size_ / 2, event->pos().y() - size_ / 2, event->pos().x() + size_, event->pos().y() + size_);
 }
 
 }

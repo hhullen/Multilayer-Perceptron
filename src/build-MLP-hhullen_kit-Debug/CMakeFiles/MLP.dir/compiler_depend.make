@@ -383,9 +383,39 @@ CMakeFiles/MLP.dir/MLP_autogen/mocs_compilation.cpp.o: MLP_autogen/mocs_compilat
   /usr/local/lib/QtGui.framework/Headers/qpainter.h \
   /usr/local/lib/QtGui.framework/Headers/qtextoption.h \
   /usr/local/lib/QtGui.framework/Headers/qpen.h \
-  /usr/local/lib/QtCore.framework/Headers/QTimer \
-  /usr/local/lib/QtCore.framework/Headers/qtimer.h \
-  /usr/local/lib/QtCore.framework/Headers/qbasictimer.h \
+  /usr/local/lib/QtGui.framework/Headers/QMouseEvent \
+  /usr/local/lib/QtGui.framework/Headers/qevent.h \
+  /usr/local/lib/QtCore.framework/Headers/qcoreevent.h \
+  /usr/local/lib/QtCore.framework/Headers/qiodevice.h \
+  /usr/local/lib/QtCore.framework/Headers/qpointer.h \
+  /usr/local/lib/QtCore.framework/Headers/qurl.h \
+  /usr/local/lib/QtCore.framework/Headers/qvariant.h \
+  /usr/local/lib/QtCore.framework/Headers/qmap.h \
+  /usr/local/lib/QtCore.framework/Headers/qshareddata_impl.h \
+  /usr/local/lib/QtCore.framework/Headers/qhash.h \
+  /usr/local/lib/QtCore.framework/Headers/qdebug.h \
+  /usr/local/lib/QtCore.framework/Headers/qtextstream.h \
+  /usr/local/lib/QtCore.framework/Headers/qstringconverter.h \
+  /usr/local/lib/QtCore.framework/Headers/qset.h \
+  /usr/local/lib/QtCore.framework/Headers/qcontiguouscache.h \
+  /usr/local/lib/QtGui.framework/Headers/qeventpoint.h \
+  /usr/local/lib/QtGui.framework/Headers/qvector2d.h \
+  /usr/local/lib/QtGui.framework/Headers/qvectornd.h \
+  /usr/local/lib/QtGui.framework/Headers/qpointingdevice.h \
+  /usr/local/lib/QtGui.framework/Headers/qinputdevice.h \
+  /usr/local/lib/QtGui.framework/Headers/qscreen.h \
+  /usr/local/lib/QtCore.framework/Headers/QList \
+  /usr/local/lib/QtCore.framework/Headers/qlist.h \
+  /usr/local/lib/QtCore.framework/Headers/QObject \
+  /usr/local/lib/QtCore.framework/Headers/qobject.h \
+  /usr/local/lib/QtCore.framework/Headers/QRect \
+  /usr/local/lib/QtCore.framework/Headers/qrect.h \
+  /usr/local/lib/QtCore.framework/Headers/QSize \
+  /usr/local/lib/QtCore.framework/Headers/qsize.h \
+  /usr/local/lib/QtCore.framework/Headers/QSizeF \
+  /usr/local/lib/QtGui.framework/Headers/QTransform \
+  /usr/local/lib/QtGui.framework/Headers/qtransform.h \
+  /usr/local/lib/QtCore.framework/Headers/qnativeinterface.h \
   MLP_autogen/CW6BJZZ4FM/moc_mainwindow.cpp \
   /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/mainwindow.h \
   /usr/local/lib/QtWidgets.framework/Headers/QMainWindow \
@@ -1014,9 +1044,39 @@ CMakeFiles/MLP.dir/View_module/inputarea.cc.o: /Users/hhullen/PROJECTS/github/Mu
   /usr/local/lib/QtGui.framework/Headers/qpainter.h \
   /usr/local/lib/QtGui.framework/Headers/qtextoption.h \
   /usr/local/lib/QtGui.framework/Headers/qpen.h \
-  /usr/local/lib/QtCore.framework/Headers/QTimer \
-  /usr/local/lib/QtCore.framework/Headers/qtimer.h \
-  /usr/local/lib/QtCore.framework/Headers/qbasictimer.h
+  /usr/local/lib/QtGui.framework/Headers/QMouseEvent \
+  /usr/local/lib/QtGui.framework/Headers/qevent.h \
+  /usr/local/lib/QtCore.framework/Headers/qcoreevent.h \
+  /usr/local/lib/QtCore.framework/Headers/qiodevice.h \
+  /usr/local/lib/QtCore.framework/Headers/qpointer.h \
+  /usr/local/lib/QtCore.framework/Headers/qurl.h \
+  /usr/local/lib/QtCore.framework/Headers/qvariant.h \
+  /usr/local/lib/QtCore.framework/Headers/qmap.h \
+  /usr/local/lib/QtCore.framework/Headers/qshareddata_impl.h \
+  /usr/local/lib/QtCore.framework/Headers/qhash.h \
+  /usr/local/lib/QtCore.framework/Headers/qdebug.h \
+  /usr/local/lib/QtCore.framework/Headers/qtextstream.h \
+  /usr/local/lib/QtCore.framework/Headers/qstringconverter.h \
+  /usr/local/lib/QtCore.framework/Headers/qset.h \
+  /usr/local/lib/QtCore.framework/Headers/qcontiguouscache.h \
+  /usr/local/lib/QtGui.framework/Headers/qeventpoint.h \
+  /usr/local/lib/QtGui.framework/Headers/qvector2d.h \
+  /usr/local/lib/QtGui.framework/Headers/qvectornd.h \
+  /usr/local/lib/QtGui.framework/Headers/qpointingdevice.h \
+  /usr/local/lib/QtGui.framework/Headers/qinputdevice.h \
+  /usr/local/lib/QtGui.framework/Headers/qscreen.h \
+  /usr/local/lib/QtCore.framework/Headers/QList \
+  /usr/local/lib/QtCore.framework/Headers/qlist.h \
+  /usr/local/lib/QtCore.framework/Headers/QObject \
+  /usr/local/lib/QtCore.framework/Headers/qobject.h \
+  /usr/local/lib/QtCore.framework/Headers/QRect \
+  /usr/local/lib/QtCore.framework/Headers/qrect.h \
+  /usr/local/lib/QtCore.framework/Headers/QSize \
+  /usr/local/lib/QtCore.framework/Headers/qsize.h \
+  /usr/local/lib/QtCore.framework/Headers/QSizeF \
+  /usr/local/lib/QtGui.framework/Headers/QTransform \
+  /usr/local/lib/QtGui.framework/Headers/qtransform.h \
+  /usr/local/lib/QtCore.framework/Headers/qnativeinterface.h
 
 CMakeFiles/MLP.dir/View_module/mainwindow.cc.o: /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/mainwindow.cc \
   /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/mainwindow.h \
@@ -1411,11 +1471,12 @@ CMakeFiles/MLP.dir/View_module/mainwindow.cc.o: /Users/hhullen/PROJECTS/github/M
   /usr/local/lib/QtGui.framework/Headers/qpainter.h \
   /usr/local/lib/QtGui.framework/Headers/qtextoption.h \
   /usr/local/lib/QtGui.framework/Headers/qpen.h \
-  /usr/local/lib/QtCore.framework/Headers/QTimer \
-  /usr/local/lib/QtCore.framework/Headers/qtimer.h \
-  /usr/local/lib/QtCore.framework/Headers/qbasictimer.h \
-  MLP_autogen/include/ui_mainwindow.h \
-  /usr/local/lib/QtCore.framework/Headers/QVariant \
+  /usr/local/lib/QtGui.framework/Headers/QMouseEvent \
+  /usr/local/lib/QtGui.framework/Headers/qevent.h \
+  /usr/local/lib/QtCore.framework/Headers/qcoreevent.h \
+  /usr/local/lib/QtCore.framework/Headers/qiodevice.h \
+  /usr/local/lib/QtCore.framework/Headers/qpointer.h \
+  /usr/local/lib/QtCore.framework/Headers/qurl.h \
   /usr/local/lib/QtCore.framework/Headers/qvariant.h \
   /usr/local/lib/QtCore.framework/Headers/qmap.h \
   /usr/local/lib/QtCore.framework/Headers/qshareddata_impl.h \
@@ -1425,15 +1486,33 @@ CMakeFiles/MLP.dir/View_module/mainwindow.cc.o: /Users/hhullen/PROJECTS/github/M
   /usr/local/lib/QtCore.framework/Headers/qstringconverter.h \
   /usr/local/lib/QtCore.framework/Headers/qset.h \
   /usr/local/lib/QtCore.framework/Headers/qcontiguouscache.h \
+  /usr/local/lib/QtGui.framework/Headers/qeventpoint.h \
+  /usr/local/lib/QtGui.framework/Headers/qvector2d.h \
+  /usr/local/lib/QtGui.framework/Headers/qvectornd.h \
+  /usr/local/lib/QtGui.framework/Headers/qpointingdevice.h \
+  /usr/local/lib/QtGui.framework/Headers/qinputdevice.h \
+  /usr/local/lib/QtGui.framework/Headers/qscreen.h \
+  /usr/local/lib/QtCore.framework/Headers/QList \
+  /usr/local/lib/QtCore.framework/Headers/qlist.h \
+  /usr/local/lib/QtCore.framework/Headers/QObject \
+  /usr/local/lib/QtCore.framework/Headers/qobject.h \
+  /usr/local/lib/QtCore.framework/Headers/QRect \
+  /usr/local/lib/QtCore.framework/Headers/qrect.h \
+  /usr/local/lib/QtCore.framework/Headers/QSize \
+  /usr/local/lib/QtCore.framework/Headers/qsize.h \
+  /usr/local/lib/QtCore.framework/Headers/QSizeF \
+  /usr/local/lib/QtGui.framework/Headers/QTransform \
+  /usr/local/lib/QtGui.framework/Headers/qtransform.h \
+  /usr/local/lib/QtCore.framework/Headers/qnativeinterface.h \
+  MLP_autogen/include/ui_mainwindow.h \
+  /usr/local/lib/QtCore.framework/Headers/QVariant \
+  /usr/local/lib/QtCore.framework/Headers/qvariant.h \
   /usr/local/lib/QtGui.framework/Headers/QAction \
   /usr/local/lib/QtGui.framework/Headers/qaction.h \
-  /usr/local/lib/QtCore.framework/Headers/qvariant.h \
   /usr/local/lib/QtWidgets.framework/Headers/QApplication \
   /usr/local/lib/QtWidgets.framework/Headers/qapplication.h \
   /usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
-  /usr/local/lib/QtCore.framework/Headers/qcoreevent.h \
   /usr/local/lib/QtCore.framework/Headers/qeventloop.h \
-  /usr/local/lib/QtCore.framework/Headers/qnativeinterface.h \
   /usr/local/lib/QtCore.framework/Headers/qcoreapplication_platform.h \
   /usr/local/lib/QtGui.framework/Headers/qguiapplication.h \
   /usr/local/lib/QtGui.framework/Headers/qinputmethod.h \
@@ -1444,9 +1523,7 @@ CMakeFiles/MLP.dir/View_module/mainwindow.cc.o: /Users/hhullen/PROJECTS/github/M
   /usr/local/lib/QtWidgets.framework/Headers/qlabel.h \
   /usr/local/lib/QtWidgets.framework/Headers/qframe.h \
   /usr/local/lib/QtGui.framework/Headers/qpicture.h \
-  /usr/local/lib/QtCore.framework/Headers/qiodevice.h \
   /usr/local/lib/QtGui.framework/Headers/qtextdocument.h \
-  /usr/local/lib/QtCore.framework/Headers/qurl.h \
   /usr/local/lib/QtWidgets.framework/Headers/QMainWindow \
   /usr/local/lib/QtWidgets.framework/Headers/QMenu \
   /usr/local/lib/QtWidgets.framework/Headers/qmenu.h \
@@ -2071,28 +2148,47 @@ CMakeFiles/MLP.dir/main.cpp.o: /Users/hhullen/PROJECTS/github/Multilayer-Percept
   /usr/local/lib/QtGui.framework/Headers/qpainter.h \
   /usr/local/lib/QtGui.framework/Headers/qtextoption.h \
   /usr/local/lib/QtGui.framework/Headers/qpen.h \
-  /usr/local/lib/QtCore.framework/Headers/QTimer \
-  /usr/local/lib/QtCore.framework/Headers/qtimer.h \
-  /usr/local/lib/QtCore.framework/Headers/qbasictimer.h \
-  /usr/local/lib/QtWidgets.framework/Headers/QApplication \
-  /usr/local/lib/QtWidgets.framework/Headers/qapplication.h \
-  /usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
+  /usr/local/lib/QtGui.framework/Headers/QMouseEvent \
+  /usr/local/lib/QtGui.framework/Headers/qevent.h \
   /usr/local/lib/QtCore.framework/Headers/qcoreevent.h \
-  /usr/local/lib/QtCore.framework/Headers/qeventloop.h \
-  /usr/local/lib/QtCore.framework/Headers/qnativeinterface.h \
-  /usr/local/lib/QtCore.framework/Headers/qdebug.h \
-  /usr/local/lib/QtCore.framework/Headers/qhash.h \
+  /usr/local/lib/QtCore.framework/Headers/qiodevice.h \
+  /usr/local/lib/QtCore.framework/Headers/qpointer.h \
+  /usr/local/lib/QtCore.framework/Headers/qurl.h \
+  /usr/local/lib/QtCore.framework/Headers/qvariant.h \
   /usr/local/lib/QtCore.framework/Headers/qmap.h \
   /usr/local/lib/QtCore.framework/Headers/qshareddata_impl.h \
+  /usr/local/lib/QtCore.framework/Headers/qhash.h \
+  /usr/local/lib/QtCore.framework/Headers/qdebug.h \
   /usr/local/lib/QtCore.framework/Headers/qtextstream.h \
   /usr/local/lib/QtCore.framework/Headers/qstringconverter.h \
   /usr/local/lib/QtCore.framework/Headers/qset.h \
   /usr/local/lib/QtCore.framework/Headers/qcontiguouscache.h \
+  /usr/local/lib/QtGui.framework/Headers/qeventpoint.h \
+  /usr/local/lib/QtGui.framework/Headers/qvector2d.h \
+  /usr/local/lib/QtGui.framework/Headers/qvectornd.h \
+  /usr/local/lib/QtGui.framework/Headers/qpointingdevice.h \
+  /usr/local/lib/QtGui.framework/Headers/qinputdevice.h \
+  /usr/local/lib/QtGui.framework/Headers/qscreen.h \
+  /usr/local/lib/QtCore.framework/Headers/QList \
+  /usr/local/lib/QtCore.framework/Headers/qlist.h \
+  /usr/local/lib/QtCore.framework/Headers/QObject \
+  /usr/local/lib/QtCore.framework/Headers/qobject.h \
+  /usr/local/lib/QtCore.framework/Headers/QRect \
+  /usr/local/lib/QtCore.framework/Headers/qrect.h \
+  /usr/local/lib/QtCore.framework/Headers/QSize \
+  /usr/local/lib/QtCore.framework/Headers/qsize.h \
+  /usr/local/lib/QtCore.framework/Headers/QSizeF \
+  /usr/local/lib/QtGui.framework/Headers/QTransform \
+  /usr/local/lib/QtGui.framework/Headers/qtransform.h \
+  /usr/local/lib/QtCore.framework/Headers/qnativeinterface.h \
+  /usr/local/lib/QtWidgets.framework/Headers/QApplication \
+  /usr/local/lib/QtWidgets.framework/Headers/qapplication.h \
+  /usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
+  /usr/local/lib/QtCore.framework/Headers/qeventloop.h \
   /usr/local/lib/QtCore.framework/Headers/qcoreapplication_platform.h \
   /usr/local/lib/QtGui.framework/Headers/qguiapplication.h \
   /usr/local/lib/QtGui.framework/Headers/qinputmethod.h \
   /usr/local/lib/QtCore.framework/Headers/qlocale.h \
-  /usr/local/lib/QtCore.framework/Headers/qvariant.h \
   /usr/local/lib/QtGui.framework/Headers/qguiapplication_platform.h \
   /usr/local/lib/QtCore.framework/Headers/QLocale \
   /usr/local/lib/QtCore.framework/Headers/qlocale.h \
@@ -2114,23 +2210,13 @@ CMakeFiles/MLP.dir/main.cpp.o: /Users/hhullen/PROJECTS/github/Multilayer-Percept
 
 /usr/local/lib/QtWidgets.framework/Headers/qmenu.h:
 
-/usr/local/lib/QtWidgets.framework/Headers/QMenu:
-
-/usr/local/lib/QtCore.framework/Headers/qurl.h:
-
 /usr/local/lib/QtGui.framework/Headers/qpicture.h:
-
-/usr/local/lib/QtWidgets.framework/Headers/QLabel:
 
 /usr/local/lib/QtGui.framework/Headers/qguiapplication_platform.h:
 
 /usr/local/lib/QtCore.framework/Headers/qlocale.h:
 
-/usr/local/lib/QtCore.framework/Headers/qnativeinterface.h:
-
 /usr/local/lib/QtCore.framework/Headers/qeventloop.h:
-
-/usr/local/lib/QtCore.framework/Headers/qcoreevent.h:
 
 /usr/local/lib/QtCore.framework/Headers/qcoreapplication.h:
 
@@ -2138,15 +2224,7 @@ CMakeFiles/MLP.dir/main.cpp.o: /Users/hhullen/PROJECTS/github/Multilayer-Percept
 
 /usr/local/lib/QtGui.framework/Headers/QAction:
 
-/usr/local/lib/QtCore.framework/Headers/qstringconverter.h:
-
-/usr/local/lib/QtCore.framework/Headers/qhash.h:
-
 MLP_autogen/include/ui_mainwindow.h:
-
-/usr/local/lib/QtCore.framework/Headers/qvariant.h:
-
-/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/mainwindow.cc:
 
 /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/inputarea.cc:
 
@@ -2190,15 +2268,59 @@ MLP_autogen/include/ui_mainwindow.h:
 
 /Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Model_module/perceptron.cc:
 
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_symbol_aliasing.h:
+/usr/local/lib/QtWidgets.framework/Headers/qlayoutitem.h:
 
-/usr/local/lib/QtWidgets.framework/Headers/qlayout.h:
+/usr/local/lib/QtWidgets.framework/Headers/qgridlayout.h:
+
+/usr/local/lib/QtGui.framework/Headers/qicon.h:
 
 /usr/local/lib/QtWidgets.framework/Headers/qtabwidget.h:
+
+/usr/local/lib/QtCore.framework/Headers/qnativeinterface.h:
+
+/usr/local/lib/QtCore.framework/Headers/QSize:
+
+/usr/local/lib/QtWidgets.framework/Headers/QLabel:
+
+/usr/local/lib/QtCore.framework/Headers/QObject:
+
+/usr/local/lib/QtGui.framework/Headers/qvector2d.h:
+
+/usr/local/lib/QtGui.framework/Headers/qeventpoint.h:
+
+/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/streambuf.tcc:
+
+/usr/local/lib/QtCore.framework/Headers/qatomic.h:
+
+/usr/local/lib/QtCore.framework/Headers/qcontiguouscache.h:
+
+/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/chrono:
+
+/usr/local/lib/QtCore.framework/Headers/qset.h:
+
+/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/unique_ptr.h:
+
+/usr/local/lib/QtCore.framework/Headers/qtextstream.h:
+
+/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/specfun.h:
+
+/usr/local/lib/QtCore.framework/Headers/qshareddata_impl.h:
+
+/usr/local/lib/QtWidgets.framework/Headers/QMenu:
+
+/usr/local/lib/QtCore.framework/Headers/qpointer.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/i386/signal.h:
+
+/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/tr1/special_function_util.h:
+
+/usr/local/lib/QtGui.framework/Headers/qevent.h:
 
 /usr/local/lib/QtGui.framework/Headers/qtextoption.h:
 
 /usr/local/lib/QtGui.framework/Headers/qpainter.h:
+
+/usr/local/lib/QtCore.framework/Headers/QRect:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_pthread/_pthread_once_t.h:
 
@@ -2208,8 +2330,6 @@ MLP_autogen/include/ui_mainwindow.h:
 
 /usr/local/lib/QtGui.framework/Headers/qcursor.h:
 
-/usr/local/lib/QtCore.framework/Headers/QTimer:
-
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/x86_64-apple-darwin20/bits/gthr.h:
 
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/locale_classes.h:
@@ -2218,15 +2338,17 @@ MLP_autogen/include/ui_mainwindow.h:
 
 /usr/local/lib/QtCore.framework/Headers/qsharedpointer_impl.h:
 
-/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/ptr_traits.h:
-
 /usr/local/lib/QtWidgets.framework/Headers/QGridLayout:
+
+/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/ptr_traits.h:
 
 /usr/local/lib/QtCore.framework/Headers/qshareddata.h:
 
 /usr/local/lib/QtGui.framework/Headers/qpixmap.h:
 
 /usr/local/lib/QtCore.framework/Headers/qline.h:
+
+/usr/local/lib/QtCore.framework/Headers/qstringconverter.h:
 
 /usr/local/lib/QtGui.framework/Headers/qpixelformat.h:
 
@@ -2254,12 +2376,6 @@ MLP_autogen/include/ui_mainwindow.h:
 
 /usr/local/lib/QtGui.framework/Headers/qpaintdevice.h:
 
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_pthread/_pthread_condattr_t.h:
-
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_ucontext.h:
-
-/usr/local/lib/QtWidgets.framework/Headers/QMainWindow:
-
 /usr/local/lib/QtCore.framework/Headers/qmargins.h:
 
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/ratio:
@@ -2272,11 +2388,9 @@ MLP_autogen/include/ui_mainwindow.h:
 
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/map:
 
+/usr/local/lib/QtCore.framework/Headers/QList:
+
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/list.tcc:
-
-/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/streambuf_iterator.h:
-
-/usr/local/lib/QtCore.framework/Headers/qbasictimer.h:
 
 /usr/local/lib/QtCore.framework/Headers/QLocale:
 
@@ -2291,10 +2405,6 @@ MLP_autogen/include/ui_mainwindow.h:
 /usr/local/lib/QtCore.framework/Headers/qtaggedpointer.h:
 
 /usr/local/lib/QtCore.framework/Headers/qiterable.h:
-
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_int64_t.h:
-
-MLP_autogen/CW6BJZZ4FM/moc_mainwindow.cpp:
 
 /usr/local/lib/QtCore.framework/Headers/qiodevicebase.h:
 
@@ -2342,6 +2452,10 @@ MLP_autogen/CW6BJZZ4FM/moc_mainwindow.cpp:
 
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/string:
 
+/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/tr1/riemann_zeta.tcc:
+
+/usr/local/lib/QtCore.framework/Headers/qdebug.h:
+
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/ostream:
 
 /usr/local/lib/QtCore.framework/Headers/qsharedpointer.h:
@@ -2366,6 +2480,8 @@ MLP_autogen/CW6BJZZ4FM/moc_mainwindow.cpp:
 
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/localefwd.h:
 
+/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/streambuf_iterator.h:
+
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/cstring:
 
 /usr/local/lib/QtGui.framework/Headers/qpen.h:
@@ -2377,8 +2493,6 @@ MLP_autogen/CW6BJZZ4FM/moc_mainwindow.cpp:
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_types/_uintmax_t.h:
 
 /usr/local/lib/QtCore.framework/Headers/qarraydatapointer.h:
-
-/usr/local/lib/QtWidgets.framework/Headers/qlayoutitem.h:
 
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/streambuf:
 
@@ -2420,13 +2534,15 @@ MLP_autogen/CW6BJZZ4FM/moc_mainwindow.cpp:
 
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/tr1/ell_integral.tcc:
 
+/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/mainwindow.cc:
+
+/usr/local/lib/QtCore.framework/Headers/qvariant.h:
+
+/usr/local/lib/QtCore.framework/Headers/qurl.h:
+
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_null.h:
 
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/tr1/bessel_function.tcc:
-
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/i386/signal.h:
-
-/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/tr1/special_function_util.h:
 
 /usr/local/lib/QtCore.framework/Headers/qversiontagging.h:
 
@@ -2440,17 +2556,15 @@ MLP_autogen/CW6BJZZ4FM/moc_mainwindow.cpp:
 
 /usr/local/lib/QtCore.framework/Headers/qatomic_cxx11.h:
 
+/usr/local/lib/QtCore.framework/Headers/qbytearrayview.h:
+
+/usr/local/lib/QtCore.framework/Headers/qmap.h:
+
 /usr/local/lib/QtCore.framework/Headers/qstringtokenizer.h:
 
 /usr/local/lib/QtCore.framework/Headers/qbasicatomic.h:
 
 /usr/local/lib/QtWidgets.framework/Headers/qtwidgets-config.h:
-
-/usr/local/lib/QtCore.framework/Headers/qcontiguouscache.h:
-
-/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/streambuf.tcc:
-
-/usr/local/lib/QtCore.framework/Headers/qatomic.h:
 
 /usr/local/lib/QtCore.framework/Headers/qsysinfo.h:
 
@@ -2461,6 +2575,8 @@ MLP_autogen/CW6BJZZ4FM/moc_mainwindow.cpp:
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/i386/_limits.h:
 
 /usr/local/lib/QtCore.framework/Headers/qtypeinfo.h:
+
+/usr/local/lib/QtGui.framework/Headers/qvectornd.h:
 
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/basic_string.tcc:
 
@@ -2494,6 +2610,10 @@ MLP_autogen/CW6BJZZ4FM/moc_mainwindow.cpp:
 
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/stl_algo.h:
 
+/usr/local/lib/QtGui.framework/Headers/qscreen.h:
+
+/usr/local/lib/QtCore.framework/Headers/qcoreevent.h:
+
 /usr/local/lib/QtCore.framework/Headers/qstringview.h:
 
 /usr/local/lib/QtCore.framework/Headers/qprocessordetection.h:
@@ -2505,6 +2625,12 @@ MLP_autogen/CW6BJZZ4FM/moc_mainwindow.cpp:
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/new:
 
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/parse_numbers.h:
+
+/usr/local/lib/QtWidgets.framework/Headers/QMainWindow:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_pthread/_pthread_condattr_t.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_ucontext.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/TargetConditionals.h:
 
@@ -2584,10 +2710,6 @@ MLP_autogen/CW6BJZZ4FM/moc_mainwindow.cpp:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_id_t.h:
 
-/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/ext/new_allocator.h:
-
-/usr/local/lib/QtCore.framework/Headers/qtimer.h:
-
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/stdlib.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_types/_uint32_t.h:
@@ -2599,8 +2721,6 @@ MLP_autogen/CW6BJZZ4FM/moc_mainwindow.cpp:
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/x86_64-apple-darwin20/bits/atomic_word.h:
 
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/pstl/execution_defs.h:
-
-/usr/local/lib/QtWidgets.framework/Headers/qgridlayout.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_types/_uint8_t.h:
 
@@ -2619,6 +2739,8 @@ MLP_autogen/CW6BJZZ4FM/moc_mainwindow.cpp:
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_types/_uint64_t.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_wctype.h:
+
+/usr/local/lib/QtGui.framework/Headers/qpointingdevice.h:
 
 /usr/local/Cellar/gcc@10/10.3.0/lib/gcc/10/gcc/x86_64-apple-darwin20/10.3.0/include/stdint.h:
 
@@ -2641,6 +2763,8 @@ MLP_autogen/CW6BJZZ4FM/moc_mainwindow.cpp:
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/ctime:
 
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/refwrap.h:
+
+/usr/local/lib/QtGui.framework/Headers/QMouseEvent:
 
 /usr/local/lib/QtWidgets.framework/Headers/qlabel.h:
 
@@ -2665,10 +2789,6 @@ MLP_autogen/CW6BJZZ4FM/moc_mainwindow.cpp:
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/invoke.h:
 
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/concepts:
-
-/usr/local/lib/QtCore.framework/Headers/qdebug.h:
-
-/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/tr1/riemann_zeta.tcc:
 
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/pstl/glue_algorithm_defs.h:
 
@@ -2695,18 +2815,6 @@ MLP_autogen/CW6BJZZ4FM/moc_mainwindow.cpp:
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/shared_ptr_atomic.h:
 
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/utility:
-
-/usr/local/lib/QtCore.framework/Headers/qshareddata_impl.h:
-
-/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/specfun.h:
-
-/usr/local/lib/QtCore.framework/Headers/qtextstream.h:
-
-/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/unique_ptr.h:
-
-/usr/local/lib/QtCore.framework/Headers/qset.h:
-
-/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/chrono:
 
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/stl_bvector.h:
 
@@ -2745,10 +2853,6 @@ MLP_autogen/CW6BJZZ4FM/moc_inputarea.cpp:
 /usr/local/lib/QtCore.framework/Headers/qcontainerinfo.h:
 
 /usr/local/lib/QtGui.framework/Headers/qfontinfo.h:
-
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int32_t.h:
-
-/usr/local/lib/QtWidgets.framework/Headers/qmainwindow.h:
 
 /usr/local/lib/QtGui.framework/Headers/qpalette.h:
 
@@ -2806,10 +2910,6 @@ MLP_autogen/CW6BJZZ4FM/moc_inputarea.cpp:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/machine/signal.h:
 
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_va_list.h:
-
-/usr/local/lib/QtWidgets.framework/Headers/qboxlayout.h:
-
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/ext/atomicity.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_ssize_t.h:
@@ -2846,13 +2946,15 @@ MLP_autogen/mocs_compilation.cpp:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int8_t.h:
 
+/usr/local/lib/QtWidgets.framework/Headers/qmainwindow.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int32_t.h:
+
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/concept_check.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int16_t.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/machine/endian.h:
-
-/usr/local/lib/QtGui.framework/Headers/qicon.h:
 
 /usr/local/lib/QtCore.framework/Headers/qobjectdefs.h:
 
@@ -2928,6 +3030,12 @@ MLP_autogen/mocs_compilation.cpp:
 
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/debug/debug.h:
 
+/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/ext/new_allocator.h:
+
+MLP_autogen/CW6BJZZ4FM/moc_mainwindow.cpp:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_int64_t.h:
+
 /usr/local/lib/QtCore.framework/Headers/qtcore-config.h:
 
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/atomic_base.h:
@@ -2944,6 +3052,8 @@ MLP_autogen/mocs_compilation.cpp:
 
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/allocator.h:
 
+/usr/local/lib/QtCore.framework/Headers/QSizeF:
+
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/stl_iterator_base_types.h:
 
 /usr/local/lib/QtGui.framework/Headers/qkeysequence.h:
@@ -2954,9 +3064,9 @@ MLP_autogen/mocs_compilation.cpp:
 
 /usr/local/Cellar/gcc@10/10.3.0/lib/gcc/10/gcc/x86_64-apple-darwin20/10.3.0/include/stddef.h:
 
-/usr/local/lib/QtCore.framework/Headers/qmap.h:
+/usr/local/lib/QtWidgets.framework/Headers/qlayout.h:
 
-/usr/local/lib/QtCore.framework/Headers/qbytearrayview.h:
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_symbol_aliasing.h:
 
 /usr/local/lib/QtCore.framework/Headers/qlist.h:
 
@@ -2988,6 +3098,12 @@ MLP_autogen/mocs_compilation.cpp:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/string.h:
 
+/usr/local/lib/QtWidgets.framework/Headers/qboxlayout.h:
+
+/usr/local/lib/QtGui.framework/Headers/qinputdevice.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_va_list.h:
+
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_sigaltstack.h:
 
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/list:
@@ -3018,11 +3134,15 @@ MLP_autogen/mocs_compilation.cpp:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/i386/types.h:
 
+/usr/local/lib/QtGui.framework/Headers/QTransform:
+
 /usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/bits/functexcept.h:
 
 /usr/local/lib/QtWidgets.framework/Headers/qwidget.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_pthread/_pthread_mutexattr_t.h:
+
+/usr/local/lib/QtCore.framework/Headers/qhash.h:
 
 /usr/local/lib/QtCore.framework/Headers/qanystringview.h:
 
