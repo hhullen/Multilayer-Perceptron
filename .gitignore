@@ -33,3 +33,6 @@
 
 #binaries
 *.bin
+
+#hhullen
+*.csv
