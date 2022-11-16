@@ -36,3 +36,5 @@
 
 #hhullen
 *.csv
+*build-src-hhullen_kit*
+*build-MLP-hhullen_kit-*
