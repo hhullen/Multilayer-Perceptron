@@ -1,3 +1,0 @@
-/Users/hhullen/PROJECTS/github/MLP/build-src-hhullen_kit-Debug/CMakeFiles/Multilayer_Perceptron.dir
-/Users/hhullen/PROJECTS/github/MLP/build-src-hhullen_kit-Debug/CMakeFiles/edit_cache.dir
-/Users/hhullen/PROJECTS/github/MLP/build-src-hhullen_kit-Debug/CMakeFiles/rebuild_cache.dir
