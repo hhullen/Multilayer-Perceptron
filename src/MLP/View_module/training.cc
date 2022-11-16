@@ -185,7 +185,7 @@ void Training::ChooseSavingDir() {
 void Training::MakeFileName() {
     QDateTime date_time;
       saving_path_.append("/MLPerceptron_" +
-                   date_time.currentDateTime().toString("yyyy_MM_dd_hh_mm_ss"));
+                   date_time.currentDateTime().toString("yyyy_MM_dd_hh_mm_ss") + ".wcfg");
       qDebug() << saving_path_;
       saving_path_.clear();
 }
