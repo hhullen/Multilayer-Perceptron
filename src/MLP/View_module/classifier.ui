@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Classifier</class>
+ <widget class="QWidget" name="Classifier">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1039</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1039</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1039</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QWidget" name="input_area" native="true">
+   <property name="geometry">
+    <rect>
+     <x>5</x>
+     <y>50</y>
+     <width>512</width>
+     <height>512</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget {
+	color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0);
+	alternate-background-color: rgba(0, 0, 0, 0);
+	border-color: rgb(0, 0, 0);
+	selection-background-color: rgb(0, 0, 0);
+	selection-color: rgb(0, 0, 0);
+}</string>
+   </property>
+   <widget class="QLabel" name="input_image">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>512</width>
+      <height>512</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="output_area" native="true">
+   <property name="geometry">
+    <rect>
+     <x>522</x>
+     <y>50</y>
+     <width>512</width>
+     <height>512</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget {
+	color: rgb(0, 0, 0);
+	background-color: rgb(0, 0, 0);
+	alternate-background-color: rgb(0, 0, 0);
+	border-color: rgb(0, 0, 0);
+	selection-background-color: rgb(0, 0, 0);
+	selection-color: rgb(0, 0, 0);
+}</string>
+   </property>
+   <widget class="QLabel" name="label_output_latter">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>511</width>
+      <height>511</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Microsoft Sans Serif</family>
+      <pointsize>550</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	alternate-background-color: rgba(0, 0, 0, 0);
+	background-color: rgba(0, 0, 0, 0);
+	color: rgb(255, 255, 255);
+}</string>
+    </property>
+    <property name="text">
+     <string>A</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_outpu_area">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>5</y>
+      <width>100</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Microsoft Sans Serif</family>
+      <pointsize>23</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	alternate-background-color: rgba(0, 0, 0, 0);
+	background-color: rgba(0, 0, 0, 0);
+	color: rgb(127, 126, 128);
+}</string>
+    </property>
+    <property name="text">
+     <string>OUTPUT</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QComboBox" name="combo_box">
+   <property name="geometry">
+    <rect>
+     <x>5</x>
+     <y>563</y>
+     <width>190</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>190</width>
+     <height>30</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>190</width>
+     <height>30</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft Sans Serif</family>
+     <pointsize>18</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QComboBox {
+	selection-color: rgb(255, 255, 255);
+	background-color: rgba(0, 0, 0, 0.0);
+	alternate-background-color: rgba(0, 0, 0, 0);
+	color: rgba(255, 255, 255, 0.4);
+	border: 1px solid rgba(255, 255, 255, 0);
+	selection-background-color: rgba(0,0,0, 0);
+}</string>
+   </property>
+   <property name="maxVisibleItems">
+    <number>2</number>
+   </property>
+   <item>
+    <property name="text">
+     <string>Mouse drawing</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Image *.BPM</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_confidence">
+   <property name="geometry">
+    <rect>
+     <x>680</x>
+     <y>565</y>
+     <width>105</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft Sans Serif</family>
+     <pointsize>20</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	alternate-background-color: rgba(0, 0, 0, 0);
+	background-color: rgba(0, 0, 0, 0);
+	color: rgb(127, 126, 128);
+}</string>
+   </property>
+   <property name="text">
+    <string>Confidence:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_percent_value">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>565</y>
+     <width>211</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft Sans Serif</family>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	alternate-background-color: rgba(0, 0, 0, 0);
+	background-color: rgba(0, 0, 0, 0);
+	color: rgb(255, 255, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>100</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_back_menu">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>32</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>32</width>
+     <height>32</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>32</width>
+     <height>32</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft Sans Serif</family>
+     <pointsize>20</pointsize>
+     <italic>false</italic>
+     <bold>true</bold>
+     <kerning>false</kerning>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	color: rgb(230, 230, 230);
+	background-color: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 0.5,
+                                      stop: 0 #07BEFF stop: 1 #2B74FF);
+	alternate-background-color: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 0.5,
+                                      stop: 0 #07BEFF stop: 1 #2B74FF);
+	border: 1px solid rgba(255, 255, 255, 0);
+	border-radius: 16px;
+}
+
+QPushButton:hover {
+    color: rgb(230, 230, 230);
+	background-color: qlineargradient(x1: 0.4, y1: 0.5, x2: 1, y2: 0.5,
+                                      stop: 0 #02BFFF stop: 1 #2E73FF);
+	alternate-background-color: qlineargradient(x1: 0.4, y1: 0.5, x2: 1, y2: 0.5,
+                                      stop: 0 #02BFFF stop: 1 #2E73FF);
+	border: 1px solid rgba(255, 255, 255, 0);
+	border-radius: 16px;
+}
+
+QPushButton:pressed {
+	color: rgb(254, 253, 255);
+    background-color: qlineargradient(x1: 0.3, y1: 0.5, x2: 1, y2: 0.5,
+                                      stop: 0 #02BFFF stop: 1 #2E73FF);
+  alternate-background-color: qlineargradient(x1: 0.3, y1: 0.5, x2: 1, y2: 0.5,
+                                      stop: 0 #02BFFF stop: 1 #2E73FF);
+  border-radius: 16px;
+}</string>
+   </property>
+   <property name="text">
+    <string>❰</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_bmp_file_name">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>568</y>
+     <width>301</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft Sans Serif</family>
+     <pointsize>20</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	alternate-background-color: rgba(0, 0, 0, 0);
+	background-color: rgba(0, 0, 0, 0);
+	color: rgb(127, 126, 128);
+}</string>
+   </property>
+   <property name="text">
+    <string>file:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_input_area">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>55</y>
+     <width>100</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft Sans Serif</family>
+     <pointsize>23</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	alternate-background-color: rgba(0, 0, 0, 0);
+	background-color: rgba(0, 0, 0, 0);
+	color: rgb(127, 126, 128);
+}</string>
+   </property>
+   <property name="text">
+    <string>INPUT</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_open_img">
+   <property name="geometry">
+    <rect>
+     <x>166</x>
+     <y>300</y>
+     <width>180</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>180</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>180</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft Sans Serif</family>
+     <pointsize>23</pointsize>
+     <italic>false</italic>
+     <bold>true</bold>
+     <kerning>false</kerning>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	color: rgb(230, 230, 230);
+	background-color: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 0.5,
+                                      stop: 0 #73AF21 stop: 1 #598A1B);
+	alternate-background-color: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 0.5,
+                                      stop: 0 #73AF21 stop: 1 #598A1B);
+	border: 1px solid rgba(255, 255, 255, 0);
+	border-radius: 14px;
+}
+
+QPushButton:hover {
+    color: rgb(230, 230, 230);
+	background-color: qlineargradient(x1: 0.3, y1: 0.5, x2: 1, y2: 0.5,
+                                      stop: 0 #8ED627 stop: 1 #6CA521);
+	alternate-background-color: qlineargradient(x1: 0.3, y1: 0.5, x2: 1, y2: 0.5,
+                                      stop: 0 #8ED627 stop: 1 #6CA521);
+	border-radius: 14px;
+}
+
+QPushButton:pressed {
+	color: rgb(255, 255, 255);
+    background-color: qlineargradient(x1: 0.3, y1: 0.5, x2: 1, y2: 0.5,
+                                      stop: 0 #8ED627 stop: 1 #6CA521);
+  alternate-background-color: qlineargradient(x1: 0.3, y1: 0.5, x2: 1, y2: 0.5,
+                                      stop: 0 #8ED627 stop: 1 #6CA521);
+  border-radius: 14px;
+}</string>
+   </property>
+   <property name="text">
+    <string>OPEN IMAGE</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_close_img">
+   <property name="geometry">
+    <rect>
+     <x>480</x>
+     <y>55</y>
+     <width>32</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>32</width>
+     <height>32</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>32</width>
+     <height>32</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft Sans Serif</family>
+     <pointsize>20</pointsize>
+     <italic>false</italic>
+     <bold>true</bold>
+     <kerning>false</kerning>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	color: rgb(230, 230, 230);
+	background-color: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 0.5,
+                                      stop: 0 #73AF21 stop: 1 #598A1B);
+	alternate-background-color: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 0.5,
+                                      stop: 0 #73AF21 stop: 1 #598A1B);
+	border: 1px solid rgba(255, 255, 255, 0);
+	border-radius: 16px;
+}
+
+QPushButton:hover {
+    color: rgb(230, 230, 230);
+	background-color: qlineargradient(x1: 0.3, y1: 0.5, x2: 1, y2: 0.5,
+                                      stop: 0 #8ED627 stop: 1 #6CA521);
+	alternate-background-color: qlineargradient(x1: 0.3, y1: 0.5, x2: 1, y2: 0.5,
+                                      stop: 0 #8ED627 stop: 1 #6CA521);
+	border-radius: 16px;
+}
+
+QPushButton:pressed {
+	color: rgb(255, 255, 255);
+    background-color: qlineargradient(x1: 0.3, y1: 0.5, x2: 1, y2: 0.5,
+                                      stop: 0 #8ED627 stop: 1 #6CA521);
+  alternate-background-color: qlineargradient(x1: 0.3, y1: 0.5, x2: 1, y2: 0.5,
+                                      stop: 0 #8ED627 stop: 1 #6CA521);
+  border-radius: 16px;
+}</string>
+   </property>
+   <property name="text">
+    <string>×</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_name">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>10</y>
+     <width>500</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft Sans Serif</family>
+     <pointsize>23</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	alternate-background-color: rgba(0, 0, 0, 0);
+	background-color: rgba(0, 0, 0, 0);
+	color: rgb(227, 226, 228);
+}</string>
+   </property>
+   <property name="text">
+    <string>LETTERS CLASSIFIER</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
