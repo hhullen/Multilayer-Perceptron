@@ -12,7 +12,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.22.1/CMakeSystem.cmake"
   "CMakeFiles/VerifyGlobs.cmake"
   "CMakeFiles/cmake.verify_globs"
-  "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/package-manager/auto-setup.cmake"
+  "/opt/goinfre/hhullen/Qt Creator.app/Contents/Resources/package-manager/auto-setup.cmake"
   "/usr/local/lib/cmake/Qt6/FindWrapAtomic.cmake"
   "/usr/local/lib/cmake/Qt6/FindWrapOpenGL.cmake"
   "/usr/local/lib/cmake/Qt6/Qt6Config.cmake"

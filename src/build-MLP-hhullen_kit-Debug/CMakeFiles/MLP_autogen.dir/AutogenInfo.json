@@ -7,7 +7,7 @@
 	"CMAKE_LIST_FILES" : 
 	[
 		"/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/CMakeLists.txt",
-		"/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/package-manager/auto-setup.cmake",
+		"/opt/goinfre/hhullen/Qt Creator.app/Contents/Resources/package-manager/auto-setup.cmake",
 		"/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/CMakeFiles/3.22.1/CMakeSystem.cmake",
 		"/usr/local/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake",
 		"/usr/local/share/cmake/Modules/Platform/Darwin-Initialize.cmake",

@@ -3,11 +3,7 @@
     "arguments": [
         "clang",
         "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders",
-        "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
-        "-I",
-        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-DFzPNP/clang-uiheader-EPCAAP",
+        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-bjmeNO/clang-uiheader-nBAWhU",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -49,7 +45,7 @@
         "-isystem",
         "/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/backward",
         "-isystem",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
+        "/opt/goinfre/hhullen/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
         "-isystem",
         "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include",
         "-isystem",
@@ -64,20 +60,16 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/main.cpp"
+        "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/main.cpp"
     ],
     "directory": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/.qtc_clangd",
-    "file": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/main.cpp"
+    "file": "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/main.cpp"
 },
 {
     "arguments": [
         "clang",
         "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders",
-        "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
-        "-I",
-        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-DFzPNP/clang-uiheader-EPCAAP",
+        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-bjmeNO/clang-uiheader-nBAWhU",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -119,7 +111,7 @@
         "-isystem",
         "/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/backward",
         "-isystem",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
+        "/opt/goinfre/hhullen/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
         "-isystem",
         "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include",
         "-isystem",
@@ -134,20 +126,16 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/mainwindow.cc"
+        "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/View_module/mainwindow.cc"
     ],
     "directory": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/.qtc_clangd",
-    "file": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/mainwindow.cc"
+    "file": "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/View_module/mainwindow.cc"
 },
 {
     "arguments": [
         "clang",
         "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders",
-        "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
-        "-I",
-        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-DFzPNP/clang-uiheader-EPCAAP",
+        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-bjmeNO/clang-uiheader-nBAWhU",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -189,7 +177,7 @@
         "-isystem",
         "/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/backward",
         "-isystem",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
+        "/opt/goinfre/hhullen/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
         "-isystem",
         "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include",
         "-isystem",
@@ -204,20 +192,16 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/inputarea.cc"
+        "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/View_module/inputarea.cc"
     ],
     "directory": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/.qtc_clangd",
-    "file": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/inputarea.cc"
+    "file": "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/View_module/inputarea.cc"
 },
 {
     "arguments": [
         "clang",
         "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders",
-        "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
-        "-I",
-        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-DFzPNP/clang-uiheader-EPCAAP",
+        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-bjmeNO/clang-uiheader-nBAWhU",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -259,7 +243,7 @@
         "-isystem",
         "/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/backward",
         "-isystem",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
+        "/opt/goinfre/hhullen/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
         "-isystem",
         "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include",
         "-isystem",
@@ -274,20 +258,16 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Model_module/perceptron.cc"
+        "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/Model_module/perceptron.cc"
     ],
     "directory": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/.qtc_clangd",
-    "file": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Model_module/perceptron.cc"
+    "file": "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/Model_module/perceptron.cc"
 },
 {
     "arguments": [
         "clang",
         "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders",
-        "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
-        "-I",
-        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-DFzPNP/clang-uiheader-EPCAAP",
+        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-bjmeNO/clang-uiheader-nBAWhU",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -329,7 +309,7 @@
         "-isystem",
         "/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/backward",
         "-isystem",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
+        "/opt/goinfre/hhullen/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
         "-isystem",
         "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include",
         "-isystem",
@@ -344,20 +324,16 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/include/matrix/matrix.cc"
+        "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/include/matrix/matrix.cc"
     ],
     "directory": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/.qtc_clangd",
-    "file": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/include/matrix/matrix.cc"
+    "file": "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/include/matrix/matrix.cc"
 },
 {
     "arguments": [
         "clang",
         "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders",
-        "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
-        "-I",
-        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-DFzPNP/clang-uiheader-EPCAAP",
+        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-bjmeNO/clang-uiheader-nBAWhU",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -399,7 +375,7 @@
         "-isystem",
         "/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/backward",
         "-isystem",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
+        "/opt/goinfre/hhullen/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
         "-isystem",
         "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include",
         "-isystem",
@@ -414,20 +390,16 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Controller_module/mlp_controller.cc"
+        "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/Controller_module/mlp_controller.cc"
     ],
     "directory": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/.qtc_clangd",
-    "file": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Controller_module/mlp_controller.cc"
+    "file": "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/Controller_module/mlp_controller.cc"
 },
 {
     "arguments": [
         "clang",
         "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders",
-        "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
-        "-I",
-        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-DFzPNP/clang-uiheader-EPCAAP",
+        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-bjmeNO/clang-uiheader-nBAWhU",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -469,7 +441,7 @@
         "-isystem",
         "/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/backward",
         "-isystem",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
+        "/opt/goinfre/hhullen/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
         "-isystem",
         "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include",
         "-isystem",
@@ -484,20 +456,16 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/mainwindow.h"
+        "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/View_module/mainwindow.h"
     ],
     "directory": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/.qtc_clangd",
-    "file": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/mainwindow.h"
+    "file": "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/View_module/mainwindow.h"
 },
 {
     "arguments": [
         "clang",
         "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders",
-        "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
-        "-I",
-        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-DFzPNP/clang-uiheader-EPCAAP",
+        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-bjmeNO/clang-uiheader-nBAWhU",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -539,7 +507,7 @@
         "-isystem",
         "/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/backward",
         "-isystem",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
+        "/opt/goinfre/hhullen/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
         "-isystem",
         "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include",
         "-isystem",
@@ -554,20 +522,16 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/inputarea.h"
+        "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/View_module/inputarea.h"
     ],
     "directory": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/.qtc_clangd",
-    "file": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/View_module/inputarea.h"
+    "file": "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/View_module/inputarea.h"
 },
 {
     "arguments": [
         "clang",
         "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders",
-        "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
-        "-I",
-        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-DFzPNP/clang-uiheader-EPCAAP",
+        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-bjmeNO/clang-uiheader-nBAWhU",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -609,7 +573,7 @@
         "-isystem",
         "/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/backward",
         "-isystem",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
+        "/opt/goinfre/hhullen/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
         "-isystem",
         "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include",
         "-isystem",
@@ -624,20 +588,16 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Model_module/perceptron.h"
+        "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/Model_module/perceptron.h"
     ],
     "directory": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/.qtc_clangd",
-    "file": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Model_module/perceptron.h"
+    "file": "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/Model_module/perceptron.h"
 },
 {
     "arguments": [
         "clang",
         "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders",
-        "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
-        "-I",
-        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-DFzPNP/clang-uiheader-EPCAAP",
+        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-bjmeNO/clang-uiheader-nBAWhU",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -679,7 +639,7 @@
         "-isystem",
         "/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/backward",
         "-isystem",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
+        "/opt/goinfre/hhullen/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
         "-isystem",
         "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include",
         "-isystem",
@@ -694,20 +654,16 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Model_module/perceptron_layer.h"
+        "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/Model_module/perceptron_layer.h"
     ],
     "directory": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/.qtc_clangd",
-    "file": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Model_module/perceptron_layer.h"
+    "file": "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/Model_module/perceptron_layer.h"
 },
 {
     "arguments": [
         "clang",
         "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders",
-        "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
-        "-I",
-        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-DFzPNP/clang-uiheader-EPCAAP",
+        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-bjmeNO/clang-uiheader-nBAWhU",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -749,7 +705,7 @@
         "-isystem",
         "/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/backward",
         "-isystem",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
+        "/opt/goinfre/hhullen/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
         "-isystem",
         "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include",
         "-isystem",
@@ -764,20 +720,16 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/include/matrix/matrix.h"
+        "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/include/matrix/matrix.h"
     ],
     "directory": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/.qtc_clangd",
-    "file": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/include/matrix/matrix.h"
+    "file": "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/include/matrix/matrix.h"
 },
 {
     "arguments": [
         "clang",
         "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders",
-        "-I",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/cplusplus/wrappedQtHeaders/QtCore",
-        "-I",
-        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-DFzPNP/clang-uiheader-EPCAAP",
+        "/private/var/folders/zz/zyxvpxvq6csfxvn_n000ccxh00337c/T/QtCreator-bjmeNO/clang-uiheader-nBAWhU",
         "-nostdinc",
         "-nostdinc++",
         "-g",
@@ -819,7 +771,7 @@
         "-isystem",
         "/usr/local/Cellar/gcc@10/10.3.0/include/c++/10.3.0/backward",
         "-isystem",
-        "/Volumes/Qt Creator/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
+        "/opt/goinfre/hhullen/Qt Creator.app/Contents/Resources/libexec/clang/lib/clang/14.0.0/include",
         "-isystem",
         "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include",
         "-isystem",
@@ -834,9 +786,9 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Controller_module/mlp_controller.h"
+        "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/Controller_module/mlp_controller.h"
     ],
     "directory": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/build-MLP-hhullen_kit-Debug/.qtc_clangd",
-    "file": "/Users/hhullen/PROJECTS/github/Multilayer-Perceptron/src/MLP/Controller_module/mlp_controller.h"
+    "file": "/Users/hhullen/PROJECTS/CPP7_MLP-0/src/MLP/Controller_module/mlp_controller.h"
 }
 ]
