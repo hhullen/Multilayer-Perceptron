@@ -911,7 +911,7 @@ QSpinBox:disabled {
     <enum>QAbstractSpinBox::NoButtons</enum>
    </property>
    <property name="minimum">
-    <number>1</number>
+    <number>2</number>
    </property>
    <property name="maximum">
     <number>1000</number>
@@ -1303,7 +1303,7 @@ border: 1px solid rgba(0, 0, 0, 0);
 }</string>
    </property>
    <property name="text">
-    <string>  1..1000</string>
+    <string>  2..1000</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>

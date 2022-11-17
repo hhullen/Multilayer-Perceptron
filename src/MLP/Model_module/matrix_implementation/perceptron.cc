@@ -16,7 +16,7 @@ Perceptron::Perceptron(int input_neurons, int hidden_layers, int output_neurons)
   ++hidden_layers;
   for (int i = 1; i < hidden_layers; ++i) {
     // int neurons = GetNeuronsToHiddenLayer(hidden_layers, i);
-    int neurons = 42;
+    int neurons = kHIDDEN_NEURONS;
     (*layers_)[i] =
         new PerceptronLayer(LayerType::OTHER, neurons, prev_neurons_amount);
     prev_neurons_amount = neurons;
@@ -250,11 +250,11 @@ bool Perceptron::Train(const string &learn_dataset_path,
   std::cout << "TESTING: " << learning_strings_ << " " << returnable << "\n";
   if (returnable) {
     avg_accuracy_.clear();
-    for (size_t i = 0; !terminated_ && i < epochs_; ++i) {
+    for (size_t i = 0; !terminated_ && returnable && i < epochs_; ++i) {
       std::cout << "EPOCH: " << i << "\n";
       DatasetLearning(0, 0);
-      Test(testing_dataset_path_, 1);
-      SaveConfig("cfg_42_5_60_0.01.bin");
+      returnable = Test(testing_dataset_path_, 1);
+      // SaveConfig("cfg_42_5_60_0.01.bin");
     }
     std::cout << "IN A ROW IS: " << in_a_row << "\n";
   }

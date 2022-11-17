@@ -77,6 +77,21 @@ void MainWindow::ShowMessage(QString message) {
      ui_->statusbar->showMessage(message, 6000);
 }
 
+void MainWindow::SetupConfiguration() {
+    Implementation type = (Implementation)option_widget_->GetImplementationSwitcher()->currentIndex();
+    size_t layers = option_widget_->GetLayersSwitcher()->currentIndex() + 2;
+    QString file_path = option_widget_->GetConfigPath();
+    WCFGMode wcfg_mode = (WCFGMode)option_widget_->GetWCFGMode()->currentIndex();
+    bool is_successfuly = false;
+
+    controller_->Create(type, layers, file_path.toStdString(), wcfg_mode);
+    if (!is_successfuly) {
+        ShowMessage("Failed to setup configuration");
+    } else {
+        ShowMessage("Successfully configurated");
+    }
+}
+
 void MainWindow::SetupConnections() {
     connect(menu_widget_->GetMenuItemsGroup(), &QButtonGroup::buttonClicked, this, &MainWindow::SetMode);
     connect(classifier_widget_, &Classifier::ReadySignal, this, &MainWindow::ClassifyLetter);
@@ -88,6 +103,7 @@ void MainWindow::SetupConnections() {
     connect(training_widget_, &Training::BackSignal, this, &MainWindow::GetMainMenuSlot);
 
     connect(classifier_widget_, &Classifier::ClassifierAchtungSignal, this, &MainWindow::ShowMessage);
+    connect(option_widget_, &Option::ConfigChosen, this, &MainWindow::SetupConfiguration);
 }
 
 }  // namespace s21

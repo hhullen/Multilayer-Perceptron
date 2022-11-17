@@ -8,12 +8,15 @@
 #include <QTime>
 #include "progressbar.h"
 #include "testtablerow.h"
+#include "confirmationdialog.h"
 
 namespace Ui {
 class Testing;
 }
 
 namespace s21 {
+
+enum class TestingState { RUNNING, AWAITING };
 
 class Testing : public QWidget
 {
@@ -48,7 +51,7 @@ private:
     void OpenDatasetFile();
     void StartTesting();
     void StopTesting();
-    void SwitchState(bool state);
+    void SwitchState(TestingState state);
     void SwitchInfoHint();
     void IncreaseTimer();
     void SetTimerField();

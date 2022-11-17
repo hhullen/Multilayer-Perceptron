@@ -99,18 +99,21 @@ void Training::OpenNewFile(QLabel *field) {
 }
 
 void Training::ChangeTrainingMode(int index) {
-    if (index == TrainingMode::STANDART) {
+    if (index == (int)TrainingMode::STANDART) {
         ui_->label_groups_or_epochs->setText("Epochs: ");
         ui_->label_rightclassified->setText("Cerrunt epoch:");
-    } else if (index == TrainingMode::CROSSVALID) {
+        ui_->btn_open_testing_file->setDisabled(false);
+    } else if (index == (int)TrainingMode::CROSSVALID) {
         ui_->label_groups_or_epochs->setText("Cross validation groups: ");
         ui_->label_rightclassified->setText("Cerrunt group:");
+        ui_->btn_open_testing_file->setDisabled(true);
     }
     current_mode_ = (TrainingMode)index;
 }
 
 void Training::Start() {
     errors_graph_->Clear();
+    errors_graph_->SetRangeY(0, 1);
     SetCurrentEpoch(0);
     testing_progress_->SetProgressValue(0);
     training_progress_->SetProgressValue(0);
@@ -123,9 +126,14 @@ void Training::Start() {
 }
 
 void Training::Stop() {
-    emit Terminate();
-    SwitchState(TrainingState::AWAITING);
-    process_timer_.stop();
+    ConfirmationDialog dialog(this, "Terminate training process?");
+    dialog.exec();
+
+    if (dialog.result() == QDialog::DialogCode::Accepted) {
+        emit Terminate();
+        SwitchState(TrainingState::AWAITING);
+        process_timer_.stop();
+    }
 }
 
 void Training::SwitchState(TrainingState state) {
@@ -142,7 +150,6 @@ void Training::SwitchState(TrainingState state) {
     ui_->btn_save_weights->setDisabled(switcher);
     ui_->combo_training_mode->setDisabled(switcher);
     ui_->spin_box_groups_or_epochs->setDisabled(switcher);
-    ui_->spin_box_learning_rate->setDisabled(switcher);
 }
 
 void Training::IncreaseTimer() {

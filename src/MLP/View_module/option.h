@@ -19,7 +19,7 @@ class Option;
 
 namespace s21 {
 
-enum WeightsMode { RANDOM, FILE };
+enum class WeightsMode { RANDOM, FILE };
 
 class Option : public QWidget
 {
@@ -30,6 +30,7 @@ public:
     ~Option();
     QComboBox *GetImplementationSwitcher();
     QComboBox *GetLayersSwitcher();
+    QComboBox *GetWCFGMode();
     QString GetConfigPath();
     void ClearConfigPath();
 
@@ -43,6 +44,7 @@ private:
     void OpenConfigFile();
     void SetSystemInfo();
     void SwitchButtonState(int index);
+    void CheckFilePath();
 };
 
 }

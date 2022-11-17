@@ -9,6 +9,8 @@ namespace s21 {
 class MLPController {
  public:
   MLPController(MLPModel *model);
+  bool Create(Implementation type, size_t layers, string wcfg_path,
+              WCFGMode wcfg_mode);
 
  private:
   MLPModel *model_;

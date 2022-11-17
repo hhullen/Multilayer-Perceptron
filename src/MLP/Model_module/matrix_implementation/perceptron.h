@@ -25,11 +25,13 @@ using std::thread;
 using std::vector;
 
 namespace s21 {
+
 const double kEXPONENT = 2.71828182845904523536028747135266250;
 const double kINPUT_LAYER_CONST = 4.33769082;
 const double kDELTA_CONST = 3.40634218;
 const double kRANDOM_FACTOR = 4096.0;
 const int kFACTOR = 60000;
+const int kHIDDEN_NEURONS = 130;
 
 class Perceptron {
  public:

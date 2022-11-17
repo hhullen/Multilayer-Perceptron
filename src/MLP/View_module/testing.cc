@@ -103,7 +103,7 @@ void Testing::OpenDatasetFile() {
 void Testing::StartTesting() {
     SetTestingProgress(0);
     ClearFields();
-    SwitchState(true);
+    SwitchState(TestingState::RUNNING);
     process_timer_.start();
     delete time_;
     time_ = new QTime(0,0,0);
@@ -113,16 +113,27 @@ void Testing::StartTesting() {
 }
 
 void Testing::StopTesting() {
-    SwitchState(false);
-    process_timer_.stop();
+    ConfirmationDialog dialog(this, "Terminate testing process?");
+    dialog.exec();
+
+    if (dialog.result() == QDialog::DialogCode::Accepted) {
+        SwitchState(TestingState::AWAITING);
+        process_timer_.stop();
+        emit Terminate();
+    }
 }
 
-void Testing::SwitchState(bool state) {
-    ui_->btn_open_testing_file->setDisabled(state);
-    ui_->btn_test_run->setVisible(!state);
-    ui_->btn_test_terminate->setVisible(state);
-    ui_->line_edit_sample_part->setDisabled(state);
-    emit Terminate();
+void Testing::SwitchState(TestingState state) {
+    bool switcher;
+    if (state == TestingState::RUNNING) {
+        switcher = true;
+    } else if (state == TestingState::AWAITING) {
+        switcher = false;
+    }
+    ui_->btn_open_testing_file->setDisabled(switcher);
+    ui_->btn_test_run->setVisible(!switcher);
+    ui_->btn_test_terminate->setVisible(switcher);
+    ui_->line_edit_sample_part->setDisabled(switcher);
 }
 
 void Testing::SwitchInfoHint() {

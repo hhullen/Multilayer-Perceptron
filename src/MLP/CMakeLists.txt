@@ -49,11 +49,15 @@ set(PROJECT_SOURCES
         View_module/graph.h
         View_module/graph.cc
         View_module/graph.ui
+        View_module/confirmationdialog.h
+        View_module/confirmationdialog.cc
+        View_module/confirmationdialog.ui
 
         Model_module/mlp_model.h
-        Model_module/perceptron.h
-        Model_module/perceptron.cc
-        Model_module/perceptron_layer.h
+        Model_module/mlp_model.cc
+        Model_module/matrix_implementation/perceptron.h
+        Model_module/matrix_implementation/perceptron.cc
+        Model_module/matrix_implementation/perceptron_layer.h
 
         include/matrix/matrix.h
         include/matrix/matrix.cc

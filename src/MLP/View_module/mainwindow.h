@@ -50,7 +50,11 @@ private slots:
   void ClassifyLetter();
   void ShowMessage(QString message);
   void SetMode(QAbstractButton *btn);
+
+  void SetupConfiguration();
+
   void SetupConnections();
+
 };
 
 }  // namespace s21

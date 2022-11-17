@@ -6,9 +6,11 @@
 #include <QFileDialog>
 #include <QTimer>
 #include <QTime>
+#include <QDialog>
 #include <QVBoxLayout>
 #include "progressbar.h"
 #include "graph.h"
+#include "confirmationdialog.h"
 
 namespace Ui {
 class Training;
@@ -16,8 +18,8 @@ class Training;
 
 namespace s21 {
 
-enum TrainingMode { STANDART, CROSSVALID };
-enum TrainingState { RUNNING, AWAITING };
+enum class TrainingMode { STANDART, CROSSVALID };
+enum class TrainingState { RUNNING, AWAITING };
 
 class Training : public QWidget
 {

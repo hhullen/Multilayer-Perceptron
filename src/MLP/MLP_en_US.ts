@@ -70,6 +70,39 @@
     </message>
 </context>
 <context>
+    <name>ConfirmationDialog</name>
+    <message>
+        <location filename="View_module/confirmationdialog.ui" line="26"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="View_module/confirmationdialog.ui" line="98"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="View_module/confirmationdialog.ui" line="101"/>
+        <source>Esc</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="View_module/confirmationdialog.ui" line="165"/>
+        <source>Terminate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="View_module/confirmationdialog.ui" line="168"/>
+        <source>Return</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="View_module/confirmationdialog.ui" line="207"/>
+        <source>Terminate training process?</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Graph</name>
     <message>
         <location filename="View_module/graph.ui" line="20"/>
@@ -468,7 +501,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="View_module/training.ui" line="1306"/>
-        <source>  1..1000</source>
+        <source>  2..1000</source>
+        <oldsource>  1..1000</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
