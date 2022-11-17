@@ -11,6 +11,7 @@ class MLPController {
   MLPController(MLPModel *model);
   bool Create(Implementation type, size_t layers, string wcfg_path,
               WCFGMode wcfg_mode);
+  char Classify(vector<double> *pixels, double *confidence);
 
  private:
   MLPModel *model_;

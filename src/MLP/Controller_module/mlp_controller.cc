@@ -9,4 +9,8 @@ bool MLPController::Create(Implementation type, size_t layers, string wcfg_path,
   return model_->CreatePerceptron(type, layers, wcfg_path, wcfg_mode);
 }
 
+char MLPController::Classify(vector<double>* pixels, double* confidence) {
+  return model_->Classify(pixels, confidence);
+}
+
 }  // namespace s21

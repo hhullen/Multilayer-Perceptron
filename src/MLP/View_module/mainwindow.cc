@@ -84,7 +84,7 @@ void MainWindow::SetupConfiguration() {
     WCFGMode wcfg_mode = (WCFGMode)option_widget_->GetWCFGMode()->currentIndex();
     bool is_successfuly = false;
 
-    controller_->Create(type, layers, file_path.toStdString(), wcfg_mode);
+    is_successfuly = controller_->Create(type, layers, file_path.toStdString(), wcfg_mode);
     if (!is_successfuly) {
         ShowMessage("Failed to setup configuration");
     } else {

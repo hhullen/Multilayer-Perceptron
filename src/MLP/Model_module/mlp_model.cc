@@ -10,18 +10,53 @@ bool MLPModel::CreatePerceptron(Implementation type, size_t layers,
 
   implementation_ = type;
   if (implementation_ == Implementation::MATRIX) {
+    RemoveObject(matrix_mlp_);
     matrix_mlp_ = new Perceptron(kNEURONS_IN, layers, kNEURONS_OUT);
-    if (wcfg_mode == WCFGMode::FILE) {
-      returnable = matrix_mlp_->UploadConfig(wcfg_path);
-    } else if (wcfg_mode == WCFGMode::RANDOM) {
-      matrix_mlp_->FillWithRandom();
-      returnable = true;
-    }
+    returnable = ConfigurateObject(matrix_mlp_, wcfg_mode, wcfg_path);
   } else if (implementation_ == Implementation::GRAPH) {
     std::cout << "graph implementation\n";
   }
 
   return returnable;
+}
+
+char MLPModel::Classify(vector<double> *pixels, *double confidence) {
+  char returnable;
+
+  if (implementation_ == Implementation::MATRIX) {
+    Matrix input(pixels->size(), 0);
+    CopyData(*pixels, input);
+    matrix_mlp_->set_input_neurons(input);
+    matrix_mlp_->Run();
+    // get answer symbol
+  }
+}
+
+void MLPModel::RemoveObject(Perceptron *obj) {
+  if (obj) {
+    obj->Terminate();
+    delete obj;
+  }
+}
+
+bool MLPModel::ConfigurateObject(Perceptron *obj, WCFGMode wcfg_mode,
+                                 string wcfg_path) {
+  bool returnable = false;
+
+  if (wcfg_mode == WCFGMode::FILE) {
+    returnable = obj->UploadConfig(wcfg_path);
+  } else if (wcfg_mode == WCFGMode::RANDOM) {
+    obj->FillWithRandom();
+    returnable = true;
+  }
+
+  return returnable;
+}
+
+void MLPModel::CopyData(vector<double> &pixels, Matrix &input) {
+  for (size_t i = 0; i < input.get_rows(); ++i) {
+    input(i, 0) = pixels[i];
+  }
 }
 
 }  // namespace s21
