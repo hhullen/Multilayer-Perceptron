@@ -20,8 +20,12 @@ class MLPModel {
                         WCFGMode wcfg_mode);
   char Classify(vector<double> *pixels, double *confidence);
   bool SaveWeights(string save_path);
+  void RunTraining(string train_dataset, string test_dataset,
+                   size_t epochs_or_groups, double learning_rate);
 
  private:
+  thread *run_thread_;
+
   Perceptron *matrix_mlp_;
   Implementation implementation_;
   WCFGMode wcfg_mode_;
@@ -29,6 +33,7 @@ class MLPModel {
   void RemoveObject(Perceptron *obj);
   bool ConfigurateObject(Perceptron *obj, WCFGMode wcfg_mode, string wcfg_path);
   void CopyData(vector<double> &pixels, Matrix &input);
+  void delete_thread();
 };
 
 }  // namespace s21

@@ -53,6 +53,7 @@ private slots:
 
   void SetupConfiguration();
   void SaveWeights();
+  void RunTeraining();
 
   void SetupConnections();
 

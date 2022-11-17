@@ -17,4 +17,10 @@ bool MLPController::SaveWeights(string save_path) {
   return model_->SaveWeights(save_path);
 }
 
+void MLPController::RunTraining(string train_dataset, string test_dataset,
+                                size_t epochs_or_groups, double learning_rate) {
+  model_->RunTraining(train_dataset, test_dataset, epochs_or_groups,
+                      learning_rate);
+}
+
 }  // namespace s21

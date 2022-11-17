@@ -118,28 +118,28 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/main_menu.ui" line="82"/>
+        <location filename="View_module/main_menu.ui" line="92"/>
         <source>CLASSIFYING</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/main_menu.ui" line="137"/>
+        <location filename="View_module/main_menu.ui" line="157"/>
         <source>TRAINING</source>
         <oldsource>LEARNING</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/main_menu.ui" line="192"/>
+        <location filename="View_module/main_menu.ui" line="222"/>
         <source>TESTING</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/main_menu.ui" line="247"/>
+        <location filename="View_module/main_menu.ui" line="277"/>
         <source>=</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/main_menu.ui" line="277"/>
+        <location filename="View_module/main_menu.ui" line="307"/>
         <source>MAIN MENU</source>
         <translation type="unfinished"></translation>
     </message>
@@ -190,109 +190,109 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/option.ui" line="158"/>
+        <location filename="View_module/option.ui" line="167"/>
         <source>Matrix</source>
         <oldsource>MATRIX</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/option.ui" line="163"/>
+        <location filename="View_module/option.ui" line="172"/>
         <source>Graph</source>
         <oldsource>GRAPH</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/option.ui" line="237"/>
+        <location filename="View_module/option.ui" line="246"/>
         <source>OPEN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/option.ui" line="318"/>
+        <location filename="View_module/option.ui" line="327"/>
         <source>Configuration file: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/option.ui" line="360"/>
+        <location filename="View_module/option.ui" line="369"/>
         <source>Model implementation: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/option.ui" line="402"/>
+        <location filename="View_module/option.ui" line="411"/>
         <source>Operating system: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/option.ui" line="444"/>
+        <location filename="View_module/option.ui" line="453"/>
         <source>Kernel type: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/option.ui" line="486"/>
+        <location filename="View_module/option.ui" line="495"/>
         <source>CPU: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/option.ui" line="528"/>
+        <location filename="View_module/option.ui" line="537"/>
         <source>Host name: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/option.ui" line="570"/>
+        <location filename="View_module/option.ui" line="579"/>
         <source>proc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/option.ui" line="612"/>
+        <location filename="View_module/option.ui" line="621"/>
         <source>kernel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/option.ui" line="654"/>
+        <location filename="View_module/option.ui" line="663"/>
         <source>macos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/option.ui" line="696"/>
+        <location filename="View_module/option.ui" line="705"/>
         <source>host</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/option.ui" line="738"/>
+        <location filename="View_module/option.ui" line="747"/>
         <source>Perceptron layers: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/option.ui" line="787"/>
+        <location filename="View_module/option.ui" line="805"/>
         <source>2 layers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/option.ui" line="792"/>
+        <location filename="View_module/option.ui" line="810"/>
         <source>3 layers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/option.ui" line="797"/>
+        <location filename="View_module/option.ui" line="815"/>
         <source>4 layers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/option.ui" line="802"/>
+        <location filename="View_module/option.ui" line="820"/>
         <source>5 layers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/option.ui" line="849"/>
+        <location filename="View_module/option.ui" line="876"/>
         <source>Random</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/option.ui" line="854"/>
+        <location filename="View_module/option.ui" line="881"/>
         <source>Load file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/option.ui" line="894"/>
+        <location filename="View_module/option.ui" line="921"/>
         <source>Perceptron weights mode: </source>
         <translation type="unfinished"></translation>
     </message>

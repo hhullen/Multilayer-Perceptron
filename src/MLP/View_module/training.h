@@ -46,7 +46,7 @@ signals:
     void BackSignal();
     void Terminate();
     void Run();
-
+    void SentMessage(QString message);
 
 private:
     Ui::Training *ui_;

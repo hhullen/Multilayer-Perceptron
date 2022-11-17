@@ -179,6 +179,7 @@ void Perceptron::set_epochs_amount(size_t epochs) { epochs_ = epochs; }
 
 void Perceptron::Run() {
   terminated_ = false;
+
   for (size_t i = 1; i < layers_->size(); ++i) {
     Matrix &weights = *(*layers_)[i]->get_weights();
     Matrix &neurons = *(*layers_)[i - 1]->get_neurons();
@@ -304,10 +305,10 @@ void Perceptron::DatasetLearning(size_t test_chunk_begin,
           TrackProgress(iterator + 1, learning_dataset_lines_);
       ++iterator;
 
-      // if (tmp != learning_progress_percent_) {
-      //   printf("Learning progress: %ld\n", learning_progress_percent_);
-      // }
-      // tmp = learning_progress_percent_;
+      if (tmp != learning_progress_percent_) {
+        printf("Learning progress: %ld\n", learning_progress_percent_);
+      }
+      tmp = learning_progress_percent_;
     }
     learning_progress_percent_ =
         TrackProgress(iterator + 1, learning_dataset_lines_);
@@ -566,4 +567,9 @@ size_t Perceptron::get_learning_progress() {
 size_t Perceptron::get_testing_progress() { return testing_progress_percent_; }
 
 char Perceptron::get_recognized_letter() { return output_sym_; }
+
+double Perceptron::get_answer_confidence() { return answer_confidence_; }
+
+void Perceptron::set_learning_rate(double value) { learning_rate_ = value; }
+
 }  // namespace s21

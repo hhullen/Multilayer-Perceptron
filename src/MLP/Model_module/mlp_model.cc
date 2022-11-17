@@ -2,7 +2,7 @@
 
 namespace s21 {
 
-MLPModel::MLPModel() : matrix_mlp_(nullptr) {}
+MLPModel::MLPModel() : matrix_mlp_(nullptr), run_thread_(nullptr) {}
 
 bool MLPModel::CreatePerceptron(Implementation type, size_t layers,
                                 string wcfg_path, WCFGMode wcfg_mode) {
@@ -24,11 +24,12 @@ char MLPModel::Classify(vector<double> *pixels, double *confidence) {
   char returnable;
 
   if (implementation_ == Implementation::MATRIX) {
-    Matrix input(pixels->size(), 0);
+    Matrix input(pixels->size(), 1);
     CopyData(*pixels, input);
     matrix_mlp_->set_input_neurons(input);
     matrix_mlp_->Run();
     returnable = matrix_mlp_->get_recognized_letter();
+    *confidence = matrix_mlp_->get_answer_confidence();
   } else if (implementation_ == Implementation::GRAPH) {
     std::cout << "graph implementation classify\n";
   }
@@ -46,6 +47,20 @@ bool MLPModel::SaveWeights(string save_path) {
   }
 
   return returnable;
+}
+
+void MLPModel::RunTraining(string train_dataset, string test_dataset,
+                           size_t epochs_or_groups, double learning_rate) {
+  if (implementation_ == Implementation::MATRIX, !matrix_mlp_->IsRunning()) {
+    delete_thread();
+    matrix_mlp_->set_epochs_amount(epochs_or_groups);
+    matrix_mlp_->set_learning_rate(learning_rate);
+    run_thread_ = new thread(&Perceptron::Train, matrix_mlp_, train_dataset,
+                             test_dataset, 1);
+    run_thread_->detach();
+  } else if (implementation_ == Implementation::GRAPH) {  // && not running!!!
+    std::cout << "graph implementation training thread\n";
+  }
 }
 
 void MLPModel::RemoveObject(Perceptron *obj) {
@@ -72,6 +87,12 @@ bool MLPModel::ConfigurateObject(Perceptron *obj, WCFGMode wcfg_mode,
 void MLPModel::CopyData(vector<double> &pixels, Matrix &input) {
   for (size_t i = 0; i < input.get_rows(); ++i) {
     input(i, 0) = pixels[i];
+  }
+}
+
+void MLPModel::delete_thread() {
+  if (run_thread_ && !matrix_mlp_->IsRunning()) {  // && not running!!!
+    delete run_thread_;
   }
 }
 

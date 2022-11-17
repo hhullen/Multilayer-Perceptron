@@ -148,6 +148,15 @@ QPushButton:pressed {
 	color: rgba(255, 255, 255, 0.7);
 	border: 1px solid rgba(255, 255, 255, 0);
 	selection-background-color: rgba(0,0,0, 0);
+}
+
+QComboBox:disabled {
+	selection-color: rgb(255, 255, 255);
+	background-color: rgba(0, 0, 0, 0.0);
+	alternate-background-color: rgba(0, 0, 0, 0);
+	color: rgba(255, 255, 255, 0.3);
+	border: 1px solid rgba(255, 255, 255, 0);
+	selection-background-color: rgba(0,0,0, 0);
 }</string>
    </property>
    <property name="maxVisibleItems">
@@ -777,6 +786,15 @@ QPushButton:disabled {
 	color: rgba(255, 255, 255, 0.7);
 	border: 1px solid rgba(255, 255, 255, 0);
 	selection-background-color: rgba(0,0,0, 0);
+}
+
+QComboBox:disabled {
+	selection-color: rgb(255, 255, 255);
+	background-color: rgba(0, 0, 0, 0.0);
+	alternate-background-color: rgba(0, 0, 0, 0);
+	color: rgba(255, 255, 255, 0.3);
+	border: 1px solid rgba(255, 255, 255, 0);
+	selection-background-color: rgba(0,0,0, 0);
 }</string>
    </property>
    <property name="maxVisibleItems">
@@ -837,6 +855,15 @@ QPushButton:disabled {
 	background-color: rgba(0, 0, 0, 0.0);
 	alternate-background-color: rgba(0, 0, 0, 0);
 	color: rgba(255, 255, 255, 0.7);
+	border: 1px solid rgba(255, 255, 255, 0);
+	selection-background-color: rgba(0,0,0, 0);
+}
+
+QComboBox:disabled {
+	selection-color: rgb(255, 255, 255);
+	background-color: rgba(0, 0, 0, 0.0);
+	alternate-background-color: rgba(0, 0, 0, 0);
+	color: rgba(255, 255, 255, 0.3);
 	border: 1px solid rgba(255, 255, 255, 0);
 	selection-background-color: rgba(0,0,0, 0);
 }</string>

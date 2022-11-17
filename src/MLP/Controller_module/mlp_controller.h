@@ -13,6 +13,8 @@ class MLPController {
               WCFGMode wcfg_mode);
   char Classify(vector<double> *pixels, double *confidence);
   bool SaveWeights(string save_path);
+  void RunTraining(string train_dataset, string test_dataset,
+                   size_t epochs_or_groups, double learning_rate);
 
  private:
   MLPModel *model_;

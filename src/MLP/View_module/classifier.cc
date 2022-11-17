@@ -106,7 +106,7 @@ void Classifier::OpenBMPImage() {
         input_image_.load(file_path);
         if (input_image_.height() != kBMP_IMAGE_ZISE && input_image_.width() != kBMP_IMAGE_ZISE) {
             CloseBMPImage();
-            emit ClassifierAchtungSignal("Can't open the picture with size different from 512x512");
+            emit SentMessage("Can't open the picture with size different from 512x512");
             file_name_->clear();
         } else {
             image_->setPixmap(QPixmap::fromImage(input_image_));

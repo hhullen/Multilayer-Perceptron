@@ -43,7 +43,9 @@ QString Training::GetTestingFilePath() {
 }
 
 QString Training::GetSavingPath() {
-    return saving_path_;
+    QString path = saving_path_;
+    saving_path_.clear();
+    return path;
 }
 
 TrainingMode Training::GetMode() {
@@ -112,17 +114,26 @@ void Training::ChangeTrainingMode(int index) {
 }
 
 void Training::Start() {
-    errors_graph_->Clear();
-    errors_graph_->SetRangeY(0, 1);
-    SetCurrentEpoch(0);
-    testing_progress_->SetProgressValue(0);
-    training_progress_->SetProgressValue(0);
-    delete time_;
-    time_ = new QTime(0, 0, 0);
-    SetTimerField();
-    emit Run();
-    SwitchState(TrainingState::RUNNING);
-    process_timer_.start(1000);
+    TrainingMode mode = GetMode();
+    bool is_train_dataset = GetTrainingFilePath().isEmpty();
+    bool is_test_dataset = GetTestingFilePath().isEmpty();
+    if (mode == TrainingMode::STANDART && is_train_dataset && is_test_dataset) {
+        emit SentMessage("No file path to training and testing datasets");
+    } else if (mode == TrainingMode::CROSSVALID && is_train_dataset) {
+        emit SentMessage("No file path to training dataset");
+    }else {
+        errors_graph_->Clear();
+        errors_graph_->SetRangeY(0, 1);
+        SetCurrentEpoch(0);
+        testing_progress_->SetProgressValue(0);
+        training_progress_->SetProgressValue(0);
+        delete time_;
+        time_ = new QTime(0, 0, 0);
+        SetTimerField();
+        emit Run();
+        SwitchState(TrainingState::RUNNING);
+        process_timer_.start(1000);
+    }
 }
 
 void Training::Stop() {

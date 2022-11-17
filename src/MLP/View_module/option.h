@@ -33,6 +33,7 @@ public:
     QComboBox *GetWCFGMode();
     QString GetConfigPath();
     void ClearConfigPath();
+    void Lock(bool state);
 
 signals:
     void BackSignal();
@@ -40,6 +41,7 @@ signals:
 
 private:
     Ui::Option *ui_;
+    bool is_locked_;
 
     void OpenConfigFile();
     void SetSystemInfo();

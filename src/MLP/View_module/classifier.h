@@ -37,7 +37,7 @@ class Classifier : public QWidget {
 
 signals:
     void BackSignal();
-    void ClassifierAchtungSignal(QString message);
+    void SentMessage(QString message);
     void ReadySignal();
 
  private:

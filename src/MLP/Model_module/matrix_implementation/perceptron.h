@@ -51,10 +51,12 @@ class Perceptron {
 
   bool set_input_neurons(Matrix &matrix);
   void set_epochs_amount(size_t epochs);
+  void set_learning_rate(double value);
   size_t get_learning_progress();
   size_t get_testing_progress();
   Matrix *get_output_neurons();
   char get_recognized_letter();
+  double get_answer_confidence();
 
  private:
   vector<PerceptronLayer *> *layers_;

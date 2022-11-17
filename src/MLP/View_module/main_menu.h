@@ -19,6 +19,9 @@ public:
     explicit MainMenu(QWidget *parent = nullptr);
     ~MainMenu();
     QButtonGroup *GetMenuItemsGroup();
+    void LockTraining(bool state);
+    void LockTesting(bool state);
+    void LockClassifier(bool state);
 
 private:
     Ui::MainMenu *ui_;

@@ -5,7 +5,7 @@ namespace s21 {
 
 Option::Option(QWidget *parent) :
     QWidget(parent),
-    ui_(new Ui::Option) {
+    ui_(new Ui::Option), is_locked_(false) {
     ui_->setupUi(this);
 
     SetSystemInfo();
@@ -44,12 +44,22 @@ void Option::ClearConfigPath() {
     ui_->label_config_file_path->setText("");
 }
 
+void Option::Lock(bool state) {
+    is_locked_ = state;
+    ui_->btn_open_config->setDisabled(state);
+    ui_->combo_box_layers->setDisabled(state);
+    ui_->combo_box_realization->setDisabled(state);
+    ui_->combo_box_weights_type->setDisabled(state);
+}
+
 void Option::OpenConfigFile() {
     QString file_path = QFileDialog::getOpenFileName(this, "Open .wcfg file", "/Users",
                                                 "wcfg (*.wcfg);;");
-    if (!file_path.isEmpty()) {
+    if (!file_path.isEmpty() && !is_locked_) {
         ui_->label_config_file_path->setText(file_path);
-        emit ConfigChosen();
+        if (!file_path.isEmpty()) {
+            emit ConfigChosen();
+        }
     }
 }
 
@@ -77,11 +87,11 @@ void Option::SetSystemInfo() {
 }
 
 void Option::SwitchButtonState(int index) {
-    if (index == (int)WeightsMode::RANDOM) {
+    if (!is_locked_ && index == (int)WeightsMode::RANDOM) {
         ui_->combo_box_weights_type->setCurrentIndex((int)WeightsMode::RANDOM);
         ui_->btn_open_config->setDisabled(true);
         emit ConfigChosen();
-    } else if (index == (int)WeightsMode::FILE) {
+    } else if (!is_locked_ && index == (int)WeightsMode::FILE) {
         ui_->combo_box_weights_type->setCurrentIndex((int)WeightsMode::FILE);
         ui_->btn_open_config->setDisabled(false);
     }

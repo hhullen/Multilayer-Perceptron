@@ -12,4 +12,16 @@ MainMenu::~MainMenu() { delete ui_; }
 
 QButtonGroup *MainMenu::GetMenuItemsGroup() { return ui_->group_btns; }
 
+void MainMenu::LockTraining(bool state) {
+    ui_->btn_learning->setDisabled(state);
+}
+
+void MainMenu::LockTesting(bool state) {
+    ui_->btn_testing->setDisabled(state);
+}
+
+void MainMenu::LockClassifier(bool state) {
+    ui_->btn_classifying->setDisabled(state);
+}
+
 }  // namespace s21

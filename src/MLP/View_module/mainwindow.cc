@@ -77,7 +77,8 @@ void MainWindow::ClassifyLetter() {
 
     answer = controller_->Classify(pixels, &confidence);
 
-    classifier_widget_->SetAnswerLetter(answer + '@');
+    classifier_widget_->SetAnswerLetter(answer + 'A');
+    classifier_widget_->SetConfidence(confidence);
 }
 
 void MainWindow::ShowMessage(QString message) {
@@ -104,19 +105,38 @@ void MainWindow::SaveWeights() {
     controller_->SaveWeights(save_path.toStdString());
 }
 
+void MainWindow::RunTeraining() {
+    TrainingMode mode = training_widget_->GetMode();
+    QString train_dataset = training_widget_->GetTrainingFilePath();
+    QString test_dataset = training_widget_->GetTestingFilePath();
+    double learning_rate = training_widget_->GetLearningRate();
+
+    if (mode == TrainingMode::STANDART) {
+        size_t epochs = training_widget_->GetEpochs();
+        controller_->RunTraining(train_dataset.toStdString(), test_dataset.toStdString(), epochs, learning_rate);
+    } else if (mode == TrainingMode::CROSSVALID) {
+        size_t groups = training_widget_->GetGroups();
+    }
+    menu_widget_->LockTesting(true);
+    menu_widget_->LockClassifier(true);
+    option_widget_->Lock(true);
+}
+
 void MainWindow::SetupConnections() {
     connect(menu_widget_->GetMenuItemsGroup(), &QButtonGroup::buttonClicked, this, &MainWindow::SetMode);
     connect(classifier_widget_, &Classifier::ReadySignal, this, &MainWindow::ClassifyLetter);
-    connect(classifier_widget_, &Classifier::ClassifierAchtungSignal, this, &MainWindow::ShowMessage);
+    connect(classifier_widget_, &Classifier::SentMessage, this, &MainWindow::ShowMessage);
 
     connect(classifier_widget_, &Classifier::BackSignal, this, &MainWindow::GetMainMenuSlot);
     connect(option_widget_, &Option::BackSignal, this, &MainWindow::GetMainMenuSlot);
     connect(testing_widget_, &Testing::BackSignal, this, &MainWindow::GetMainMenuSlot);
     connect(training_widget_, &Training::BackSignal, this, &MainWindow::GetMainMenuSlot);
 
-    connect(classifier_widget_, &Classifier::ClassifierAchtungSignal, this, &MainWindow::ShowMessage);
+    connect(classifier_widget_, &Classifier::SentMessage, this, &MainWindow::ShowMessage);
     connect(option_widget_, &Option::ConfigChosen, this, &MainWindow::SetupConfiguration);
     connect(training_widget_, &Training::SaveWeightsSignal, this, &MainWindow::SaveWeights);
+    connect(training_widget_, &Training::SentMessage, this, &MainWindow::ShowMessage);
+    connect(training_widget_, &Training::Run, this, &MainWindow::RunTeraining);
 }
 
 }  // namespace s21
