@@ -18,7 +18,8 @@ class MLPModel {
 
   bool CreatePerceptron(Implementation type, size_t layers, string wcfg_path,
                         WCFGMode wcfg_mode);
-  char Classify(vector<double> *pixels, *double confidence);
+  char Classify(vector<double> *pixels, double *confidence);
+  bool SaveWeights(string save_path);
 
  private:
   Perceptron *matrix_mlp_;

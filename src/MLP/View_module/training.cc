@@ -183,6 +183,7 @@ void Training::ChooseSavingDir() {
           this, "Choose folder to save weights", "/Users",
           QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
     if (!file_path.isEmpty()) {
+        saving_path_.clear();
         saving_path_ = file_path;
         MakeFileName();
         emit SaveWeightsSignal();
@@ -193,8 +194,6 @@ void Training::MakeFileName() {
     QDateTime date_time;
       saving_path_.append("/MLPerceptron_" +
                    date_time.currentDateTime().toString("yyyy_MM_dd_hh_mm_ss") + ".wcfg");
-      qDebug() << saving_path_;
-      saving_path_.clear();
 }
 
 void Training::SetupConnections() {

@@ -13,4 +13,8 @@ char MLPController::Classify(vector<double>* pixels, double* confidence) {
   return model_->Classify(pixels, confidence);
 }
 
+bool MLPController::SaveWeights(string save_path) {
+  return model_->SaveWeights(save_path);
+}
+
 }  // namespace s21

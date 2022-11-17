@@ -12,6 +12,8 @@
 #include "inputarea.h"
 using std::vector;
 
+#include <iostream>
+
 const int kIMAGE_SIZE = 28;
 const int kBMP_IMAGE_ZISE = 512;
 

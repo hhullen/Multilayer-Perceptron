@@ -54,6 +54,7 @@ class Perceptron {
   size_t get_learning_progress();
   size_t get_testing_progress();
   Matrix *get_output_neurons();
+  char get_recognized_letter();
 
  private:
   vector<PerceptronLayer *> *layers_;

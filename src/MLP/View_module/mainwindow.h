@@ -52,6 +52,7 @@ private slots:
   void SetMode(QAbstractButton *btn);
 
   void SetupConfiguration();
+  void SaveWeights();
 
   void SetupConnections();
 

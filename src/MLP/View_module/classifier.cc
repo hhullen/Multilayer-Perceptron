@@ -112,6 +112,9 @@ void Classifier::OpenBMPImage() {
             image_->setPixmap(QPixmap::fromImage(input_image_));
             btn_open_img_->setVisible(false);
             btn_close_img_->setVisible(true);
+            input_image_ = input_image_.scaled(kIMAGE_SIZE, kIMAGE_SIZE, Qt::AspectRatioMode::KeepAspectRatio,
+                                Qt::TransformationMode::SmoothTransformation);
+            input_image_.invertPixels();
             GetPixels(input_image_);
         }
     }
@@ -126,9 +129,10 @@ void Classifier::CloseBMPImage() {
 
 void Classifier::GetPixels(QImage &img) {
     pixels_.clear();
+
     for (size_t i = 0; i < img.width(); ++i) {
       for (size_t j = 0; j < img.height(); ++j) {
-        pixels_.push_back(img.pixelColor(i, j).black() / 255);
+        pixels_.push_back(img.pixelColor(i, j).black() / 255.0);
       }
     }
     emit ReadySignal();

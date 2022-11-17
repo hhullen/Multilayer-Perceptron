@@ -564,4 +564,6 @@ size_t Perceptron::get_learning_progress() {
 }
 
 size_t Perceptron::get_testing_progress() { return testing_progress_percent_; }
+
+char Perceptron::get_recognized_letter() { return output_sym_; }
 }  // namespace s21
