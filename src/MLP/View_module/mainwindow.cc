@@ -185,10 +185,29 @@ void MainWindow::UpdateTestingState() {
         testing_update_.stop();
         testing_widget_->Terminate();
         testing_widget_->SetTestingProgress(100);
+        UpdateTestingMetrics();
         menu_widget_->LockTraining(false);
         menu_widget_->LockClassifier(false);
         option_widget_->Lock(false);
     }
+}
+
+void MainWindow::UpdateTestingMetrics() {
+    vector<map<size_t, double>> metrics;
+    size_t correct = 0;
+    size_t all = 0;
+    double avg_accuracy = 0;
+
+    controller_->UpdateMetrics(metrics, &correct, &all, &avg_accuracy);
+    map<size_t, double> &precision_ = metrics[0];
+    map<size_t, double> &recall_ = metrics[1];
+    map<size_t, double> &f_measure_ = metrics[2];
+
+    for (size_t i = 0; i < precision_.size(); ++i) {
+        testing_widget_->AddTableRow(QChar((int)(i + 'A')), precision_[i] * 100, recall_[i] * 100, f_measure_[i] * 100);
+    }
+    testing_widget_->SetAVGAccuracy(avg_accuracy * 100);
+    testing_widget_->SetCorrectlyClassified(correct, all);
 }
 
 void MainWindow::SetupConnections() {

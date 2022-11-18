@@ -120,6 +120,17 @@ void MLPModel::UpdateTestingState(size_t *testing_progress, bool *is_running) {
   }
 }
 
+void MLPModel::UpdateMetrics(vector<map<size_t, double>> &metrics,
+                             size_t *correct, size_t *all,
+                             double *avg_accuracy) {
+  if (implementation_ == Implementation::MATRIX) {
+    matrix_mlp_->get_metrics(metrics, correct, all, avg_accuracy);
+    // std::cout << metrics[0].size();
+  } else if (implementation_ == Implementation::GRAPH) {
+    std::cout << "graph implementation updating metrics\n";
+  }
+}
+
 void MLPModel::TerminateProcess() {
   if (implementation_ == Implementation::MATRIX) {
     matrix_mlp_->Terminate();

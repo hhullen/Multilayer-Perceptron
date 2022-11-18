@@ -30,6 +30,8 @@ class MLPModel {
                            bool *is_running);
   void RunTesting(string test_dataset, double coeff);
   void UpdateTestingState(size_t *testing_progress, bool *is_running);
+  void UpdateMetrics(vector<map<size_t, double>> &metrics, size_t *correct,
+                     size_t *all, double *avg_accuracy);
   void TerminateProcess();
 
  private:

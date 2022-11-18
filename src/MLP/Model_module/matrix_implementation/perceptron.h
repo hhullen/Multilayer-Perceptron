@@ -59,6 +59,8 @@ class Perceptron {
   double get_answer_confidence();
   size_t get_current_epoch();
   vector<double> *get_avg_accuracy();
+  void get_metrics(vector<map<size_t, double>> &mectics, size_t *correct,
+                   size_t *all, double *avg_accuracy);
 
  private:
   vector<PerceptronLayer *> *layers_;
@@ -84,9 +86,12 @@ class Perceptron {
   size_t testing_dataset_lines_;
   string testing_dataset_path_;
   size_t testing_strings_;
+  size_t right_answers_;
+  size_t all_answers_;
 
   map<size_t, double> precision_;
   map<size_t, double> f_measure_;
+  map<size_t, size_t> letters_;
   vector<double> avg_accuracy_;
   map<size_t, double> recall_;
 
@@ -127,6 +132,7 @@ class Perceptron {
                          Matrix &d_weights);
   void RunTesting(ifstream &file, size_t test_chunk_begin,
                   size_t test_chunk_end);
+  void CleanMetrics();
   void UpdateMetrics(size_t &right_answers, map<size_t, size_t> &letters);
   void FinishMetrics(size_t &right_answers, map<size_t, size_t> &letters);
   void RunCrossValidating(size_t groups);

@@ -188,21 +188,21 @@ QPushButton:disabled {
   <widget class="QLabel" name="label_testing_file_path">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>139</x>
      <y>100</y>
-     <width>460</width>
+     <width>410</width>
      <height>32</height>
     </rect>
    </property>
    <property name="minimumSize">
     <size>
-     <width>460</width>
+     <width>410</width>
      <height>32</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>460</width>
+     <width>410</width>
      <height>32</height>
     </size>
    </property>
@@ -570,7 +570,7 @@ QScrollBar:vertical {
 	border-radius: 7px;
 }
 
-QScrollBar:hover:vertical {
+QScrollBar:handle:hover:vertical {
 	border: none;
 	background-color: rgb(27, 131, 255);
 	alternate-background-color: rgb(27, 131, 255);

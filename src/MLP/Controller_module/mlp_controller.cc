@@ -50,6 +50,12 @@ void MLPController::UpdateTestingState(size_t *testing_progress,
   model_->UpdateTestingState(testing_progress, is_running);
 }
 
+void MLPController::UpdateMetrics(vector<map<size_t, double>> &metrics,
+                                  size_t *correct, size_t *all,
+                                  double *avg_accuracy) {
+  model_->UpdateMetrics(metrics, correct, all, avg_accuracy);
+}
+
 void MLPController::TerminateProcess() { model_->TerminateProcess(); }
 
 }  // namespace s21

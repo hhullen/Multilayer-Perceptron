@@ -64,7 +64,7 @@ void Testing::SetAVGAccuracy(double value) {
     if (value < 0) {
         value = 0;
     }
-    field->setText(QString::number(value) + " %");
+    field->setText(QString::number(value, 'f', 3) + " %");
 }
 
 QString Testing::GetTestingFilePath() {

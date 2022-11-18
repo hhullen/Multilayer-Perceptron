@@ -62,6 +62,7 @@ private slots:
   void TerminateProcess();
   void RunTesting();
   void UpdateTestingState();
+  void UpdateTestingMetrics();
 
   void SetupConnections();
 

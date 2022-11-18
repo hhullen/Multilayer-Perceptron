@@ -427,36 +427,33 @@ bool Perceptron::Test(const string &dataset_path, double test_sample_coeff) {
 
 void Perceptron::RunTesting(ifstream &file, size_t test_chunk_begin,
                             size_t test_chunk_end) {
-  map<size_t, size_t> letters;
-  size_t right_answers = 0;
   size_t iterator = 0;
   string line;
 
-  size_t tmp = 0;
-
-  precision_.clear();
-  recall_.clear();
-  f_measure_.clear();
-  letters.clear();
+  CleanMetrics();
   while (!getline(file, line).eof()) {
     if (IsInOfArea(iterator, test_chunk_begin, test_chunk_end)) {
       FillInput(line);
       Run();
-      UpdateMetrics(right_answers, letters);
+      UpdateMetrics(right_answers_, letters_);
     }
     testing_progress_percent_ =
         TrackProgress(iterator + 1, testing_dataset_lines_);
     ++iterator;
-
-    if (tmp != testing_progress_percent_) {
-      printf("Testing progress: %ld\n", tmp);
-    }
-    tmp = testing_progress_percent_;
   }
   testing_progress_percent_ =
       TrackProgress(iterator + 1, testing_dataset_lines_);
-  avg_accuracy_.push_back(right_answers / (double)testing_strings_);
-  FinishMetrics(right_answers, letters);
+
+  avg_accuracy_.push_back(right_answers_ / (double)testing_strings_);
+  FinishMetrics(right_answers_, letters_);
+}
+
+void Perceptron::CleanMetrics() {
+  right_answers_ = 0;
+  precision_.clear();
+  recall_.clear();
+  f_measure_.clear();
+  letters_.clear();
 }
 
 void Perceptron::UpdateMetrics(size_t &right_answers,
@@ -471,16 +468,16 @@ void Perceptron::UpdateMetrics(size_t &right_answers,
 
 void Perceptron::FinishMetrics(size_t &right_answers,
                                map<size_t, size_t> &letters) {
-  // std::cout << "PRECISION\tRECALL\t\tF-MEASURE\tAVG-ACC\t\tANSS\n";
-
+  std::cout << "PRECISION\tRECALL\t\tF-MEASURE\tAVG-ACC\t\tANSS\n";
+  all_answers_ = testing_strings_;
   for (size_t i = 0; i < precision_.size(); ++i) {
     precision_[i] /= (double)right_answers;
     recall_[i] /= (double)letters[i];
     f_measure_[i] = FMeasure(precision_[i], recall_[i]);
 
-    // printf("%.3lf\t\t%.3lf\t\t%.3lf\t\t%.3lf\t\t%ld\n", precision_[i] * 100,
-    //        recall_[i] * 100, f_measure_[i] * 100, avg_accuracy_.back() * 100,
-    //        right_answers);
+    printf("%.3lf\t\t%.3lf\t\t%.3lf\t\t%.3lf\t\t%ld\n", precision_[i] * 100,
+           recall_[i] * 100, f_measure_[i] * 100, avg_accuracy_.back() * 100,
+           right_answers);
   }
 }
 
@@ -521,7 +518,8 @@ void Perceptron::RunCrossValidating(size_t groups) {
   avg_accuracy_.clear();
   current_epoch_ = 1;
   while (cross_testing_end_ < learning_strings_) {
-    printf("TEST CHUNK: %ld - %ld\n", cross_testing_begin_, cross_testing_end_);
+    // printf("TEST CHUNK: %ld - %ld\n", cross_testing_begin_,
+    // cross_testing_end_);
     DatasetLearning(cross_testing_begin_, cross_testing_end_);
     file.open(learning_dataset_path_);
     if (file.is_open()) {
@@ -575,5 +573,16 @@ void Perceptron::set_learning_rate(double value) { learning_rate_ = value; }
 size_t Perceptron::get_current_epoch() { return current_epoch_; }
 
 vector<double> *Perceptron::get_avg_accuracy() { return &avg_accuracy_; }
+
+void Perceptron::get_metrics(vector<map<size_t, double>> &metrics,
+                             size_t *correct, size_t *all,
+                             double *avg_accuracy) {
+  metrics.push_back(precision_);
+  metrics.push_back(recall_);
+  metrics.push_back(f_measure_);
+  *correct = right_answers_;
+  *all = all_answers_;
+  *avg_accuracy = avg_accuracy_.back();
+}
 
 }  // namespace s21
