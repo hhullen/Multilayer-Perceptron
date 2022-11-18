@@ -8,14 +8,16 @@ Perceptron::Perceptron(int input_neurons, int hidden_layers, int output_neurons)
     : learning_rate_(0.01),
       learning_strings_(0),
       testing_strings_(0),
-      epochs_(60) {
+      epochs_(5),
+      terminated_(false),
+      running_(false),
+      under_training_(false) {
   layers_ = new vector<PerceptronLayer *>(hidden_layers + 2);
   (*layers_)[0] = new PerceptronLayer(LayerType::INPUT, input_neurons);
   int prev_neurons_amount = input_neurons;
 
   ++hidden_layers;
   for (int i = 1; i < hidden_layers; ++i) {
-    // int neurons = GetNeuronsToHiddenLayer(hidden_layers, i);
     int neurons = kHIDDEN_NEURONS;
     (*layers_)[i] =
         new PerceptronLayer(LayerType::OTHER, neurons, prev_neurons_amount);
@@ -145,18 +147,6 @@ void Perceptron::GetMatrixAndDataSizes(Matrix &matrix, int *rows, int *cols,
   file.read((char *)fcols, sizeof(int));
 }
 
-int Perceptron::GetNeuronsToHiddenLayer(int layers_amount, int layer_number) {
-  int returnable = ceil(
-      pow(kEXPONENT, -(kDELTA_CONST / (layers_amount + 1) * (layer_number + 1) +
-                       kINPUT_LAYER_CONST)) *
-      kFACTOR);
-  if (returnable < 1) {
-    returnable = 1;
-  }
-
-  return returnable;
-}
-
 void Perceptron::Run() {
   terminated_ = false;
 
@@ -217,13 +207,11 @@ bool Perceptron::Train(const string &learn_dataset_path,
   }
 
   learning_strings_ = learning_dataset_lines_ * test_sample_coeff;
-  // std::cout << "TESTING: " << learning_strings_ << " " << returnable << "\n";
   if (returnable) {
     avg_accuracy_.clear();
     for (current_epoch_ = 1;
          !terminated_ && returnable && current_epoch_ <= epochs_;
          ++current_epoch_) {
-      // std::cout << "EPOCH: " << current_epoch_ << "\n";
       DatasetLearning(0, 0);
       returnable = Test(testing_dataset_path_, 1);
     }
@@ -237,7 +225,6 @@ bool Perceptron::Train(const string &learn_dataset_path,
 
 bool Perceptron::CalculateFile(string &dataset_path, size_t *dataset_lines) {
   ifstream file(dataset_path);
-  // std::cout << dataset_path << "\n";
   bool returnable = false;
   string line;
 
@@ -250,7 +237,6 @@ bool Perceptron::CalculateFile(string &dataset_path, size_t *dataset_lines) {
     file.close();
     returnable = true;
   }
-  // std::cout << "LINES: " << *dataset_lines << "\n";
 
   return returnable;
 }
@@ -260,8 +246,6 @@ void Perceptron::DatasetLearning(size_t test_chunk_begin,
   ifstream file;
   string line;
   size_t iterator = 0;
-
-  size_t tmp = 0;
 
   learning_progress_percent_ = 0;
   file.open(learning_dataset_path_);
@@ -275,11 +259,6 @@ void Perceptron::DatasetLearning(size_t test_chunk_begin,
       learning_progress_percent_ =
           TrackProgress(iterator + 1, learning_dataset_lines_);
       ++iterator;
-
-      // if (tmp != learning_progress_percent_) {
-      //   printf("Learning progress: %ld\n", learning_progress_percent_);
-      // }
-      // tmp = learning_progress_percent_;
     }
     learning_progress_percent_ =
         TrackProgress(iterator + 1, learning_dataset_lines_);
@@ -395,10 +374,7 @@ void Perceptron::CalculateGradient(const Matrix &neurons_l,
   }
 }
 
-void Perceptron::Terminate() {
-  terminated_ = true;
-  // std::cout << "\n\nTERMINATED\n";
-}
+void Perceptron::Terminate() { terminated_ = true; }
 
 bool Perceptron::Test(const string &dataset_path, double test_sample_coeff) {
   bool returnable = false;
@@ -468,16 +444,11 @@ void Perceptron::UpdateMetrics(size_t &right_answers,
 
 void Perceptron::FinishMetrics(size_t &right_answers,
                                map<size_t, size_t> &letters) {
-  std::cout << "PRECISION\tRECALL\t\tF-MEASURE\tAVG-ACC\t\tANSS\n";
   all_answers_ = testing_strings_;
   for (size_t i = 0; i < precision_.size(); ++i) {
     precision_[i] /= (double)right_answers;
     recall_[i] /= (double)letters[i];
     f_measure_[i] = FMeasure(precision_[i], recall_[i]);
-
-    printf("%.3lf\t\t%.3lf\t\t%.3lf\t\t%.3lf\t\t%ld\n", precision_[i] * 100,
-           recall_[i] * 100, f_measure_[i] * 100, avg_accuracy_.back() * 100,
-           right_answers);
   }
 }
 
@@ -518,8 +489,6 @@ void Perceptron::RunCrossValidating(size_t groups) {
   avg_accuracy_.clear();
   current_epoch_ = 1;
   while (cross_testing_end_ < learning_strings_) {
-    // printf("TEST CHUNK: %ld - %ld\n", cross_testing_begin_,
-    // cross_testing_end_);
     DatasetLearning(cross_testing_begin_, cross_testing_end_);
     file.open(learning_dataset_path_);
     if (file.is_open()) {

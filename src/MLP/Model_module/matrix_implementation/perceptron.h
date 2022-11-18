@@ -99,7 +99,6 @@ class Perceptron {
   size_t cross_testing_end_;
 
   void FillMatrixRandom(Matrix &matrix);
-  int GetNeuronsToHiddenLayer(int layers_amount, int layer_number);
   void SaveLayers(ofstream &file);
   void WriteMAtrixSize(ofstream &file, Matrix &matrix);
   void WriteMatrix(ofstream &file, Matrix &matrix);

@@ -125,7 +125,6 @@ void MLPModel::UpdateMetrics(vector<map<size_t, double>> &metrics,
                              double *avg_accuracy) {
   if (implementation_ == Implementation::MATRIX) {
     matrix_mlp_->get_metrics(metrics, correct, all, avg_accuracy);
-    // std::cout << metrics[0].size();
   } else if (implementation_ == Implementation::GRAPH) {
     std::cout << "graph implementation updating metrics\n";
   }
