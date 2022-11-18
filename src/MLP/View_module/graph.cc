@@ -99,7 +99,7 @@ void Graph::SetupNewSeries() {
         delete series_;
     }
     series_ = new QSplineSeries();
-    series_->setPen(QPen(QColor(89,191,64), 1, Qt::SolidLine, Qt::RoundCap));
+    series_->setPen(QPen(QColor(89,191,64), 2, Qt::SolidLine, Qt::RoundCap));
 }
 
 void Graph::SetupNewAxisX() {

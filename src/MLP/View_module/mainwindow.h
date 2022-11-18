@@ -47,6 +47,7 @@ private slots:
   Training *training_widget_;
 
   QTimer training_update_;
+  QTimer testing_update_;
 
   void ChangeMode(QWidget *widget);
   void ClassifyLetter();
@@ -59,6 +60,8 @@ private slots:
   void UpdateLearningRate(double value);
   void UpdateTrainingState();
   void TerminateProcess();
+  void RunTesting();
+  void UpdateTestingState();
 
   void SetupConnections();
 

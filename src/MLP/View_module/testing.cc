@@ -75,8 +75,9 @@ double Testing::GetSamplePart() {
     return ui_->line_edit_sample_part->text().toDouble();
 }
 
-void Testing::SetProcessTermination() {
-    StopTesting();
+void Testing::Terminate() {
+    SwitchState(TestingState::AWAITING);
+    process_timer_.stop();
 }
 
 void Testing::SetUpLayout() {
@@ -101,15 +102,20 @@ void Testing::OpenDatasetFile() {
 }
 
 void Testing::StartTesting() {
-    SetTestingProgress(0);
-    ClearFields();
-    SwitchState(TestingState::RUNNING);
-    process_timer_.start();
-    delete time_;
-    time_ = new QTime(0,0,0);
-    SetTimerField();
-    process_timer_.start(1000);
-    emit Run();
+    bool is_empty_file_path = ui_->label_testing_file_path->text().isEmpty();
+    if (is_empty_file_path) {
+        emit SentMessageSignal("No file path to testing dataset");
+    } else {
+        SetTestingProgress(0);
+        ClearFields();
+        SwitchState(TestingState::RUNNING);
+        process_timer_.start();
+        delete time_;
+        time_ = new QTime(0,0,0);
+        SetTimerField();
+        process_timer_.start(1000);
+        emit RunSignal();
+    }
 }
 
 void Testing::StopTesting() {
@@ -119,7 +125,7 @@ void Testing::StopTesting() {
     if (dialog.result() == QDialog::DialogCode::Accepted) {
         SwitchState(TestingState::AWAITING);
         process_timer_.stop();
-        emit Terminate();
+        emit TerminateSignal();
     }
 }
 

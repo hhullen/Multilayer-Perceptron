@@ -28,6 +28,8 @@ class MLPModel {
   void UpdateTrainingState(size_t *current_epoch, vector<double> **avg_accuracy,
                            size_t *training_progress, size_t *testing_progress,
                            bool *is_running);
+  void RunTesting(string test_dataset, double coeff);
+  void UpdateTestingState(size_t *testing_progress, bool *is_running);
   void TerminateProcess();
 
  private:

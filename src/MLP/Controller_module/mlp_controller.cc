@@ -41,6 +41,15 @@ void MLPController::UpdateTrainingState(size_t *current_epoch,
                               testing_progress, is_running);
 }
 
+void MLPController::RunTesting(string test_dataset, double coeff) {
+  model_->RunTesting(test_dataset, coeff);
+}
+
+void MLPController::UpdateTestingState(size_t *testing_progress,
+                                       bool *is_running) {
+  model_->UpdateTestingState(testing_progress, is_running);
+}
+
 void MLPController::TerminateProcess() { model_->TerminateProcess(); }
 
 }  // namespace s21

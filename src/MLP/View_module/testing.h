@@ -32,12 +32,13 @@ public:
     void SetAVGAccuracy(double value);
     QString GetTestingFilePath();
     double GetSamplePart();
-    void SetProcessTermination();
+    void Terminate();
 
 signals:
     void BackSignal();
-    void Run();
-    void Terminate();
+    void RunSignal();
+    void TerminateSignal();
+    void SentMessageSignal(QString message);
 
 private:
     Ui::Testing *ui_;

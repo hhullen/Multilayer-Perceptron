@@ -100,6 +100,26 @@ void MLPModel::UpdateTrainingState(size_t *current_epoch,
   }
 }
 
+void MLPModel::RunTesting(string test_dataset, double coeff) {
+  if (!matrix_mlp_->IsRunning() && implementation_ == Implementation::MATRIX) {
+    delete_thread();
+    run_thread_ =
+        new thread(&Perceptron::Test, matrix_mlp_, test_dataset, coeff);
+    run_thread_->detach();
+  } else if (implementation_ == Implementation::GRAPH /*&& not running!!!*/) {
+    std::cout << "graph implementation testing thread\n";
+  }
+}
+
+void MLPModel::UpdateTestingState(size_t *testing_progress, bool *is_running) {
+  if (implementation_ == Implementation::MATRIX) {
+    *testing_progress = matrix_mlp_->get_testing_progress();
+    *is_running = matrix_mlp_->IsRunning();
+  } else if (implementation_ == Implementation::GRAPH) {
+    std::cout << "graph implementation updating testing state\n";
+  }
+}
+
 void MLPModel::TerminateProcess() {
   if (implementation_ == Implementation::MATRIX) {
     matrix_mlp_->Terminate();

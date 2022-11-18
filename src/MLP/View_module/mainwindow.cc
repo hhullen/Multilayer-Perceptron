@@ -163,6 +163,34 @@ void MainWindow::TerminateProcess() {
     option_widget_->Lock(false);
 }
 
+void MainWindow::RunTesting() {
+    QString dataset_path = testing_widget_->GetTestingFilePath();
+    double coeff = testing_widget_->GetSamplePart();
+
+    controller_->RunTesting(dataset_path.toStdString(), coeff);
+    menu_widget_->LockClassifier(true);
+    menu_widget_->LockTraining(true);
+    option_widget_->Lock(true);
+    testing_update_.start(100);
+}
+
+void MainWindow::UpdateTestingState() {
+    size_t testing_progress = 0;
+    bool is_running = true;
+
+    controller_->UpdateTestingState(&testing_progress, &is_running);
+    testing_widget_->SetTestingProgress(testing_progress);
+
+    if (!is_running) {
+        testing_update_.stop();
+        testing_widget_->Terminate();
+        testing_widget_->SetTestingProgress(100);
+        menu_widget_->LockTraining(false);
+        menu_widget_->LockClassifier(false);
+        option_widget_->Lock(false);
+    }
+}
+
 void MainWindow::SetupConnections() {
     connect(menu_widget_->GetMenuItemsGroup(), &QButtonGroup::buttonClicked, this, &MainWindow::SetMode);
     connect(classifier_widget_, &Classifier::ReadySignal, this, &MainWindow::ClassifyLetter);
@@ -181,6 +209,9 @@ void MainWindow::SetupConnections() {
     connect(training_widget_, &Training::UpdateLearningRateSignal, this, &MainWindow::UpdateLearningRate);
     connect(training_widget_, &Training::TerminateSignal, this, &MainWindow::TerminateProcess);
     connect(&training_update_, &QTimer::timeout, this, &MainWindow::UpdateTrainingState);
+    connect(testing_widget_, &Testing::SentMessageSignal, this, &MainWindow::ShowMessage);
+    connect(testing_widget_, &Testing::RunSignal, this, &MainWindow::RunTesting);
+    connect(&testing_update_, &QTimer::timeout, this, &MainWindow::UpdateTestingState);
 }
 
 }  // namespace s21

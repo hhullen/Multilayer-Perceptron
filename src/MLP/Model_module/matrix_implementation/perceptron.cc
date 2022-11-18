@@ -217,13 +217,13 @@ bool Perceptron::Train(const string &learn_dataset_path,
   }
 
   learning_strings_ = learning_dataset_lines_ * test_sample_coeff;
-  std::cout << "TESTING: " << learning_strings_ << " " << returnable << "\n";
+  // std::cout << "TESTING: " << learning_strings_ << " " << returnable << "\n";
   if (returnable) {
     avg_accuracy_.clear();
     for (current_epoch_ = 1;
          !terminated_ && returnable && current_epoch_ <= epochs_;
          ++current_epoch_) {
-      std::cout << "EPOCH: " << current_epoch_ << "\n";
+      // std::cout << "EPOCH: " << current_epoch_ << "\n";
       DatasetLearning(0, 0);
       returnable = Test(testing_dataset_path_, 1);
     }
@@ -237,7 +237,7 @@ bool Perceptron::Train(const string &learn_dataset_path,
 
 bool Perceptron::CalculateFile(string &dataset_path, size_t *dataset_lines) {
   ifstream file(dataset_path);
-  std::cout << dataset_path << "\n";
+  // std::cout << dataset_path << "\n";
   bool returnable = false;
   string line;
 
@@ -250,7 +250,7 @@ bool Perceptron::CalculateFile(string &dataset_path, size_t *dataset_lines) {
     file.close();
     returnable = true;
   }
-  std::cout << "LINES: " << *dataset_lines << "\n";
+  // std::cout << "LINES: " << *dataset_lines << "\n";
 
   return returnable;
 }
@@ -276,10 +276,10 @@ void Perceptron::DatasetLearning(size_t test_chunk_begin,
           TrackProgress(iterator + 1, learning_dataset_lines_);
       ++iterator;
 
-      if (tmp != learning_progress_percent_) {
-        printf("Learning progress: %ld\n", learning_progress_percent_);
-      }
-      tmp = learning_progress_percent_;
+      // if (tmp != learning_progress_percent_) {
+      //   printf("Learning progress: %ld\n", learning_progress_percent_);
+      // }
+      // tmp = learning_progress_percent_;
     }
     learning_progress_percent_ =
         TrackProgress(iterator + 1, learning_dataset_lines_);
@@ -397,7 +397,7 @@ void Perceptron::CalculateGradient(const Matrix &neurons_l,
 
 void Perceptron::Terminate() {
   terminated_ = true;
-  std::cout << "\n\nTERMINATED\n";
+  // std::cout << "\n\nTERMINATED\n";
 }
 
 bool Perceptron::Test(const string &dataset_path, double test_sample_coeff) {
@@ -448,10 +448,10 @@ void Perceptron::RunTesting(ifstream &file, size_t test_chunk_begin,
         TrackProgress(iterator + 1, testing_dataset_lines_);
     ++iterator;
 
-    // if (tmp != testing_progress_percent_) {
-    //   printf("Testing progress: %ld\n", tmp);
-    // }
-    // tmp = testing_progress_percent_;
+    if (tmp != testing_progress_percent_) {
+      printf("Testing progress: %ld\n", tmp);
+    }
+    tmp = testing_progress_percent_;
   }
   testing_progress_percent_ =
       TrackProgress(iterator + 1, testing_dataset_lines_);
@@ -471,16 +471,16 @@ void Perceptron::UpdateMetrics(size_t &right_answers,
 
 void Perceptron::FinishMetrics(size_t &right_answers,
                                map<size_t, size_t> &letters) {
-  std::cout << "PRECISION\tRECALL\t\tF-MEASURE\tAVG-ACC\t\tANSS\n";
+  // std::cout << "PRECISION\tRECALL\t\tF-MEASURE\tAVG-ACC\t\tANSS\n";
 
   for (size_t i = 0; i < precision_.size(); ++i) {
     precision_[i] /= (double)right_answers;
     recall_[i] /= (double)letters[i];
     f_measure_[i] = FMeasure(precision_[i], recall_[i]);
 
-    printf("%.3lf\t\t%.3lf\t\t%.3lf\t\t%.3lf\t\t%ld\n", precision_[i] * 100,
-           recall_[i] * 100, f_measure_[i] * 100, avg_accuracy_.back() * 100,
-           right_answers);
+    // printf("%.3lf\t\t%.3lf\t\t%.3lf\t\t%.3lf\t\t%ld\n", precision_[i] * 100,
+    //        recall_[i] * 100, f_measure_[i] * 100, avg_accuracy_.back() * 100,
+    //        right_answers);
   }
 }
 

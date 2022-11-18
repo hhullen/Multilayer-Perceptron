@@ -455,8 +455,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="View_module/testing.ui" line="402"/>
-        <source>   0..1</source>
-        <oldsource>0..1 range</oldsource>
+        <source>  0.1..1</source>
+        <oldsource>   0..1</oldsource>
         <translation type="unfinished"></translation>
     </message>
 </context>

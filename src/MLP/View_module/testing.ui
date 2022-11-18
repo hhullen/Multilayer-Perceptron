@@ -399,7 +399,7 @@ QPushButton:pressed {
 }</string>
    </property>
    <property name="text">
-    <string>   0..1</string>
+    <string>  0.1..1</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1203,7 +1203,7 @@ QDoubleSpinBox:disabled {
     <enum>QAbstractSpinBox::NoButtons</enum>
    </property>
    <property name="minimum">
-    <double>0.010000000000000</double>
+    <double>0.100000000000000</double>
    </property>
    <property name="maximum">
     <double>1.000000000000000</double>
