@@ -23,14 +23,14 @@ bool MLPModel::CreatePerceptron(Implementation type, size_t layers,
 char MLPModel::Classify(vector<double> *pixels, double *confidence) {
   char returnable;
 
-  if (implementation_ == Implementation::MATRIX) {
+  if (!matrix_mlp_->IsRunning() && implementation_ == Implementation::MATRIX) {
     Matrix input(pixels->size(), 1);
     CopyData(*pixels, input);
     matrix_mlp_->set_input_neurons(input);
     matrix_mlp_->Run();
     returnable = matrix_mlp_->get_recognized_letter();
     *confidence = matrix_mlp_->get_answer_confidence();
-  } else if (implementation_ == Implementation::GRAPH) {
+  } else if (implementation_ == Implementation::GRAPH /*&& not running!!!*/) {
     std::cout << "graph implementation classify\n";
   }
 
@@ -51,15 +51,60 @@ bool MLPModel::SaveWeights(string save_path) {
 
 void MLPModel::RunTraining(string train_dataset, string test_dataset,
                            size_t epochs_or_groups, double learning_rate) {
-  if (implementation_ == Implementation::MATRIX, !matrix_mlp_->IsRunning()) {
+  if (!matrix_mlp_->IsRunning() && implementation_ == Implementation::MATRIX) {
     delete_thread();
     matrix_mlp_->set_epochs_amount(epochs_or_groups);
     matrix_mlp_->set_learning_rate(learning_rate);
     run_thread_ = new thread(&Perceptron::Train, matrix_mlp_, train_dataset,
                              test_dataset, 1);
     run_thread_->detach();
-  } else if (implementation_ == Implementation::GRAPH) {  // && not running!!!
+  } else if (implementation_ == Implementation::GRAPH /*&& not running!!!*/) {
     std::cout << "graph implementation training thread\n";
+  }
+}
+
+void MLPModel::RunCrossValidation(string dataset_path, size_t groups,
+                                  double learning_rate) {
+  if (!matrix_mlp_->IsRunning() && implementation_ == Implementation::MATRIX) {
+    delete_thread();
+    matrix_mlp_->set_learning_rate(learning_rate);
+    run_thread_ = new thread(&Perceptron::CrossValidation, matrix_mlp_,
+                             dataset_path, groups);
+    run_thread_->detach();
+  } else if (implementation_ == Implementation::GRAPH /*&& not running!!!*/) {
+    std::cout << "graph implementation cross validation thread\n";
+  }
+}
+
+void MLPModel::UpdateLearningRate(double learning_rate) {
+  if (implementation_ == Implementation::MATRIX) {
+    matrix_mlp_->set_learning_rate(learning_rate);
+    std::cout << learning_rate << "\n";
+  } else if (implementation_ == Implementation::GRAPH) {
+    std::cout << "graph implementation updating learning rate\n";
+  }
+}
+
+void MLPModel::UpdateTrainingState(size_t *current_epoch,
+                                   vector<double> **avg_accuracy,
+                                   size_t *training_progress,
+                                   size_t *testing_progress, bool *is_running) {
+  if (implementation_ == Implementation::MATRIX) {
+    *current_epoch = matrix_mlp_->get_current_epoch();
+    *avg_accuracy = matrix_mlp_->get_avg_accuracy();
+    *training_progress = matrix_mlp_->get_training_progress();
+    *testing_progress = matrix_mlp_->get_testing_progress();
+    *is_running = matrix_mlp_->IsRunning();
+  } else if (implementation_ == Implementation::GRAPH) {
+    std::cout << "graph implementation updating training state\n";
+  }
+}
+
+void MLPModel::TerminateProcess() {
+  if (implementation_ == Implementation::MATRIX) {
+    matrix_mlp_->Terminate();
+  } else if (implementation_ == Implementation::GRAPH) {
+    std::cout << "graph implementation proccess termination\n";
   }
 }
 
@@ -91,7 +136,7 @@ void MLPModel::CopyData(vector<double> &pixels, Matrix &input) {
 }
 
 void MLPModel::delete_thread() {
-  if (run_thread_ && !matrix_mlp_->IsRunning()) {  // && not running!!!
+  if (run_thread_) {
     delete run_thread_;
   }
 }

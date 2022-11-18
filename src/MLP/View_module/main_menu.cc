@@ -24,4 +24,10 @@ void MainMenu::LockClassifier(bool state) {
     ui_->btn_classifying->setDisabled(state);
 }
 
+void MainMenu::LockAll(bool state) {
+    LockTraining(state);
+    LockTesting(state);
+    LockClassifier(state);
+}
+
 }  // namespace s21

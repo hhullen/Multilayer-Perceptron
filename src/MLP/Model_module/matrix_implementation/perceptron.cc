@@ -157,26 +157,6 @@ int Perceptron::GetNeuronsToHiddenLayer(int layers_amount, int layer_number) {
   return returnable;
 }
 
-bool Perceptron::set_input_neurons(Matrix &matrix) {
-  Matrix &input = *input_layer_->get_neurons();
-  bool returnable = true;
-
-  if (matrix.get_cols() != input.get_cols() ||
-      matrix.get_rows() != input.get_rows()) {
-    returnable = false;
-  } else {
-    input = matrix;
-  }
-
-  return returnable;
-}
-
-Matrix *Perceptron::get_output_neurons() {
-  return output_layer_->get_neurons();
-}
-
-void Perceptron::set_epochs_amount(size_t epochs) { epochs_ = epochs; }
-
 void Perceptron::Run() {
   terminated_ = false;
 
@@ -188,18 +168,6 @@ void Perceptron::Run() {
     *(*layers_)[i]->get_neurons() = layer_out;
   }
   output_sym_ = GetAnswer();
-
-  if (output_sym_ == expected_sym_) {
-    // std::cout << "\tright\n";
-    ++in_a_row;
-  } else {
-    // std::cout << "\tnot\n";
-    in_a_row = 0;
-  }
-
-  // if (in_a_row > 400) {
-  //   Terminate();
-  // }
 }
 
 void Perceptron::Activate(Matrix &matrix) {
@@ -238,6 +206,7 @@ bool Perceptron::Train(const string &learn_dataset_path,
                        double test_sample_coeff) {
   bool returnable = false;
 
+  under_training_ = true;
   running_ = true;
   terminated_ = false;
   learning_dataset_path_ = learn_dataset_path;
@@ -251,15 +220,17 @@ bool Perceptron::Train(const string &learn_dataset_path,
   std::cout << "TESTING: " << learning_strings_ << " " << returnable << "\n";
   if (returnable) {
     avg_accuracy_.clear();
-    for (size_t i = 0; !terminated_ && returnable && i < epochs_; ++i) {
-      std::cout << "EPOCH: " << i << "\n";
+    for (current_epoch_ = 1;
+         !terminated_ && returnable && current_epoch_ <= epochs_;
+         ++current_epoch_) {
+      std::cout << "EPOCH: " << current_epoch_ << "\n";
       DatasetLearning(0, 0);
       returnable = Test(testing_dataset_path_, 1);
-      // SaveConfig("cfg_42_5_60_0.01.bin");
     }
-    std::cout << "IN A ROW IS: " << in_a_row << "\n";
+    --current_epoch_;
   }
 
+  under_training_ = false;
   running_ = false;
   return returnable;
 }
@@ -448,7 +419,9 @@ bool Perceptron::Test(const string &dataset_path, double test_sample_coeff) {
   }
   testing_progress_percent_ = 0;
 
-  running_ = false;
+  if (!under_training_) {
+    running_ = false;
+  }
   return returnable;
 }
 
@@ -519,6 +492,7 @@ bool Perceptron::CrossValidation(const string &learn_dataset_path,
                                  size_t groups) {
   bool returnable = false;
 
+  running_ = true;
   terminated_ = false;
   learning_dataset_path_ = learn_dataset_path;
   returnable = CalculateFile(learning_dataset_path_, &learning_dataset_lines_);
@@ -532,6 +506,7 @@ bool Perceptron::CrossValidation(const string &learn_dataset_path,
     RunCrossValidating(groups);
   }
 
+  running_ = false;
   return returnable;
 }
 
@@ -544,6 +519,7 @@ void Perceptron::RunCrossValidating(size_t groups) {
   testing_strings_ = cross_testing_shift;
   cross_testing_end_ = cross_testing_shift;
   avg_accuracy_.clear();
+  current_epoch_ = 1;
   while (cross_testing_end_ < learning_strings_) {
     printf("TEST CHUNK: %ld - %ld\n", cross_testing_begin_, cross_testing_end_);
     DatasetLearning(cross_testing_begin_, cross_testing_end_);
@@ -554,13 +530,37 @@ void Perceptron::RunCrossValidating(size_t groups) {
     }
     cross_testing_begin_ += cross_testing_shift;
     cross_testing_end_ += cross_testing_shift;
+    ++current_epoch_;
   }
-  file.close();
+  --current_epoch_;
+  if (file.is_open()) {
+    file.close();
+  }
 }
 
 bool Perceptron::IsRunning() { return running_; }
 
-size_t Perceptron::get_learning_progress() {
+bool Perceptron::set_input_neurons(Matrix &matrix) {
+  Matrix &input = *input_layer_->get_neurons();
+  bool returnable = true;
+
+  if (matrix.get_cols() != input.get_cols() ||
+      matrix.get_rows() != input.get_rows()) {
+    returnable = false;
+  } else {
+    input = matrix;
+  }
+
+  return returnable;
+}
+
+void Perceptron::set_epochs_amount(size_t epochs) { epochs_ = epochs; }
+
+Matrix *Perceptron::get_output_neurons() {
+  return output_layer_->get_neurons();
+}
+
+size_t Perceptron::get_training_progress() {
   return learning_progress_percent_;
 }
 
@@ -571,5 +571,9 @@ char Perceptron::get_recognized_letter() { return output_sym_; }
 double Perceptron::get_answer_confidence() { return answer_confidence_; }
 
 void Perceptron::set_learning_rate(double value) { learning_rate_ = value; }
+
+size_t Perceptron::get_current_epoch() { return current_epoch_; }
+
+vector<double> *Perceptron::get_avg_accuracy() { return &avg_accuracy_; }
 
 }  // namespace s21

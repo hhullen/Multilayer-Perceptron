@@ -5,7 +5,7 @@ namespace s21 {
 
 Training::Training(QWidget *parent) :
     QWidget(parent),
-    ui_(new Ui::Training) {
+    ui_(new Ui::Training), graph_data_size_(1) {
     ui_->setupUi(this);
     ui_->format_info->setVisible(false);
     ui_->btn_training_terminate->setVisible(false);
@@ -72,8 +72,17 @@ void Training::SetCurrentGroup(size_t value) {
     ui_->label_current_epoch_or_group_value->setText(QString::number(value));
 }
 
-void Training::SetProcessTermination() {
-    Stop();
+void Training::SetTrainingProgress(size_t value) {
+    training_progress_->SetProgressValue(value);
+}
+
+void Training::SetTestingProgress(size_t value) {
+    testing_progress_->SetProgressValue(value);
+}
+
+void Training::Terminate() {
+    SwitchState(TrainingState::AWAITING);
+    process_timer_.stop();
 }
 
 void Training::ManageHint() {
@@ -106,8 +115,8 @@ void Training::ChangeTrainingMode(int index) {
         ui_->label_rightclassified->setText("Cerrunt epoch:");
         ui_->btn_open_testing_file->setDisabled(false);
     } else if (index == (int)TrainingMode::CROSSVALID) {
-        ui_->label_groups_or_epochs->setText("Cross validation groups: ");
-        ui_->label_rightclassified->setText("Cerrunt group:");
+        ui_->label_groups_or_epochs->setText("Groups: ");
+        ui_->label_rightclassified->setText("Current group:");
         ui_->btn_open_testing_file->setDisabled(true);
     }
     current_mode_ = (TrainingMode)index;
@@ -117,20 +126,21 @@ void Training::Start() {
     TrainingMode mode = GetMode();
     bool is_train_dataset = GetTrainingFilePath().isEmpty();
     bool is_test_dataset = GetTestingFilePath().isEmpty();
-    if (mode == TrainingMode::STANDART && is_train_dataset && is_test_dataset) {
-        emit SentMessage("No file path to training and testing datasets");
+    if (mode == TrainingMode::STANDART && (is_train_dataset || is_test_dataset)) {
+        emit SentMessageSignal("No file path to training and testing datasets");
     } else if (mode == TrainingMode::CROSSVALID && is_train_dataset) {
-        emit SentMessage("No file path to training dataset");
+        emit SentMessageSignal("No file path to training dataset");
     }else {
         errors_graph_->Clear();
-        errors_graph_->SetRangeY(0, 1);
+        graph_data_size_ = 1;
+        errors_graph_->SetRangeY(0, 1.2);
         SetCurrentEpoch(0);
         testing_progress_->SetProgressValue(0);
         training_progress_->SetProgressValue(0);
         delete time_;
         time_ = new QTime(0, 0, 0);
         SetTimerField();
-        emit Run();
+        emit RunSignal();
         SwitchState(TrainingState::RUNNING);
         process_timer_.start(1000);
     }
@@ -141,9 +151,8 @@ void Training::Stop() {
     dialog.exec();
 
     if (dialog.result() == QDialog::DialogCode::Accepted) {
-        emit Terminate();
-        SwitchState(TrainingState::AWAITING);
-        process_timer_.stop();
+        emit TerminateSignal();
+        Terminate();
     }
 }
 
@@ -175,7 +184,7 @@ void Training::SetTimerField() {
 
 void Training::SetUpLayout() {
     progress_layout_ = new QVBoxLayout();
-    progress_layout_->setAlignment(Qt::AlignTop);
+    progress_layout_->setAlignment(Qt::AlignBottom);
     progress_layout_->setSpacing(2);
     progress_layout_->setContentsMargins(0,0,0,0);
 
@@ -204,7 +213,16 @@ void Training::ChooseSavingDir() {
 void Training::MakeFileName() {
     QDateTime date_time;
       saving_path_.append("/MLPerceptron_" +
-                   date_time.currentDateTime().toString("yyyy_MM_dd_hh_mm_ss") + ".wcfg");
+                          date_time.currentDateTime().toString("yyyy_MM_dd_hh_mm_ss") + ".wcfg");
+}
+
+void Training::UpdateGraphData(std::vector<double> &data) {
+    for (; graph_data_size_ <= data.size(); ++graph_data_size_) {
+        if (graph_data_size_ == 1) {
+            errors_graph_->AddPoint(0, 1 - data[graph_data_size_ - 1]);
+        }
+        errors_graph_->AddPoint(graph_data_size_, 1 - data[graph_data_size_ - 1]);
+    }
 }
 
 void Training::SetupConnections() {
@@ -218,6 +236,7 @@ void Training::SetupConnections() {
     connect(&process_timer_, &QTimer::timeout, this, &Training::IncreaseTimer);
     connect(ui_->spin_box_groups_or_epochs, &QSpinBox::valueChanged, this, &Training::SetGraphRangeH);
     connect(ui_->btn_save_weights, &QPushButton::clicked, this, &Training::ChooseSavingDir);
+    connect(ui_->spin_box_learning_rate, &QDoubleSpinBox::valueChanged, this, &Training::UpdateLearningRateSignal);
 }
 
 }

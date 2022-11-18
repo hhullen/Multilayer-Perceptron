@@ -52,17 +52,20 @@ class Perceptron {
   bool set_input_neurons(Matrix &matrix);
   void set_epochs_amount(size_t epochs);
   void set_learning_rate(double value);
-  size_t get_learning_progress();
+  size_t get_training_progress();
   size_t get_testing_progress();
   Matrix *get_output_neurons();
   char get_recognized_letter();
   double get_answer_confidence();
+  size_t get_current_epoch();
+  vector<double> *get_avg_accuracy();
 
  private:
   vector<PerceptronLayer *> *layers_;
   PerceptronLayer *output_layer_;
   PerceptronLayer *input_layer_;
   bool running_;
+  bool under_training_;
 
   bool terminated_;
   size_t learning_progress_percent_;
@@ -75,8 +78,7 @@ class Perceptron {
   char output_sym_;
   double answer_confidence_;
   size_t epochs_;
-
-  size_t in_a_row = 0;  // TEMP!!!
+  size_t current_epoch_;
 
   size_t testing_progress_percent_;
   size_t testing_dataset_lines_;

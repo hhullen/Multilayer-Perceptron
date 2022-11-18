@@ -15,6 +15,13 @@ class MLPController {
   bool SaveWeights(string save_path);
   void RunTraining(string train_dataset, string test_dataset,
                    size_t epochs_or_groups, double learning_rate);
+  void RunCrossValidation(string dataset_path, size_t groups,
+                          double learning_rate);
+  void UpdateLearningRate(double learning_rate);
+  void UpdateTrainingState(size_t *current_epoch, vector<double> **avg_accuracy,
+                           size_t *training_progress, size_t *testing_progress,
+                           bool *is_running);
+  void TerminateProcess();
 
  private:
   MLPModel *model_;

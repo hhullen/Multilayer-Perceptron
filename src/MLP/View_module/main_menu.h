@@ -22,6 +22,7 @@ public:
     void LockTraining(bool state);
     void LockTesting(bool state);
     void LockClassifier(bool state);
+    void LockAll(bool state);
 
 private:
     Ui::MainMenu *ui_;

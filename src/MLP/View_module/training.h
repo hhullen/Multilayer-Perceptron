@@ -11,6 +11,9 @@
 #include "progressbar.h"
 #include "graph.h"
 #include "confirmationdialog.h"
+#include <vector>
+
+using std::vector;
 
 namespace Ui {
 class Training;
@@ -37,16 +40,18 @@ public:
     double GetLearningRate();
     void SetCurrentEpoch(size_t value);
     void SetCurrentGroup(size_t value);
-    void SetProcessTermination();
     void SetTrainingProgress(size_t value);
     void SetTestingProgress(size_t value);
+    void Terminate();
+    void UpdateGraphData(vector<double> &data);
 
 signals:
     void SaveWeightsSignal();
     void BackSignal();
-    void Terminate();
-    void Run();
-    void SentMessage(QString message);
+    void TerminateSignal();
+    void RunSignal();
+    void SentMessageSignal(QString message);
+    void UpdateLearningRateSignal(double value);
 
 private:
     Ui::Training *ui_;
@@ -59,6 +64,7 @@ private:
     ProgressBar *training_progress_;
     Graph *errors_graph_;
     QString saving_path_;
+    size_t graph_data_size_;
 
     void ManageHint();
     void OpenTrainingFile();

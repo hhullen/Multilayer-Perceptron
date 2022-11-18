@@ -37,7 +37,7 @@ void Graph::SetRangeX(size_t from, size_t to) {
     Update();
 }
 
-void Graph::SetRangeY(size_t from, size_t to) {
+void Graph::SetRangeY(double from, double to) {
     SetupNewAxisY();
     max_y_ = to;
     min_y_ = from;
@@ -54,12 +54,12 @@ void Graph::SetXGridInterval(double value) {
 void Graph::AddPoint(double x, double y) {
     if (y > max_y_) {
         max_y_ = y + 1;
+        SetRangeY(min_y_, max_y_);
     } else if (y < min_y_) {
         min_y_ = y - 1;
+        SetRangeY(min_y_, max_y_);
     }
-    SetRangeY(min_y_, max_y_);
     series_->append(QPointF(x, y));
-    Update();
 }
 
 void Graph::Clear() {

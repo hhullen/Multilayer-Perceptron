@@ -46,7 +46,9 @@ void Option::ClearConfigPath() {
 
 void Option::Lock(bool state) {
     is_locked_ = state;
-    ui_->btn_open_config->setDisabled(state);
+    if (ui_->combo_box_weights_type->currentIndex() == (int)WeightsMode::FILE) {
+        ui_->btn_open_config->setDisabled(state);
+    }
     ui_->combo_box_layers->setDisabled(state);
     ui_->combo_box_realization->setDisabled(state);
     ui_->combo_box_weights_type->setDisabled(state);

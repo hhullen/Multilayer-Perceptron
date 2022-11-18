@@ -95,8 +95,10 @@ void MainWindow::SetupConfiguration() {
     is_successfuly = controller_->Create(type, layers, file_path.toStdString(), wcfg_mode);
     if (!is_successfuly) {
         ShowMessage("Failed to setup configuration");
+        menu_widget_->LockAll(true);
     } else {
         ShowMessage("Successfully configurated");
+        menu_widget_->LockAll(false);
     }
 }
 
@@ -105,7 +107,7 @@ void MainWindow::SaveWeights() {
     controller_->SaveWeights(save_path.toStdString());
 }
 
-void MainWindow::RunTeraining() {
+void MainWindow::RunTraining() {
     TrainingMode mode = training_widget_->GetMode();
     QString train_dataset = training_widget_->GetTrainingFilePath();
     QString test_dataset = training_widget_->GetTestingFilePath();
@@ -116,10 +118,49 @@ void MainWindow::RunTeraining() {
         controller_->RunTraining(train_dataset.toStdString(), test_dataset.toStdString(), epochs, learning_rate);
     } else if (mode == TrainingMode::CROSSVALID) {
         size_t groups = training_widget_->GetGroups();
+        controller_->RunCrossValidation(train_dataset.toStdString(), groups, learning_rate);
     }
     menu_widget_->LockTesting(true);
     menu_widget_->LockClassifier(true);
     option_widget_->Lock(true);
+    training_update_.start(100);
+}
+
+void MainWindow::UpdateLearningRate(double value) {
+    controller_->UpdateLearningRate(value);
+}
+
+void MainWindow::UpdateTrainingState() {
+    size_t current_epoch = 0;
+    vector<double> *avg_accuracy = nullptr;
+    size_t training_progress = 0;
+    size_t testing_progress = 0;
+    bool is_running = true;
+
+    controller_->UpdateTrainingState(&current_epoch, &avg_accuracy, &training_progress, &testing_progress, &is_running);
+    training_widget_->SetCurrentEpoch(current_epoch);
+    training_widget_->SetTrainingProgress(training_progress);
+    training_widget_->SetTestingProgress(testing_progress);
+    if (avg_accuracy) {
+        training_widget_->UpdateGraphData(*avg_accuracy);
+    }
+    if (!is_running) {
+        training_update_.stop();
+        training_widget_->Terminate();
+        training_widget_->SetTrainingProgress(100);
+        training_widget_->SetTestingProgress(100);
+        menu_widget_->LockTesting(false);
+        menu_widget_->LockClassifier(false);
+        option_widget_->Lock(false);
+    }
+}
+
+void MainWindow::TerminateProcess() {
+    controller_->TerminateProcess();
+    training_update_.stop();
+    menu_widget_->LockTesting(false);
+    menu_widget_->LockClassifier(false);
+    option_widget_->Lock(false);
 }
 
 void MainWindow::SetupConnections() {
@@ -135,8 +176,11 @@ void MainWindow::SetupConnections() {
     connect(classifier_widget_, &Classifier::SentMessage, this, &MainWindow::ShowMessage);
     connect(option_widget_, &Option::ConfigChosen, this, &MainWindow::SetupConfiguration);
     connect(training_widget_, &Training::SaveWeightsSignal, this, &MainWindow::SaveWeights);
-    connect(training_widget_, &Training::SentMessage, this, &MainWindow::ShowMessage);
-    connect(training_widget_, &Training::Run, this, &MainWindow::RunTeraining);
+    connect(training_widget_, &Training::SentMessageSignal, this, &MainWindow::ShowMessage);
+    connect(training_widget_, &Training::RunSignal, this, &MainWindow::RunTraining);
+    connect(training_widget_, &Training::UpdateLearningRateSignal, this, &MainWindow::UpdateLearningRate);
+    connect(training_widget_, &Training::TerminateSignal, this, &MainWindow::TerminateProcess);
+    connect(&training_update_, &QTimer::timeout, this, &MainWindow::UpdateTrainingState);
 }
 
 }  // namespace s21

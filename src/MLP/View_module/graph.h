@@ -23,7 +23,7 @@ public:
     explicit Graph(QWidget *parent = nullptr);
     ~Graph();
     void SetRangeX(size_t from, size_t to);
-    void SetRangeY(size_t from, size_t to);
+    void SetRangeY(double from, double to);
     void SetXGridInterval(double value);
     void AddPoint(double x, double y);
     void Clear();
