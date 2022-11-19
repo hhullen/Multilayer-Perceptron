@@ -37,3 +37,5 @@ Testing: Here, the trained weights, could be tested on dataset with addition inf
 To install the application the "make install" command execution is required in "src" folder. The application to launch will be located in "build" folder of the project root.  
 
 Uninstallation is done through execution "make uninstall" command. Thus, the executable file will be deleted from "build" folder.
+
+Project made predominantly for MacOS, also, probably can be build  for Linux without any serious trouble.
