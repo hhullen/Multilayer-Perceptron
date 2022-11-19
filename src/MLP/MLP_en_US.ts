@@ -77,27 +77,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/confirmationdialog.ui" line="98"/>
+        <location filename="View_module/confirmationdialog.ui" line="106"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/confirmationdialog.ui" line="101"/>
+        <location filename="View_module/confirmationdialog.ui" line="109"/>
         <source>Esc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/confirmationdialog.ui" line="165"/>
+        <location filename="View_module/confirmationdialog.ui" line="173"/>
         <source>Terminate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/confirmationdialog.ui" line="168"/>
+        <location filename="View_module/confirmationdialog.ui" line="176"/>
         <source>Return</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="View_module/confirmationdialog.ui" line="207"/>
+        <location filename="View_module/confirmationdialog.ui" line="215"/>
         <source>Terminate training process?</source>
         <translation type="unfinished"></translation>
     </message>

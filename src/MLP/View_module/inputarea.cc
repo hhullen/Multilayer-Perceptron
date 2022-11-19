@@ -24,7 +24,7 @@ void InputArea::mousePressEvent(QGraphicsSceneMouseEvent *event) {
     prev_point_ = event->scenePos();
     lmb_ = true;
   } else if (event->button() == Qt::RightButton) {
-      Clear();
+    Clear();
   }
 }
 
@@ -36,11 +36,11 @@ void InputArea::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 void InputArea::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
-    if (lmb_) {
-        line_.setPoints(prev_point_, event->scenePos());
-        prev_point_ = event->scenePos();
-        addLine(line_, *pen_);
-    }
+  if (lmb_) {
+    line_.setPoints(prev_point_, event->scenePos());
+    prev_point_ = event->scenePos();
+    addLine(line_, *pen_);
+  }
 }
 
 }  // namespace s21

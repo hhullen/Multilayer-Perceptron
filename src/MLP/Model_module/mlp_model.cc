@@ -2,10 +2,14 @@
 
 namespace s21 {
 
-MLPModel::MLPModel() : matrix_mlp_(nullptr), run_thread_(nullptr) {}
+MLPModel::MLPModel()
+    : matrix_mlp_(nullptr),
+      run_thread_(nullptr),
+      implementation_(Implementation::MATRIX),
+      wcfg_mode_(WCFGMode::RANDOM) {}
 
 bool MLPModel::CreatePerceptron(Implementation type, size_t layers,
-                                string wcfg_path, WCFGMode wcfg_mode) {
+                                string &wcfg_path, WCFGMode wcfg_mode) {
   bool returnable = false;
 
   implementation_ = type;
@@ -21,7 +25,7 @@ bool MLPModel::CreatePerceptron(Implementation type, size_t layers,
 }
 
 char MLPModel::Classify(vector<double> *pixels, double *confidence) {
-  char returnable;
+  char returnable = 0;
 
   if (!matrix_mlp_->IsRunning() && implementation_ == Implementation::MATRIX) {
     Matrix input(pixels->size(), 1);

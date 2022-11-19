@@ -1,13 +1,13 @@
 #ifndef CLASSIFIER_H
 #define CLASSIFIER_H
 
+#include <QFileDialog>
 #include <QGraphicsView>
+#include <QLabel>
+#include <QPushButton>
 #include <QVBoxLayout>
 #include <QWidget>
 #include <vector>
-#include <QPushButton>
-#include <QFileDialog>
-#include <QLabel>
 
 #include "inputarea.h"
 using std::vector;
@@ -31,14 +31,14 @@ class Classifier : public QWidget {
  public:
   explicit Classifier(QWidget *parent = nullptr);
   ~Classifier();
-    vector<double> *GetPixelsVector();
-    void SetConfidence(double value);
-    void SetAnswerLetter(char sym);
+  vector<double> *GetPixelsVector();
+  void SetConfidence(double value);
+  void SetAnswerLetter(char sym);
 
-signals:
-    void BackSignal();
-    void SentMessage(QString message);
-    void ReadySignal();
+ signals:
+  void BackSignal();
+  void SentMessage(QString message);
+  void ReadySignal();
 
  private:
   Ui::Classifier *ui_;

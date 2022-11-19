@@ -2,15 +2,15 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QVBoxLayout>
-#include <QTimer>
 #include <QSysInfo>
+#include <QTimer>
+#include <QVBoxLayout>
 
 #include "Controller_module/mlp_controller.h"
 #include "Model_module/mlp_model.h"
-#include "option.h"
 #include "classifier.h"
 #include "main_menu.h"
+#include "option.h"
 #include "testing.h"
 #include "training.h"
 using s21::MLPController;
@@ -31,7 +31,7 @@ class MainWindow : public QMainWindow {
   MainWindow(MLPController *controller, QWidget *parent = nullptr);
   ~MainWindow();
 
-private slots:
+ private slots:
   void GetMainMenuSlot();
 
  private:
@@ -59,13 +59,13 @@ private slots:
   void RunTraining();
   void UpdateLearningRate(double value);
   void UpdateTrainingState();
-  void TerminateProcess();
+  void TerminateTraining();
+  void TerminateTesting();
   void RunTesting();
   void UpdateTestingState();
   void UpdateTestingMetrics();
 
   void SetupConnections();
-
 };
 
 }  // namespace s21

@@ -5,10 +5,28 @@
 namespace s21 {
 
 Perceptron::Perceptron(int input_neurons, int hidden_layers, int output_neurons)
-    : learning_rate_(0.01),
-      learning_strings_(0),
-      testing_strings_(0),
+    : layers_(nullptr),
+      output_layer_(nullptr),
+      input_layer_(nullptr),
+      training_progress_percent_(0),
+      training_dataset_lines_(0),
+      training_dataset_path_(""),
+      training_start_(0),
+      training_rate_(0.01),
+      expected_sym_(0),
+      output_sym_(0),
+      current_epoch_(0),
+      answer_confidence_(0),
+      training_strings_(0),
       epochs_(5),
+      testing_progress_percent_(0),
+      testing_dataset_lines_(0),
+      testing_dataset_path_(""),
+      testing_strings_(0),
+      right_answers_(0),
+      all_answers_(0),
+      cross_testing_begin_(0),
+      cross_testing_end_(0),
       terminated_(false),
       running_(false),
       under_training_(false) {
@@ -31,8 +49,16 @@ Perceptron::Perceptron(int input_neurons, int hidden_layers, int output_neurons)
 }
 
 Perceptron::~Perceptron() {
-  delete input_layer_;
-  delete output_layer_;
+  for (int i = 0; i < layers_->size(); ++i) {
+    (*layers_)[i]->~PerceptronLayer();
+    if ((*layers_)[i]) {
+      delete (*layers_)[i];
+      (*layers_)[i] = nullptr;
+    }
+  }
+  layers_->clear();
+  delete layers_;
+  layers_ = nullptr;
 }
 
 void Perceptron::FillWithRandom() {
@@ -54,9 +80,16 @@ void Perceptron::FillMatrixRandom(Matrix &matrix) {
 }
 
 bool Perceptron::SaveConfig(const string &path) {
-  ofstream file(path, ios_base::binary & ios_base::app);
+  ofstream file;
   bool returnable = false;
+  string extended;
 
+  extended = path;
+  extended.append(to_string(input_layer_->get_neurons()->get_rows()) + "_" +
+                  to_string(layers_->size() - 2) + "_" +
+                  to_string(output_layer_->get_neurons()->get_rows()) +
+                  ".wcfg");
+  file.open(extended, ios_base::binary & ios_base::app);
   if (file.is_open()) {
     SaveLayers(file);
     returnable = true;
@@ -153,9 +186,9 @@ void Perceptron::Run() {
   for (size_t i = 1; i < layers_->size(); ++i) {
     Matrix &weights = *(*layers_)[i]->get_weights();
     Matrix &neurons = *(*layers_)[i - 1]->get_neurons();
-    Matrix layer_out(weights * neurons);
-    Activate(layer_out);
-    *(*layers_)[i]->get_neurons() = layer_out;
+    Matrix &new_neurons = *(*layers_)[i]->get_neurons();
+    new_neurons = weights * neurons;
+    Activate(new_neurons);
   }
   output_sym_ = GetAnswer();
 }
@@ -199,16 +232,16 @@ bool Perceptron::Train(const string &learn_dataset_path,
   under_training_ = true;
   running_ = true;
   terminated_ = false;
-  learning_dataset_path_ = learn_dataset_path;
+  avg_accuracy_.clear();
+  training_dataset_path_ = learn_dataset_path;
   testing_dataset_path_ = test_dataset_path;
-  returnable = CalculateFile(learning_dataset_path_, &learning_dataset_lines_);
+  returnable = CalculateFile(training_dataset_path_, &training_dataset_lines_);
   if (test_sample_coeff > 1 || test_sample_coeff < 0) {
     test_sample_coeff = 0;
   }
 
-  learning_strings_ = learning_dataset_lines_ * test_sample_coeff;
+  training_strings_ = training_dataset_lines_ * test_sample_coeff;
   if (returnable) {
-    avg_accuracy_.clear();
     for (current_epoch_ = 1;
          !terminated_ && returnable && current_epoch_ <= epochs_;
          ++current_epoch_) {
@@ -247,8 +280,8 @@ void Perceptron::DatasetLearning(size_t test_chunk_begin,
   string line;
   size_t iterator = 0;
 
-  learning_progress_percent_ = 0;
-  file.open(learning_dataset_path_);
+  training_progress_percent_ = 0;
+  file.open(training_dataset_path_);
   if (file.is_open()) {
     while (!terminated_ && !getline(file, line).eof()) {
       if (IsOutOfArea(iterator, test_chunk_begin, test_chunk_end)) {
@@ -256,12 +289,12 @@ void Perceptron::DatasetLearning(size_t test_chunk_begin,
         Run();
         Backpropagation();
       }
-      learning_progress_percent_ =
-          TrackProgress(iterator + 1, learning_dataset_lines_);
+      training_progress_percent_ =
+          TrackProgress(iterator + 1, training_dataset_lines_);
       ++iterator;
     }
-    learning_progress_percent_ =
-        TrackProgress(iterator + 1, learning_dataset_lines_);
+    training_progress_percent_ =
+        TrackProgress(iterator + 1, training_dataset_lines_);
     file.close();
   }
 }
@@ -325,7 +358,7 @@ void Perceptron::CorrectOutputLayerWeights(PerceptronLayer &layer_l,
 
   GetOutputLayerErrors(neurons, errors);
   CalculateGradient(neurons_l, errors, d_weights);
-  d_weights.mul_number(learning_rate_);
+  d_weights.mul_number(training_rate_);
   weights -= d_weights;
 }
 
@@ -352,7 +385,7 @@ void Perceptron::CorrectHiddenLayerWeights(PerceptronLayer &layer_l,
 
   GetHiddenLayerErrors(weights_r, errors_r, neurons, errors);
   CalculateGradient(neurons_l, errors, d_weights);
-  d_weights.mul_number(learning_rate_);
+  d_weights.mul_number(training_rate_);
   weights -= d_weights;
 }
 
@@ -407,7 +440,7 @@ void Perceptron::RunTesting(ifstream &file, size_t test_chunk_begin,
   string line;
 
   CleanMetrics();
-  while (!getline(file, line).eof()) {
+  while (!terminated_ && !getline(file, line).eof()) {
     if (IsInOfArea(iterator, test_chunk_begin, test_chunk_end)) {
       FillInput(line);
       Run();
@@ -462,12 +495,12 @@ bool Perceptron::CrossValidation(const string &learn_dataset_path,
 
   running_ = true;
   terminated_ = false;
-  learning_dataset_path_ = learn_dataset_path;
-  returnable = CalculateFile(learning_dataset_path_, &learning_dataset_lines_);
-  learning_strings_ = learning_dataset_lines_;
-  testing_dataset_lines_ = learning_dataset_lines_;
-  if (groups > learning_strings_ / 2) {
-    groups = learning_strings_ / 2;
+  training_dataset_path_ = learn_dataset_path;
+  returnable = CalculateFile(training_dataset_path_, &training_dataset_lines_);
+  training_strings_ = training_dataset_lines_;
+  testing_dataset_lines_ = training_dataset_lines_;
+  if (groups > training_strings_ / 2) {
+    groups = training_strings_ / 2;
   }
 
   if (returnable) {
@@ -483,14 +516,14 @@ void Perceptron::RunCrossValidating(size_t groups) {
   ifstream file;
 
   cross_testing_begin_ = 0;
-  cross_testing_shift = learning_strings_ / groups;
+  cross_testing_shift = training_strings_ / groups;
   testing_strings_ = cross_testing_shift;
   cross_testing_end_ = cross_testing_shift;
   avg_accuracy_.clear();
   current_epoch_ = 1;
-  while (cross_testing_end_ < learning_strings_) {
+  while (!terminated_ && cross_testing_end_ < training_strings_) {
     DatasetLearning(cross_testing_begin_, cross_testing_end_);
-    file.open(learning_dataset_path_);
+    file.open(training_dataset_path_);
     if (file.is_open()) {
       RunTesting(file, cross_testing_begin_, cross_testing_end_);
       file.close();
@@ -528,7 +561,7 @@ Matrix *Perceptron::get_output_neurons() {
 }
 
 size_t Perceptron::get_training_progress() {
-  return learning_progress_percent_;
+  return training_progress_percent_;
 }
 
 size_t Perceptron::get_testing_progress() { return testing_progress_percent_; }
@@ -537,7 +570,7 @@ char Perceptron::get_recognized_letter() { return output_sym_; }
 
 double Perceptron::get_answer_confidence() { return answer_confidence_; }
 
-void Perceptron::set_learning_rate(double value) { learning_rate_ = value; }
+void Perceptron::set_learning_rate(double value) { training_rate_ = value; }
 
 size_t Perceptron::get_current_epoch() { return current_epoch_; }
 

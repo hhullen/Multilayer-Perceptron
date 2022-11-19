@@ -1,8 +1,8 @@
 #ifndef CONFIRMATIONDIALOG_H
 #define CONFIRMATIONDIALOG_H
 
-#include <QWidget>
 #include <QDialog>
+#include <QWidget>
 
 namespace Ui {
 class ConfirmationDialog;
@@ -13,19 +13,20 @@ namespace s21 {
 enum DialogState { ACCEPTED, REJECTED };
 
 class ConfirmationDialog : public QDialog {
-    Q_OBJECT
+  Q_OBJECT
 
-public:
-    explicit ConfirmationDialog(QWidget *parent = nullptr, QString question = "wassup!");
-    ~ConfirmationDialog();
+ public:
+  explicit ConfirmationDialog(QWidget *parent = nullptr,
+                              QString question = "wassup!");
+  ~ConfirmationDialog();
 
-private:
-    Ui::ConfirmationDialog *ui_;
+ private:
+  Ui::ConfirmationDialog *ui_;
 
-    void SetAcceted();
-    void SetRejected();
+  void SetAcceted();
+  void SetRejected();
 };
 
-}
+}  // namespace s21
 
-#endif // CONFIRMATIONDIALOG_H
+#endif  // CONFIRMATIONDIALOG_H

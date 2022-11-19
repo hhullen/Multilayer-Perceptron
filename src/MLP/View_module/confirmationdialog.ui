@@ -25,6 +25,14 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+	color: rgb(255, 255, 255);
+	background-color: qradialgradient(cx:0.5, cy:0.5, radius: 0.6,
+                fx:0.5, fy:0.5, stop:0 #1D2739, stop:1 #1D2024);
+	alternate-background-color: rgb(30, 40, 50);
+}</string>
+  </property>
   <widget class="QPushButton" name="btn_reject">
    <property name="geometry">
     <rect>

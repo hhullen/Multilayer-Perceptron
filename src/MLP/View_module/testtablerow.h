@@ -9,22 +9,21 @@ class TestTableRow;
 
 namespace s21 {
 
-class TestTableRow : public QWidget
-{
-    Q_OBJECT
+class TestTableRow : public QWidget {
+  Q_OBJECT
 
-public:
-    explicit TestTableRow(QWidget *parent = nullptr);
-    ~TestTableRow();
-    void SetLetter(QChar letter);
-    void SetPrecision(double value);
-    void SetRecall(double value);
-    void SetFMeasure(double value);
+ public:
+  explicit TestTableRow(QWidget *parent = nullptr);
+  ~TestTableRow();
+  void SetLetter(QChar letter);
+  void SetPrecision(double value);
+  void SetRecall(double value);
+  void SetFMeasure(double value);
 
-private:
-    Ui::TestTableRow *ui_;
+ private:
+  Ui::TestTableRow *ui_;
 };
 
-}
+}  // namespace s21
 
-#endif // TESTTABLEROW_H
+#endif  // TESTTABLEROW_H

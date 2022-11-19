@@ -25,8 +25,26 @@ class PerceptronLayer {
   }
 
   ~PerceptronLayer() {
-    delete neurons_;
-    delete layer_;
+    if (weights_gradient_) {
+      weights_gradient_->~Matrix();
+      delete weights_gradient_;
+      weights_gradient_ = nullptr;
+    }
+    if (neurons_) {
+      neurons_->~Matrix();
+      delete neurons_;
+      neurons_ = nullptr;
+    }
+    if (errors_) {
+      errors_->~Matrix();
+      delete errors_;
+      errors_ = nullptr;
+    }
+    if (layer_) {
+      layer_->~Matrix();
+      delete layer_;
+      layer_ = nullptr;
+    }
   }
 
   Matrix *get_d_weights() { return weights_gradient_; }

@@ -22,15 +22,13 @@ using std::rand;
 using std::stod;
 using std::string;
 using std::thread;
+using std::to_string;
 using std::vector;
 
 namespace s21 {
 
 const double kEXPONENT = 2.71828182845904523536028747135266250;
-const double kINPUT_LAYER_CONST = 4.33769082;
-const double kDELTA_CONST = 3.40634218;
 const double kRANDOM_FACTOR = 4096.0;
-const int kFACTOR = 60000;
 const int kHIDDEN_NEURONS = 130;
 
 class Perceptron {
@@ -70,12 +68,12 @@ class Perceptron {
   bool under_training_;
 
   bool terminated_;
-  size_t learning_progress_percent_;
-  size_t learning_dataset_lines_;
-  string learning_dataset_path_;
-  size_t learning_strings_;
-  size_t learning_start_;
-  double learning_rate_;
+  size_t training_progress_percent_;
+  size_t training_dataset_lines_;
+  string training_dataset_path_;
+  size_t training_strings_;
+  size_t training_start_;
+  double training_rate_;
   char expected_sym_;
   char output_sym_;
   double answer_confidence_;
