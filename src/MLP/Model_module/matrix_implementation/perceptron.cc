@@ -67,8 +67,6 @@ void Perceptron::FillWithRandom() {
 
 void Perceptron::FillMatrixRandom(Matrix &matrix) {
   int cols = matrix.get_cols(), rows = matrix.get_rows();
-  double elements = cols * rows;
-  double value = -1;
 
   for (int i = 0; i < rows; ++i) {
     for (int j = 0; j < cols; ++j) {

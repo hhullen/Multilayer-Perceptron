@@ -23,11 +23,23 @@ class GNeuron {
     weights_.clear();
   }
 
-  void ConnectL(GNeuron *neuron) { lefts_.push_back(neuron); }
+  void ConnectL(GNeuron *neuron) {
+    lefts_.push_back(neuron);
+    weights_.push_back(0);
+    weights_gradients_.push_back(0);
+  }
+
   void ConnectR(GNeuron *neuron) { rights_.push_back(neuron); }
+
+  vector<double> &get_weights() { return weights_; }
+  double get_value() { return value_; }
+  double get_value_l(size_t index) { return lefts_[index]->get_value(); }
+
+  void set_value(double value) { value_ = value; }
 
  private:
   double errors_;
+  double value_;
   vector<double> weights_gradients_;
   vector<GNeuron *> rights_;
   vector<GNeuron *> lefts_;

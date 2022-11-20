@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include <fstream>
+#include <iostream>
 #include <map>
 #include <string>
 
@@ -24,7 +25,7 @@ namespace s21 {
 
 const double kEXPONENT = 2.71828182845904523536028747135266250;
 const double kRANDOM_FACTOR = 4096.0;
-const int kHIDDEN_NEURONS = 130;
+const int kHIDDEN_NEURONS = 2;
 
 class GPerceptron {
  public:
@@ -36,14 +37,14 @@ class GPerceptron {
   //              double test_sample_coeff);
   //   bool CrossValidation(const string &learn_dataset_path, size_t groups);
   //   bool Test(const string &dataset_path, double test_sample_coeff);
-  //   bool UploadConfig(const string &path);
-  //   bool SaveConfig(const string &path);
-  //   void FillWithRandom();
-  //   bool IsRunning();
-  //   void Terminate();
-  //   void Run();
+  bool UploadConfig(const string &path);
+  bool SaveConfig(const string &path);
+  void FillWithRandom();
+  bool IsRunning();
+  void Terminate();
+  void Run();
 
-  //   bool set_input_neurons(Matrix &matrix);
+  bool set_input_neurons(vector<double> input);
   //   void set_epochs_amount(size_t epochs);
   //   void set_learning_rate(double value);
   //   size_t get_training_progress();
@@ -103,11 +104,23 @@ class GPerceptron {
     size_t end_;
   } cross_v_;
 
+  double &w_element(vector<GNeuron> &layer, size_t i, size_t j);
   void ConfigurateSize(int input_neurons, int hidden_layers,
                        int output_neurons);
   void ConnectLayers();
   void ConnectNeurons(vector<GNeuron> *prev, vector<GNeuron> *current,
                       vector<GNeuron> *next);
+  bool UploadLayers(ifstream &file);
+  bool ReadMatrix(ifstream &file, vector<GNeuron> &layer);
+  void SaveLayers(ofstream &file);
+  void WriteDataSize(ofstream &file, vector<GNeuron> &layer);
+  void WriteData(ofstream &file, vector<GNeuron> &layer);
+  void FillMatrixRandom(vector<GNeuron> &layer);
+  void WeightedSum(vector<GNeuron> &layer);
+  void Activate(vector<GNeuron> &layer);
+  double Sigmoid(const double value);
+  double SigmoidDerivative(const double value);
+  char GetAnswer();
 };
 
 }  // namespace s21
