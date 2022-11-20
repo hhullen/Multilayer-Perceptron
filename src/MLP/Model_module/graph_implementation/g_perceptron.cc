@@ -4,31 +4,37 @@ namespace s21 {
 
 GPerceptron::GPerceptron(int input_neurons, int hidden_layers,
                          int output_neurons) {
-  state_.answer_confidence_ = 0;
-  state_.expected_sym_ = 0;
-  state_.output_sym_ = 0;
-  state_.running_ = false;
-  state_.terminated_ = false;
   state_.under_training_ = false;
+  state_.answer_confidence_ = 0;
+  state_.terminated_ = false;
   train_.current_epoch_ = 0;
-  train_.dataset_lines_ = 0;
   train_.dataset_path_ = "";
-  train_.epochs_ = 5;
+  state_.expected_sym_ = 0;
+  state_.running_ = false;
+  state_.output_sym_ = 0;
+
+  train_.current_epoch_ = 0;
+  train_.dataset_path_ = "";
   train_.progress_ = 0;
-  train_.rate_ = 0;
-  train_.start_ = 0;
   train_.strings_ = 0;
-  test_.dataset_lines_ = 0;
+  train_.file.clear();
+  train_.epochs_ = 5;
+  train_.start_ = 0;
+  train_.rate_ = 0;
+
   test_.dataset_path_ = "";
   test_.progress_ = 0;
   test_.strings_ = 0;
-  metric_.all_answers_ = 0;
-  metric_.right_answers_ = 0;
+  test_.file.clear();
+
   metric_.avg_accuracy_.clear();
   metric_.f_measure_.clear();
-  metric_.letters_.clear();
   metric_.precision_.clear();
+  metric_.right_answers_ = 0;
+  metric_.all_answers_ = 0;
+  metric_.letters_.clear();
   metric_.recall_.clear();
+
   cross_v_.begin_ = 0;
   cross_v_.end_ = 0;
 
@@ -40,10 +46,12 @@ GPerceptron::GPerceptron(int input_neurons, int hidden_layers,
 
 GPerceptron::~GPerceptron() {
   metric_.avg_accuracy_.clear();
+  metric_.precision_.clear();
   metric_.f_measure_.clear();
   metric_.letters_.clear();
-  metric_.precision_.clear();
   metric_.recall_.clear();
+  train_.file.clear();
+  test_.file.clear();
 }
 
 double &GPerceptron::w_element(vector<GNeuron> &layer, size_t i, size_t j) {
@@ -279,6 +287,138 @@ bool GPerceptron::set_input_neurons(vector<double> input) {
   }
 
   return returnable;
+}
+
+bool GPerceptron::Train(const string &learn_dataset_path,
+                        const string &test_dataset_path,
+                        double test_sample_coeff) {
+  bool returnable = false;
+
+  state_.under_training_ = true;
+  state_.running_ = true;
+  state_.terminated_ = false;
+  metric_.avg_accuracy_.clear();
+  train_.dataset_path_ = learn_dataset_path;
+  test_.dataset_path_ = test_dataset_path;
+  train_.file.clear();
+  returnable = UploadDataset(train_.dataset_path_, train_.file);
+  if (test_sample_coeff > 1 || test_sample_coeff < 0) {
+    test_sample_coeff = 0;
+  }
+
+  train_.strings_ = train_.file.size() * test_sample_coeff;
+  if (returnable) {
+    for (train_.current_epoch_ = 1; !state_.terminated_ && returnable &&
+                                    train_.current_epoch_ <= train_.epochs_;
+         ++train_.current_epoch_) {
+      DatasetTraining(0, 0);
+      // returnable = Test(test_.dataset_path_, 1);
+    }
+    --train_.current_epoch_;
+  }
+
+  state_.under_training_ = false;
+  state_.running_ = false;
+  return returnable;
+}
+
+bool GPerceptron::UploadDataset(string &dataset_path,
+                                vector<vector<double>> &file_up) {
+  ifstream file(dataset_path);
+  bool returnable = false;
+  string line;
+
+  size_t iter = 0;
+  file_up.push_back(vector<double>());
+  if (file.is_open()) {
+    while (!getline(file, line, '\n').eof()) {
+      LoadLine(line, file_up[iter]);
+      file_up.push_back(vector<double>());
+      ++iter;
+    }
+    file_up.pop_back();
+    file.close();
+    returnable = true;
+  } else {
+    file_up.clear();
+  }
+
+  return returnable;
+}
+
+void GPerceptron::LoadLine(string &line, vector<double> &num_line) {
+  size_t line_size = line.size();
+  size_t file_iter = 2;
+
+  num_line.push_back(stod(line.data(), nullptr) - 1);
+  for (size_t i = 0; i < line_size; ++i) {
+    while (!IsAsciiNumber(line[file_iter])) {
+      ++file_iter;
+    }
+    num_line.push_back(stod(&line.data()[file_iter], nullptr) / 255);
+    while (IsAsciiNumber(line[file_iter])) {
+      ++file_iter;
+    }
+  }
+}
+
+void GPerceptron::DatasetTraining(size_t test_chunk_begin,
+                                  size_t test_chunk_end) {
+  size_t dataset_size = train_.file.size();
+  size_t iterator = 0;
+
+  train_.progress_ = 0;
+  for (size_t i = 0; !state_.terminated_ && i < dataset_size; ++i) {
+    if (IsOutOfArea(iterator, test_chunk_begin, test_chunk_end)) {
+      FillInput(train_.file[i]);
+      Run();
+      Backpropagation();
+    }
+    train_.progress_ = TrackProgress(iterator + 1, dataset_size);
+    ++iterator;
+  }
+  train_.progress_ = TrackProgress(iterator + 1, dataset_size);
+}
+
+bool GPerceptron::IsAsciiNumber(const char sym) {
+  return sym >= '0' && sym <= '9';
+}
+
+bool GPerceptron::IsInOfArea(size_t line_number, size_t chunk_begin,
+                             size_t chunk_end) {
+  return line_number >= chunk_begin && line_number <= chunk_end;
+}
+
+bool GPerceptron::IsOutOfArea(size_t line_number, size_t chunk_begin,
+                              size_t chunk_end) {
+  return line_number < chunk_begin || line_number > chunk_end;
+}
+
+void GPerceptron::FillInput(vector<double> &num_line) {
+  size_t input_size = p_input_->size();
+
+  state_.expected_sym_ = (char)num_line[0];
+  for (size_t i = 0; i < input_size; ++i) {
+    if (i < num_line.size()) {
+      (*p_input_)[i].set_value(num_line[i]);
+    } else {
+      (*p_input_)[i].set_value(0);
+    }
+  }
+}
+
+size_t GPerceptron::TrackProgress(size_t current, size_t total) {
+  return current / (double)total * 100;
+}
+
+void GPerceptron::Backpropagation() {
+  // int i = layers_->size() - 2;
+  // CorrectOutputLayerWeights(*(*layers_)[i], *output_layer_);
+
+  // for (; i > 0; --i) {
+  //   CorrectHiddenLayerWeights(*(*layers_)[i - 1], *(*layers_)[i],
+  //                             *(*layers_)[i + 1]);
+  // }
 }
 
 }  // namespace s21

@@ -8,6 +8,14 @@ MLPModel::MLPModel()
       implementation_(Implementation::MATRIX),
       wcfg_mode_(WCFGMode::RANDOM) {}
 
+MLPModel::~MLPModel() {
+  if (matrix_mlp_) {
+    delete matrix_mlp_;
+  }
+  matrix_mlp_ = nullptr;
+  delete_thread();
+}
+
 bool MLPModel::CreatePerceptron(Implementation type, size_t layers,
                                 string &wcfg_path, WCFGMode wcfg_mode) {
   bool returnable = false;
@@ -173,6 +181,7 @@ void MLPModel::delete_thread() {
   if (run_thread_) {
     delete run_thread_;
   }
+  run_thread_ = nullptr;
 }
 
 }  // namespace s21

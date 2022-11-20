@@ -32,9 +32,8 @@ class GPerceptron {
   GPerceptron(int input_neurons, int hidden_layers, int output_neurons);
   ~GPerceptron();
 
-  //   bool Train(const string &learn_dataset_path, const string
-  //   &test_dataset_path,
-  //              double test_sample_coeff);
+  bool Train(const string &learn_dataset_path, const string &test_dataset_path,
+             double test_sample_coeff);
   //   bool CrossValidation(const string &learn_dataset_path, size_t groups);
   //   bool Test(const string &dataset_path, double test_sample_coeff);
   bool UploadConfig(const string &path);
@@ -72,9 +71,9 @@ class GPerceptron {
   } state_;
 
   struct Train {
-    size_t dataset_lines_;
     size_t current_epoch_;
     string dataset_path_;
+    vector<vector<double>> file;
     size_t progress_;
     size_t strings_;
     size_t epochs_;
@@ -83,8 +82,8 @@ class GPerceptron {
   } train_;
 
   struct Test {
-    size_t dataset_lines_;
     string dataset_path_;
+    vector<vector<double>> file;
     size_t progress_;
     size_t strings_;
   } test_;
@@ -121,6 +120,15 @@ class GPerceptron {
   double Sigmoid(const double value);
   double SigmoidDerivative(const double value);
   char GetAnswer();
+  bool UploadDataset(string &dataset_path, vector<vector<double>> &file_up);
+  void LoadLine(string &line, vector<double> &num_line);
+  void DatasetTraining(size_t test_chunk_begin, size_t test_chunk_end);
+  bool IsAsciiNumber(const char sym);
+  bool IsInOfArea(size_t line_number, size_t chunk_begin, size_t chunk_end);
+  bool IsOutOfArea(size_t line_number, size_t chunk_begin, size_t chunk_end);
+  void FillInput(vector<double> &num_line);
+  size_t TrackProgress(size_t current, size_t total);
+  void Backpropagation();
 };
 
 }  // namespace s21

@@ -18,6 +18,7 @@ enum class WCFGMode { RANDOM, FILE };
 class MLPModel {
  public:
   MLPModel();
+  ~MLPModel();
 
   bool CreatePerceptron(Implementation type, size_t layers, string &wcfg_path,
                         WCFGMode wcfg_mode);
