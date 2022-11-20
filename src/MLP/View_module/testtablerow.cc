@@ -9,7 +9,8 @@ TestTableRow::TestTableRow(QWidget *parent)
   ui_->setupUi(this);
 }
 
-TestTableRow::~TestTableRow() { delete ui_; }
+TestTableRow::~TestTableRow() { if (ui_) delete ui_;
+                              ui_ = nullptr;}
 
 void TestTableRow::SetLetter(QChar letter) {
   ui_->label_letter->setText(letter);

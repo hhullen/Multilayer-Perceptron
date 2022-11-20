@@ -26,7 +26,22 @@ MainWindow::MainWindow(MLPController *controller, QWidget *parent)
   SetupConnections();
 }
 
-MainWindow::~MainWindow() { delete ui_; }
+MainWindow::~MainWindow() {
+    if (ui_) delete ui_;
+    ui_ = nullptr;
+    if (classifier_widget_) delete classifier_widget_;
+    classifier_widget_ = nullptr;
+    if (menu_widget_) delete menu_widget_;
+    menu_widget_ = nullptr;
+    if (option_widget_) delete option_widget_;
+    option_widget_ = nullptr;
+    if (testing_widget_) delete testing_widget_;
+    testing_widget_ = nullptr;
+    if (training_widget_) delete training_widget_;
+    training_widget_ = nullptr;
+    if (main_layout_) delete main_layout_;
+    main_layout_ = nullptr;
+}
 
 void MainWindow::SetMode(QAbstractButton *btn) {
   if (btn->text() == "CLASSIFYING") {

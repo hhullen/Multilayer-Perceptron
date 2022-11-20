@@ -32,7 +32,21 @@ Graph::Graph(QWidget *parent)
   ui_->gridLayout->addWidget(view_);
 }
 
-Graph::~Graph() { delete ui_; }
+Graph::~Graph() {
+    if (ui_) delete ui_;
+    ui_ = nullptr;
+    if (axis_y_) delete axis_y_;
+    axis_y_ = nullptr;
+    if (axis_x_) delete axis_x_;
+    axis_x_ = nullptr;
+    series_->clear();
+    if (series_) delete series_;
+    series_ = nullptr;
+    if (graph_) delete graph_;
+    graph_ = nullptr;
+    if (view_) delete view_;
+    view_ = nullptr;
+}
 
 void Graph::SetRangeX(size_t from, size_t to) {
   SetupNewAxisX();

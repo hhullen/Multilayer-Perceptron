@@ -24,7 +24,10 @@ Option::Option(QWidget *parent)
           &Option::ConfigChosen);
 }
 
-Option::~Option() { delete ui_; }
+Option::~Option() {
+    if (ui_) delete ui_;
+    ui_ = nullptr;
+}
 
 QComboBox *Option::GetImplementationSwitcher() {
   return ui_->combo_box_realization;

@@ -23,9 +23,25 @@ Classifier::Classifier(QWidget *parent)
 }
 
 Classifier::~Classifier() {
-  delete ui_;
-  delete input_widget_;
-  delete scene_;
+  if (ui_) delete ui_;
+  ui_ = nullptr;
+  input_widget_->Clear();
+  if (input_widget_) delete input_widget_;
+  input_widget_ = nullptr;
+  if (scene_) delete scene_;
+  scene_ = nullptr;
+  if (input_layout_) delete input_layout_;
+  input_layout_ = nullptr;
+    image_->clear();
+    if (image_) delete image_;
+    image_ = nullptr;
+    file_name_->clear();
+    if (file_name_) delete file_name_;
+    file_name_ = nullptr;
+    if (btn_open_img_) delete btn_open_img_;
+    btn_open_img_ = nullptr;
+    if (btn_close_img_) delete btn_close_img_;
+    btn_close_img_ = nullptr;
 }
 
 vector<double> *Classifier::GetPixelsVector() { return &pixels_; }

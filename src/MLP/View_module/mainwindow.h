@@ -35,8 +35,9 @@ class MainWindow : public QMainWindow {
   void GetMainMenuSlot();
 
  private:
-  Ui::MainWindow *ui_;
   MLPController *controller_;
+
+  Ui::MainWindow *ui_;
   QVBoxLayout *main_layout_;
   QWidget *main_widget_;
 

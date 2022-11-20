@@ -12,8 +12,6 @@
 #include "inputarea.h"
 using std::vector;
 
-#include <iostream>
-
 const int kIMAGE_SIZE = 28;
 const int kBMP_IMAGE_ZISE = 512;
 
@@ -46,7 +44,6 @@ class Classifier : public QWidget {
   QVBoxLayout *input_layout_;
   InputArea *input_widget_;
   QGraphicsView *scene_;
-  QGraphicsScene *image_scene_;
   vector<double> pixels_;
   QImage input_image_;
   QLabel *image_;

@@ -8,7 +8,10 @@ MainMenu::MainMenu(QWidget *parent) : QWidget(parent), ui_(new Ui::MainMenu) {
   ui_->setupUi(this);
 }
 
-MainMenu::~MainMenu() { delete ui_; }
+MainMenu::~MainMenu() {
+    if (ui_) delete ui_;
+    ui_ = nullptr;
+}
 
 QButtonGroup *MainMenu::GetMenuItemsGroup() { return ui_->group_btns; }
 
