@@ -1,8 +1,11 @@
 #ifndef SRC_MODEL_MODULE_MLP_MODEL_H
 #define SRC_MODEL_MODULE_MLP_MODEL_H
 
+#include <thread>
+
 #include "matrix_implementation/perceptron.h"
 using s21::Perceptron;
+using std::thread;
 
 namespace s21 {
 

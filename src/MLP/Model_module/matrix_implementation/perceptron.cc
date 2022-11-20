@@ -1,7 +1,5 @@
 #include "perceptron.h"
 
-#include <iostream>
-
 namespace s21 {
 
 Perceptron::Perceptron(int input_neurons, int hidden_layers, int output_neurons)

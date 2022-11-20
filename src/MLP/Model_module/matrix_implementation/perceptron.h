@@ -1,11 +1,10 @@
-#ifndef SRC_MODEL_MODULE_PERCEPTRON_H
-#define SRC_MODEL_MODULE_PERCEPTRON_H
+#ifndef SRC_MLP_MODEL_MODULE_MATRIX_IMPLEMENTATION_PERCEPTRON_H
+#define SRC_MLP_MODEL_MODULE_MATRIX_IMPLEMENTATION_PERCEPTRON_H
 
 #include <cmath>
 #include <fstream>
 #include <map>
 #include <string>
-#include <thread>
 #include <vector>
 
 #include "perceptron_layer.h"
@@ -17,11 +16,9 @@ using std::ios_base;
 using std::map;
 using std::ofstream;
 using std::pow;
-using std::printf;
 using std::rand;
 using std::stod;
 using std::string;
-using std::thread;
 using std::to_string;
 using std::vector;
 
@@ -138,4 +135,4 @@ class Perceptron {
 
 }  // namespace s21
 
-#endif  // SRC_MODEL_MODULE_PERCEPTRON_H
+#endif  // SRC_MLP_MODEL_MODULE_MATRIX_IMPLEMENTATION_PERCEPTRON_H
