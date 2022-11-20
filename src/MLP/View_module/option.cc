@@ -70,7 +70,7 @@ void Option::SetSystemInfo() {
   if (ui_->label_kernel_value->text() == "darwin") {
     system("sysctl -n machdep.cpu.brand_string > proc.inf");
   } else if (ui_->label_kernel_value->text() == "linux") {
-    system("cat /proc/cpuinfo | grep 'model name' > proc.inf");
+    system("cat /proc/cpuinfo | grep 'model name' | grep -o \":\s*.*$\" | grep -o \"[^:\s*\t*].*\" | grep -o \"\w.*\"  > proc.inf");
   }
 
   QString path = QCoreApplication::applicationDirPath() + "/proc.inf";

@@ -1,5 +1,4 @@
 MAIN_PROJ_NAME=MLP
-MODEL_TEST_NAMES=model
 MODEL_PATH=$(MAIN_PROJ_NAME)/Model_module
 MATRIX_IMPL=$(MODEL_PATH)/matrix_implementation
 INCLUDE=$(MAIN_PROJ_NAME)/include/
@@ -7,7 +6,7 @@ CONTROLLER_PATH=$(MAIN_PROJ_NAME)/Controller_module
 VIEV_PATH=$(MAIN_PROJ_NAME)/View_module
 TEST_PATH=$(MAIN_PROJ_NAME)/Test_module
 TESTBUILD_FILES=$(TEST_PATH)/$(MAIN_PROJ_NAME)_test.cc \
-				$(MODEL_PATH)/*$(MODEL_TEST_NAMES)*.cc \
+				$(MODEL_PATH)/*model*.cc \
 				$(MATRIX_IMPL)/*.cc $(MATRIX_IMPL)/*.h $(INCLUDE)/matrix/*
 EXECUTABLE=$(MAIN_PROJ_NAME)_test.out
 COMPILER=g++
