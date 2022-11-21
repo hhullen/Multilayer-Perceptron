@@ -9,9 +9,10 @@ ProgressBar::ProgressBar(QWidget *parent)
   ui_->setupUi(this);
 }
 
-ProgressBar::~ProgressBar() { if (ui_) delete ui_;
-                            ui_ = nullptr;
-                            }
+ProgressBar::~ProgressBar() {
+  if (ui_) delete ui_;
+  ui_ = nullptr;
+}
 
 void ProgressBar::SetProgressValue(size_t value) {
   if (value > 100) {

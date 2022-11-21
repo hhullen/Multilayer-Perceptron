@@ -30,14 +30,14 @@ Testing::Testing(QWidget *parent) : QWidget(parent), ui_(new Ui::Testing) {
 }
 
 Testing::~Testing() {
-    if (table_layout_) delete table_layout_;
-    table_layout_ = nullptr;
-    if (ui_) delete ui_;
-    ui_ = nullptr;
-    if (time_) delete time_;
-    time_ = nullptr;
-    if (progress_bar_) delete progress_bar_;
-    progress_bar_ = nullptr;
+  if (table_layout_) delete table_layout_;
+  table_layout_ = nullptr;
+  if (ui_) delete ui_;
+  ui_ = nullptr;
+  if (time_) delete time_;
+  time_ = nullptr;
+  if (progress_bar_) delete progress_bar_;
+  progress_bar_ = nullptr;
 }
 
 void Testing::AddTableRow(QChar letter, double precision, double recall,

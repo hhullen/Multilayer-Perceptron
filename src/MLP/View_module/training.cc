@@ -31,20 +31,20 @@ Training::Training(QWidget *parent)
 }
 
 Training::~Training() {
-    if (ui_) delete ui_;
-    ui_ = nullptr;
-    if (errors_graph_) delete errors_graph_;
-    errors_graph_ = nullptr;
-    if (training_progress_) delete training_progress_;
-    training_progress_ = nullptr;
-    if (testing_progress_) delete testing_progress_;
-    testing_progress_ = nullptr;
-    if (time_) delete time_;
-    time_ = nullptr;
-    if (progress_layout_) delete progress_layout_;
-    progress_layout_ = nullptr;
-    if (graph_layout_) delete graph_layout_;
-    graph_layout_ = nullptr;
+  if (ui_) delete ui_;
+  ui_ = nullptr;
+  if (errors_graph_) delete errors_graph_;
+  errors_graph_ = nullptr;
+  if (training_progress_) delete training_progress_;
+  training_progress_ = nullptr;
+  if (testing_progress_) delete testing_progress_;
+  testing_progress_ = nullptr;
+  if (time_) delete time_;
+  time_ = nullptr;
+  if (progress_layout_) delete progress_layout_;
+  progress_layout_ = nullptr;
+  if (graph_layout_) delete graph_layout_;
+  graph_layout_ = nullptr;
 }
 
 QString Training::GetTrainingFilePath() {
@@ -171,7 +171,9 @@ void Training::SwitchState(TrainingState state) {
   ui_->btn_training_terminate->setVisible(switcher);
   ui_->btn_training_run->setVisible(!switcher);
   ui_->btn_open_training_file->setDisabled(switcher);
-  ui_->btn_open_testing_file->setDisabled(switcher);
+  if (current_mode_ != TrainingMode::CROSSVALID) {
+    ui_->btn_open_testing_file->setDisabled(switcher);
+  }
   ui_->btn_save_weights->setDisabled(switcher);
   ui_->combo_training_mode->setDisabled(switcher);
   ui_->spin_box_groups_or_epochs->setDisabled(switcher);

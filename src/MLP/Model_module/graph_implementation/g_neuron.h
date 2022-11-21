@@ -9,7 +9,7 @@ namespace s21 {
 
 class GNeuron {
  public:
-  GNeuron() : error_(0) {
+  GNeuron() : error_(0), value_(0) {
     rights_.clear();
     lefts_.clear();
     weights_.clear();

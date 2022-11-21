@@ -10,7 +10,7 @@ InputArea::InputArea(QColor color, int size, QObject *parent)
 }
 
 InputArea::~InputArea() {
-  if (pen_)delete pen_;
+  if (pen_) delete pen_;
   pen_ = nullptr;
   if (brush_) delete brush_;
   brush_ = nullptr;

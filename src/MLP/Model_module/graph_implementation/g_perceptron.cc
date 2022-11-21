@@ -281,6 +281,7 @@ bool GPerceptron::Train(const string &train_dataset_path,
   train_.dataset_path_ = train_dataset_path;
   test_.dataset_path_ = test_dataset_path;
   train_.file.clear();
+  test_.file.clear();
   returnable = UploadDataset(train_.dataset_path_, train_.file);
   if (test_sample_coeff > 1 || test_sample_coeff < 0) {
     test_sample_coeff = 0;
@@ -481,7 +482,7 @@ void GPerceptron::RunTesting(size_t test_chunk_begin, size_t test_chunk_end) {
     if (IsInOfArea(iterator, test_chunk_begin, test_chunk_end)) {
       FillInput(test_.file[i]);
       Run();
-      UpdateMetrics(metric_.right_answers_, metric_.letters_);
+      UpdateMetrics((metric_.right_answers_), metric_.letters_);
     }
     test_.progress_ = TrackProgress(iterator + 1, test_.strings_);
     ++iterator;
@@ -490,14 +491,10 @@ void GPerceptron::RunTesting(size_t test_chunk_begin, size_t test_chunk_end) {
 
   metric_.avg_accuracy_.push_back(metric_.right_answers_ /
                                   (double)test_.strings_);
-  std::cout << metric_.right_answers_ << " RIGHT\n";
-  std::cout << test_.strings_ << " ALL\n";
-  std::cout << metric_.right_answers_ / (double)test_.strings_ << "\n";
   FinishMetrics(metric_.right_answers_, metric_.letters_);
 }
 
 void GPerceptron::CleanMetrics() {
-  metric_.all_answers_ = 0;
   metric_.f_measure_.clear();
   metric_.letters_.clear();
   metric_.precision_.clear();
@@ -509,7 +506,7 @@ void GPerceptron::UpdateMetrics(size_t &right_answers,
                                 map<size_t, size_t> &letters) {
   ++letters[state_.expected_sym_];
   if (state_.expected_sym_ == state_.output_sym_) {
-    ++metric_.right_answers_;
+    ++(metric_.right_answers_);
     ++metric_.precision_[state_.expected_sym_];
     ++metric_.recall_[state_.expected_sym_];
   }
@@ -537,7 +534,9 @@ bool GPerceptron::CrossValidation(const string &train_dataset_path,
   state_.terminated_ = false;
   train_.dataset_path_ = train_dataset_path;
   train_.file.clear();
+  test_.file.clear();
   returnable = UploadDataset(train_.dataset_path_, train_.file);
+  returnable = UploadDataset(train_.dataset_path_, test_.file);
   train_.strings_ = train_.file.size();
   test_.strings_ = train_.file.size();
   if (groups > train_.strings_ / 2) {
@@ -563,7 +562,7 @@ void GPerceptron::RunCrossValidating(size_t groups) {
   train_.current_epoch_ = 1;
   while (!state_.terminated_ && cross_v_.end_ < train_.strings_) {
     DatasetTraining(cross_v_.begin_, cross_v_.end_);
-    if (train_.file.size() > 0) {
+    if (test_.file.size() > 0) {
       RunTesting(cross_v_.begin_, cross_v_.end_);
     }
     cross_v_.begin_ += cross_testing_shift;

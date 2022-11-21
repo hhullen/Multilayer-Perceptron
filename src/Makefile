@@ -1,13 +1,16 @@
 MAIN_PROJ_NAME=MLP
 MODEL_PATH=$(MAIN_PROJ_NAME)/Model_module
 MATRIX_IMPL=$(MODEL_PATH)/matrix_implementation
+GRAPH_IMPL=$(MODEL_PATH)/graph_implementation
 INCLUDE=$(MAIN_PROJ_NAME)/include/
 CONTROLLER_PATH=$(MAIN_PROJ_NAME)/Controller_module
 VIEV_PATH=$(MAIN_PROJ_NAME)/View_module
 TEST_PATH=$(MAIN_PROJ_NAME)/Test_module
 TESTBUILD_FILES=$(TEST_PATH)/$(MAIN_PROJ_NAME)_test.cc \
 				$(MODEL_PATH)/*model*.cc \
-				$(MATRIX_IMPL)/*.cc $(MATRIX_IMPL)/*.h $(INCLUDE)/matrix/*
+				$(MATRIX_IMPL)/*.cc $(MATRIX_IMPL)/*.h \
+				$(INCLUDE)/matrix/* $(GRAPH_IMPL)/*.cc $(GRAPH_IMPL)/*.h
+
 EXECUTABLE=$(MAIN_PROJ_NAME)_test.out
 COMPILER=g++
 STD=-std=c++17
@@ -16,7 +19,8 @@ CLANG_FILE=.clang-format
 CLANG_FILE_WAY=../materials/linters/$(CLANG_FILE)
 CHECK_FILES=$(MODEL_PATH)/*.cc $(MODEL_PATH)/*.h $(CONTROLLER_PATH)/*.cc \
 			$(CONTROLLER_PATH)/*.h $(VIEV_PATH)/*.cc $(VIEV_PATH)/*.h \
-			$(TEST_PATH)/*.cc $(MATRIX_IMPL)/*.cc $(MATRIX_IMPL)/*.h
+			$(TEST_PATH)/*.cc $(MATRIX_IMPL)/*.cc $(MATRIX_IMPL)/*.h \
+			$(GRAPH_IMPL)/*.cc $(GRAPH_IMPL)/*.h
 CPPCH_SETUP=--enable=warning,performance,portability  -v --language=c++ -$(STD)
 VALGRIND_SETUP=--tool=memcheck --leak-check=full --show-leak-kinds=all
 BUILD_DIR=../build

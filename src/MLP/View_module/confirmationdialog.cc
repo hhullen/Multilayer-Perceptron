@@ -16,9 +16,10 @@ ConfirmationDialog::ConfirmationDialog(QWidget *parent, QString question)
           &ConfirmationDialog::SetRejected);
 }
 
-ConfirmationDialog::~ConfirmationDialog() { if (ui_) delete ui_;
-                                          ui_ = nullptr;
-                                          }
+ConfirmationDialog::~ConfirmationDialog() {
+  if (ui_) delete ui_;
+  ui_ = nullptr;
+}
 
 void ConfirmationDialog::SetAcceted() {
   accept();
