@@ -211,7 +211,6 @@ void GPerceptron::Run() {
 
   for (size_t i = 1; i < layers_.size(); ++i) {
     WeightedSum(layers_[i]);
-    Activate(layers_[i]);
   }
   state_.output_sym_ = GetAnswer();
 }
@@ -219,20 +218,13 @@ void GPerceptron::Run() {
 void GPerceptron::WeightedSum(vector<GNeuron> &layer) {
   int weights = layer.front().get_weights().size();
   int neurons = layer.size();
-  double sum = 0;
 
   for (size_t i = 0; i < neurons; ++i) {
-    sum = 0;
+    double sum = 0;
     for (size_t j = 0; j < weights; ++j) {
       sum += w_element(layer, i, j) * layer[i].get_value_l(j);
     }
-    layer[i].set_value(sum);
-  }
-}
-
-void GPerceptron::Activate(vector<GNeuron> &layer) {
-  for (size_t i = 0; i < layer.size(); ++i) {
-    layer[i].set_value(Sigmoid(layer[i].get_value()));
+    layer[i].set_value(Sigmoid(sum));
   }
 }
 
@@ -345,7 +337,7 @@ void GPerceptron::LoadLine(string &line, vector<double> &num_line) {
     while (file_iter < line_size && !IsAsciiNumber(line[file_iter])) {
       ++file_iter;
     }
-    num_line.push_back(stod(&line.data()[file_iter], nullptr) / 255);
+    num_line.push_back(stod(&line.data()[file_iter], nullptr) / 255.0);
     while (file_iter < line_size && IsAsciiNumber(line[file_iter])) {
       ++file_iter;
     }
@@ -364,7 +356,6 @@ void GPerceptron::DatasetTraining(size_t test_chunk_begin,
       Backpropagation();
     }
     train_.progress_ = TrackProgress(iterator + 1, train_.strings_);
-    // std::cout << train_.progress_ << " TRAIN\n";
     ++iterator;
   }
   train_.progress_ = TrackProgress(iterator + 1, train_.strings_);
@@ -390,7 +381,7 @@ void GPerceptron::FillInput(vector<double> &num_line) {
   state_.expected_sym_ = (char)num_line[0];
   for (size_t i = 0; i < input_size; ++i) {
     if (i < num_line.size()) {
-      (*p_input_)[i].set_value(num_line[i]);
+      (*p_input_)[i].set_value(num_line[i + 1]);
     } else {
       (*p_input_)[i].set_value(0);
     }
@@ -458,7 +449,7 @@ void GPerceptron::CalculateGradient(vector<GNeuron> &layer) {
 }
 
 bool GPerceptron::Test(const string &dataset_path, double test_sample_coeff) {
-  bool returnable = false;
+  bool returnable = true;
 
   state_.running_ = true;
   test_.progress_ = 0;
@@ -493,19 +484,20 @@ void GPerceptron::RunTesting(size_t test_chunk_begin, size_t test_chunk_end) {
       UpdateMetrics(metric_.right_answers_, metric_.letters_);
     }
     test_.progress_ = TrackProgress(iterator + 1, test_.strings_);
-    std::cout << test_.progress_ << " TEST\n";
     ++iterator;
   }
   test_.progress_ = TrackProgress(iterator + 1, test_.strings_);
 
   metric_.avg_accuracy_.push_back(metric_.right_answers_ /
                                   (double)test_.strings_);
+  std::cout << metric_.right_answers_ << " RIGHT\n";
+  std::cout << test_.strings_ << " ALL\n";
+  std::cout << metric_.right_answers_ / (double)test_.strings_ << "\n";
   FinishMetrics(metric_.right_answers_, metric_.letters_);
 }
 
 void GPerceptron::CleanMetrics() {
   metric_.all_answers_ = 0;
-  metric_.avg_accuracy_.clear();
   metric_.f_measure_.clear();
   metric_.letters_.clear();
   metric_.precision_.clear();
@@ -599,7 +591,7 @@ double GPerceptron::get_answer_confidence() {
 size_t GPerceptron::get_current_epoch() { return train_.current_epoch_; }
 
 vector<double> *GPerceptron::get_avg_accuracy() {
-  return &metric_.avg_accuracy_;
+  return &(metric_.avg_accuracy_);
 }
 
 void GPerceptron::get_metrics(vector<map<size_t, double>> &metrics,

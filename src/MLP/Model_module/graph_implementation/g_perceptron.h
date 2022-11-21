@@ -112,7 +112,6 @@ class GPerceptron {
   void WriteData(ofstream &file, vector<GNeuron> &layer);
   void FillMatrixRandom(vector<GNeuron> &layer);
   void WeightedSum(vector<GNeuron> &layer);
-  void Activate(vector<GNeuron> &layer);
   double Sigmoid(const double value);
   double SigmoidDerivative(const double value);
   char GetAnswer();
