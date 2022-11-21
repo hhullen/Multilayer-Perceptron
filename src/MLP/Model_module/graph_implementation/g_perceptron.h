@@ -32,10 +32,10 @@ class GPerceptron {
   GPerceptron(int input_neurons, int hidden_layers, int output_neurons);
   ~GPerceptron();
 
-  bool Train(const string &learn_dataset_path, const string &test_dataset_path,
+  bool Train(const string &train_dataset_path, const string &test_dataset_path,
              double test_sample_coeff);
-  //   bool CrossValidation(const string &learn_dataset_path, size_t groups);
-  //   bool Test(const string &dataset_path, double test_sample_coeff);
+  bool CrossValidation(const string &train_dataset_path, size_t groups);
+  bool Test(const string &dataset_path, double test_sample_coeff);
   bool UploadConfig(const string &path);
   bool SaveConfig(const string &path);
   void FillWithRandom();
@@ -44,17 +44,16 @@ class GPerceptron {
   void Run();
 
   bool set_input_neurons(vector<double> input);
-  //   void set_epochs_amount(size_t epochs);
-  //   void set_learning_rate(double value);
-  //   size_t get_training_progress();
-  //   size_t get_testing_progress();
-  //   Matrix *get_output_neurons();
-  //   char get_recognized_letter();
-  //   double get_answer_confidence();
-  //   size_t get_current_epoch();
-  //   vector<double> *get_avg_accuracy();
-  //   void get_metrics(vector<map<size_t, double>> &mectics, size_t *correct,
-  //                    size_t *all, double *avg_accuracy);
+  void set_epochs_amount(size_t epochs);
+  void set_learning_rate(double value);
+  size_t get_training_progress();
+  size_t get_testing_progress();
+  char get_recognized_letter();
+  double get_answer_confidence();
+  size_t get_current_epoch();
+  vector<double> *get_avg_accuracy();
+  void get_metrics(vector<map<size_t, double>> &metrics, size_t *correct,
+                   size_t *all, double *avg_accuracy);
 
  private:
   vector<vector<GNeuron>> layers_;
@@ -134,6 +133,12 @@ class GPerceptron {
   void CorrectHiddenLayerWeights(vector<GNeuron> &layer);
   void GetHiddenLayerErrors(vector<GNeuron> &layer);
   void CalculateGradient(vector<GNeuron> &layer);
+  void RunTesting(size_t test_chunk_begin, size_t test_chunk_end);
+  void CleanMetrics();
+  void UpdateMetrics(size_t &right_answers, map<size_t, size_t> &letters);
+  void FinishMetrics(size_t &right_answers, map<size_t, size_t> &letters);
+  double FMeasure(double precision, double recall);
+  void RunCrossValidating(size_t groups);
 };
 
 }  // namespace s21

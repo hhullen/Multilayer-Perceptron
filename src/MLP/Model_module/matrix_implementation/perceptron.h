@@ -54,7 +54,7 @@ class Perceptron {
   double get_answer_confidence();
   size_t get_current_epoch();
   vector<double> *get_avg_accuracy();
-  void get_metrics(vector<map<size_t, double>> &mectics, size_t *correct,
+  void get_metrics(vector<map<size_t, double>> &metrics, size_t *correct,
                    size_t *all, double *avg_accuracy);
 
  private:

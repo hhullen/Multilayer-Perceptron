@@ -27,17 +27,10 @@ GPerceptron::GPerceptron(int input_neurons, int hidden_layers,
   test_.strings_ = 0;
   test_.file.clear();
 
-  metric_.avg_accuracy_.clear();
-  metric_.f_measure_.clear();
-  metric_.precision_.clear();
-  metric_.right_answers_ = 0;
-  metric_.all_answers_ = 0;
-  metric_.letters_.clear();
-  metric_.recall_.clear();
-
   cross_v_.begin_ = 0;
   cross_v_.end_ = 0;
 
+  CleanMetrics();
   ConfigurateSize(input_neurons, hidden_layers, output_neurons);
   p_input_ = &layers_.front();
   p_output_ = &layers_.back();
@@ -45,11 +38,7 @@ GPerceptron::GPerceptron(int input_neurons, int hidden_layers,
 }
 
 GPerceptron::~GPerceptron() {
-  metric_.avg_accuracy_.clear();
-  metric_.precision_.clear();
-  metric_.f_measure_.clear();
-  metric_.letters_.clear();
-  metric_.recall_.clear();
+  CleanMetrics();
   train_.file.clear();
   test_.file.clear();
 }
@@ -289,7 +278,7 @@ bool GPerceptron::set_input_neurons(vector<double> input) {
   return returnable;
 }
 
-bool GPerceptron::Train(const string &learn_dataset_path,
+bool GPerceptron::Train(const string &train_dataset_path,
                         const string &test_dataset_path,
                         double test_sample_coeff) {
   bool returnable = false;
@@ -298,7 +287,7 @@ bool GPerceptron::Train(const string &learn_dataset_path,
   state_.running_ = true;
   state_.terminated_ = false;
   metric_.avg_accuracy_.clear();
-  train_.dataset_path_ = learn_dataset_path;
+  train_.dataset_path_ = train_dataset_path;
   test_.dataset_path_ = test_dataset_path;
   train_.file.clear();
   returnable = UploadDataset(train_.dataset_path_, train_.file);
@@ -312,11 +301,13 @@ bool GPerceptron::Train(const string &learn_dataset_path,
                                     train_.current_epoch_ <= train_.epochs_;
          ++train_.current_epoch_) {
       DatasetTraining(0, 0);
-      // returnable = Test(test_.dataset_path_, 1);
+      returnable = Test(test_.dataset_path_, 1);
     }
     --train_.current_epoch_;
   }
 
+  test_.file.clear();
+  train_.file.clear();
   state_.under_training_ = false;
   state_.running_ = false;
   return returnable;
@@ -468,6 +459,164 @@ void GPerceptron::CalculateGradient(vector<GNeuron> &layer) {
           layer[i].get_value_l(j) * layer[i].get_error() * train_.rate_;
     }
   }
+}
+
+bool GPerceptron::Test(const string &dataset_path, double test_sample_coeff) {
+  bool returnable = false;
+
+  state_.running_ = true;
+  test_.progress_ = 0;
+  test_.dataset_path_ = dataset_path;
+  if (test_.file.size() == 0) {
+    returnable = UploadDataset(test_.dataset_path_, test_.file);
+  }
+  if (test_sample_coeff > 1 || test_sample_coeff < 0) {
+    test_sample_coeff = 1;
+  }
+  test_.strings_ = test_.file.size() * test_sample_coeff;
+  if (test_.file.size() == 0) {
+    RunTesting(0, test_.strings_);
+  }
+  test_.progress_ = 0;
+
+  if (!state_.under_training_) {
+    test_.file.clear();
+    state_.running_ = false;
+  }
+  return returnable;
+}
+
+void GPerceptron::RunTesting(size_t test_chunk_begin, size_t test_chunk_end) {
+  size_t iterator = 0;
+  size_t dataset_size = test_.file.size();
+
+  CleanMetrics();
+  std::cout << dataset_size << " . test\n";  //// !!!!!!! ZERO DATASET!!!
+  for (size_t i = 0; !state_.terminated_ && i < dataset_size; ++i) {
+    if (IsInOfArea(iterator, test_chunk_begin, test_chunk_end)) {
+      FillInput(train_.file[i]);
+      Run();
+      UpdateMetrics(metric_.right_answers_, metric_.letters_);
+    }
+    test_.progress_ = TrackProgress(iterator + 1, dataset_size);
+    ++iterator;
+  }
+  test_.progress_ = TrackProgress(iterator + 1, dataset_size);
+
+  metric_.avg_accuracy_.push_back(metric_.right_answers_ /
+                                  (double)dataset_size);
+  FinishMetrics(metric_.right_answers_, metric_.letters_);
+}
+
+void GPerceptron::CleanMetrics() {
+  metric_.all_answers_ = 0;
+  metric_.avg_accuracy_.clear();
+  metric_.f_measure_.clear();
+  metric_.letters_.clear();
+  metric_.precision_.clear();
+  metric_.recall_.clear();
+  metric_.right_answers_ = 0;
+}
+
+void GPerceptron::UpdateMetrics(size_t &right_answers,
+                                map<size_t, size_t> &letters) {
+  ++letters[state_.expected_sym_];
+  if (state_.expected_sym_ == state_.output_sym_) {
+    ++metric_.right_answers_;
+    ++metric_.precision_[state_.expected_sym_];
+    ++metric_.recall_[state_.expected_sym_];
+  }
+}
+
+void GPerceptron::FinishMetrics(size_t &right_answers,
+                                map<size_t, size_t> &letters) {
+  metric_.all_answers_ = test_.strings_;
+  for (size_t i = 0; i < metric_.precision_.size(); ++i) {
+    metric_.precision_[i] /= (double)right_answers;
+    metric_.recall_[i] /= (double)letters[i];
+    metric_.f_measure_[i] = FMeasure(metric_.precision_[i], metric_.recall_[i]);
+  }
+}
+
+double GPerceptron::FMeasure(double precision, double recall) {
+  return 2 * precision * recall / (double)(precision + recall);
+}
+
+bool GPerceptron::CrossValidation(const string &train_dataset_path,
+                                  size_t groups) {
+  bool returnable = false;
+
+  state_.running_ = true;
+  state_.terminated_ = false;
+  train_.dataset_path_ = train_dataset_path;
+  train_.file.clear();
+  returnable = UploadDataset(train_.dataset_path_, train_.file);
+  train_.strings_ = train_.file.size();
+  test_.strings_ = train_.file.size();
+  if (groups > train_.strings_ / 2) {
+    groups = train_.strings_ / 2;
+  }
+
+  if (returnable) {
+    RunCrossValidating(groups);
+  }
+
+  state_.running_ = false;
+  return returnable;
+}
+
+void GPerceptron::RunCrossValidating(size_t groups) {
+  size_t cross_testing_shift = 0;
+
+  cross_v_.begin_ = 0;
+  cross_testing_shift = train_.file.size() / groups;
+  test_.strings_ = cross_testing_shift;
+  cross_v_.end_ = cross_testing_shift;
+  metric_.avg_accuracy_.clear();
+  train_.current_epoch_ = 1;
+  while (!state_.terminated_ && cross_v_.end_ < train_.strings_) {
+    std::cout << cross_v_.begin_ << " " << cross_v_.end_ << "\n";
+    DatasetTraining(cross_v_.begin_, cross_v_.end_);
+    if (train_.file.size() > 0) {
+      RunTesting(cross_v_.begin_, cross_v_.end_);
+    }
+    cross_v_.begin_ += cross_testing_shift;
+    cross_v_.end_ += cross_testing_shift;
+    ++train_.current_epoch_;
+  }
+  --train_.current_epoch_;
+  train_.file.clear();
+}
+
+void GPerceptron::set_epochs_amount(size_t epochs) { train_.epochs_ = epochs; }
+
+void GPerceptron::set_learning_rate(double value) { train_.rate_ = value; }
+
+size_t GPerceptron::get_training_progress() { return train_.progress_; }
+
+size_t GPerceptron::get_testing_progress() { return test_.progress_; }
+
+char GPerceptron::get_recognized_letter() { return state_.output_sym_; }
+
+double GPerceptron::get_answer_confidence() {
+  return state_.answer_confidence_;
+}
+
+size_t GPerceptron::get_current_epoch() { return train_.current_epoch_; }
+
+vector<double> *GPerceptron::get_avg_accuracy() {
+  return &metric_.avg_accuracy_;
+}
+
+void GPerceptron::get_metrics(vector<map<size_t, double>> &metrics,
+                              size_t *correct, size_t *all,
+                              double *avg_accuracy) {
+  metrics.push_back(metric_.precision_);
+  metrics.push_back(metric_.recall_);
+  metrics.push_back(metric_.f_measure_);
+  *correct = metric_.right_answers_;
+  *all = metric_.all_answers_;
+  *avg_accuracy = metric_.avg_accuracy_.back();
 }
 
 }  // namespace s21
