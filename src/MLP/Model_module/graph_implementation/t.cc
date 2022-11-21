@@ -20,10 +20,15 @@ int main() {
   //     "emnist-letters-test.csv",
   //     1);
 
-  g.CrossValidation(
+  // g.CrossValidation(
+  //     "/Users/hhullen/PROJECTS/github/MLP/datasets/emnist-letters/"
+  //     "emnist-letters-test.csv",
+  //     10);
+
+  g.Test(
       "/Users/hhullen/PROJECTS/github/MLP/datasets/emnist-letters/"
       "emnist-letters-test.csv",
-      10);
+      1);
 
   return 0;
 }

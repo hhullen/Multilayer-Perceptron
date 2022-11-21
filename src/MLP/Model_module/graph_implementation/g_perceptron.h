@@ -7,6 +7,7 @@
 #include <map>
 #include <string>
 
+#include "../const.h"
 #include "g_neuron.h"
 
 using s21::GNeuron;
@@ -22,10 +23,6 @@ using std::string;
 using std::to_string;
 
 namespace s21 {
-
-const double kEXPONENT = 2.71828182845904523536028747135266250;
-const double kRANDOM_FACTOR = 4096.0;
-const int kHIDDEN_NEURONS = 2;
 
 class GPerceptron {
  public:
@@ -43,7 +40,7 @@ class GPerceptron {
   void Terminate();
   void Run();
 
-  bool set_input_neurons(vector<double> input);
+  bool set_input_neurons(vector<double> &input);
   void set_epochs_amount(size_t epochs);
   void set_learning_rate(double value);
   size_t get_training_progress();

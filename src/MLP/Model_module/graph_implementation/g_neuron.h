@@ -10,14 +10,12 @@ namespace s21 {
 class GNeuron {
  public:
   GNeuron() : error_(0) {
-    weights_gradients_.clear();
     rights_.clear();
     lefts_.clear();
     weights_.clear();
   }
 
   ~GNeuron() {
-    weights_gradients_.clear();
     rights_.clear();
     lefts_.clear();
     weights_.clear();
@@ -26,7 +24,6 @@ class GNeuron {
   void ConnectL(GNeuron *neuron) {
     lefts_.push_back(neuron);
     weights_.push_back(0);
-    weights_gradients_.push_back(0);
   }
 
   void ConnectR(GNeuron *neuron) { rights_.push_back(neuron); }
@@ -47,7 +44,6 @@ class GNeuron {
  private:
   double error_;
   double value_;
-  vector<double> weights_gradients_;
   vector<GNeuron *> rights_;
   vector<GNeuron *> lefts_;
   vector<double> weights_;

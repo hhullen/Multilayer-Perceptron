@@ -3,7 +3,9 @@
 
 #include <thread>
 
+#include "graph_implementation/g_perceptron.h"
 #include "matrix_implementation/perceptron.h"
+using s21::GPerceptron;
 using s21::Perceptron;
 using std::thread;
 
@@ -23,7 +25,7 @@ class MLPModel {
   bool CreatePerceptron(Implementation type, size_t layers, string &wcfg_path,
                         WCFGMode wcfg_mode);
   char Classify(vector<double> *pixels, double *confidence);
-  bool SaveWeights(string save_path);
+  bool SaveWeights(string &save_path);
   void RunTraining(string train_dataset, string test_dataset,
                    size_t epochs_or_groups, double learning_rate);
   void RunCrossValidation(string dataset_path, size_t groups,
@@ -42,11 +44,16 @@ class MLPModel {
   thread *run_thread_;
 
   Perceptron *matrix_mlp_;
+  GPerceptron *graph_mlp_;
   Implementation implementation_;
   WCFGMode wcfg_mode_;
 
   void RemoveObject(Perceptron *obj);
-  bool ConfigurateObject(Perceptron *obj, WCFGMode wcfg_mode, string wcfg_path);
+  void RemoveObject(GPerceptron *obj);
+  bool ConfigurateObject(Perceptron *obj, WCFGMode wcfg_mode,
+                         string &wcfg_path);
+  bool ConfigurateObject(GPerceptron *obj, WCFGMode wcfg_mode,
+                         string &wcfg_path);
   void CopyData(vector<double> &pixels, Matrix &input);
   void delete_thread();
 };

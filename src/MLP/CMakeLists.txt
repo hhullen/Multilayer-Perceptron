@@ -58,6 +58,10 @@ set(PROJECT_SOURCES
         Model_module/matrix_implementation/perceptron.h
         Model_module/matrix_implementation/perceptron.cc
         Model_module/matrix_implementation/perceptron_layer.h
+        Model_module/graph_implementation/g_neuron.h
+        Model_module/graph_implementation/g_perceptron.cc
+        Model_module/graph_implementation/g_perceptron.h
+        Model_module/const.h
 
         include/matrix/matrix.h
         include/matrix/matrix.cc

@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 
+#include "../const.h"
 #include "perceptron_layer.h"
 using s21::PerceptronLayer;
 using std::ceil;
@@ -23,10 +24,6 @@ using std::to_string;
 using std::vector;
 
 namespace s21 {
-
-const double kEXPONENT = 2.71828182845904523536028747135266250;
-const double kRANDOM_FACTOR = 4096.0;
-const int kHIDDEN_NEURONS = 130;
 
 class Perceptron {
  public:
