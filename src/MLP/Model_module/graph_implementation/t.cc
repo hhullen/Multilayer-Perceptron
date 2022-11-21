@@ -13,6 +13,12 @@ int main() {
   // std::cout << g.SaveConfig("cfg_") << "\n";
   // std::cout << g.UploadConfig("cfg_784_2_26.wcfg") << "\n";
   g.Run();
+  g.Train(
+      "/Users/hhullen/PROJECTS/github/MLP/datasets/emnist-letters/"
+      "emnist-letters-test.csv",
+      "/Users/hhullen/PROJECTS/github/MLP/datasets/emnist-letters/"
+      "emnist-letters-test.csv",
+      1);
 
   return 0;
 }

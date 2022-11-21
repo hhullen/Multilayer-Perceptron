@@ -129,6 +129,11 @@ class GPerceptron {
   void FillInput(vector<double> &num_line);
   size_t TrackProgress(size_t current, size_t total);
   void Backpropagation();
+  void CorrectOutputLayerWeights(vector<GNeuron> &layer);
+  void GetOutputLayerErrors(vector<GNeuron> &layer);
+  void CorrectHiddenLayerWeights(vector<GNeuron> &layer);
+  void GetHiddenLayerErrors(vector<GNeuron> &layer);
+  void CalculateGradient(vector<GNeuron> &layer);
 };
 
 }  // namespace s21

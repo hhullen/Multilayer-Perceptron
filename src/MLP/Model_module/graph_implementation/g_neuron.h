@@ -9,7 +9,7 @@ namespace s21 {
 
 class GNeuron {
  public:
-  GNeuron() : errors_(0) {
+  GNeuron() : error_(0) {
     weights_gradients_.clear();
     rights_.clear();
     lefts_.clear();
@@ -34,11 +34,18 @@ class GNeuron {
   vector<double> &get_weights() { return weights_; }
   double get_value() { return value_; }
   double get_value_l(size_t index) { return lefts_[index]->get_value(); }
+  double get_value_r(size_t index) { return rights_[index]->get_value(); }
+  GNeuron *get_neuron_l(size_t index) { return lefts_[index]; }
+  GNeuron *get_neuron_r(size_t index) { return rights_[index]; }
+  vector<GNeuron *> *get_layer_l() { return &lefts_; }
+  vector<GNeuron *> *get_layer_r() { return &rights_; }
+  double get_error() { return error_; }
 
   void set_value(double value) { value_ = value; }
+  void set_error(double value) { error_ = value; }
 
  private:
-  double errors_;
+  double error_;
   double value_;
   vector<double> weights_gradients_;
   vector<GNeuron *> rights_;

@@ -20,7 +20,7 @@ GPerceptron::GPerceptron(int input_neurons, int hidden_layers,
   train_.file.clear();
   train_.epochs_ = 5;
   train_.start_ = 0;
-  train_.rate_ = 0;
+  train_.rate_ = 0.05;
 
   test_.dataset_path_ = "";
   test_.progress_ = 0;
@@ -209,7 +209,7 @@ void GPerceptron::FillMatrixRandom(vector<GNeuron> &layer) {
     for (int j = 0; j < weights; ++j) {
       w_element(layer, i, j) =
           (fmod(rand(), kRANDOM_FACTOR) / kRANDOM_FACTOR * 2) - 1;
-      std::cout << w_element(layer, i, j) << " RAND\n";
+      // std::cout << w_element(layer, i, j) << " RAND\n";
     }
   }
 }
@@ -263,7 +263,7 @@ char GPerceptron::GetAnswer() {
 
   for (size_t i = 0; i < neurons; ++i) {
     double value = (*p_output_)[i].get_value();
-    std::cout << value << "\n";
+    // std::cout << value << "\n";
     if (value > higher) {
       higher = value;
       state_.answer_confidence_ = higher * 100;
@@ -331,8 +331,10 @@ bool GPerceptron::UploadDataset(string &dataset_path,
   size_t iter = 0;
   file_up.push_back(vector<double>());
   if (file.is_open()) {
+    std::cout << dataset_path << "\n";
     while (!getline(file, line, '\n').eof()) {
       LoadLine(line, file_up[iter]);
+      // std::cout << file_up[iter].size() << " HERE\n";
       file_up.push_back(vector<double>());
       ++iter;
     }
@@ -351,12 +353,13 @@ void GPerceptron::LoadLine(string &line, vector<double> &num_line) {
   size_t file_iter = 2;
 
   num_line.push_back(stod(line.data(), nullptr) - 1);
-  for (size_t i = 0; i < line_size; ++i) {
-    while (!IsAsciiNumber(line[file_iter])) {
+  for (size_t i = 0; file_iter < line_size && i < line_size; ++i) {
+    while (file_iter < line_size && !IsAsciiNumber(line[file_iter])) {
       ++file_iter;
     }
     num_line.push_back(stod(&line.data()[file_iter], nullptr) / 255);
-    while (IsAsciiNumber(line[file_iter])) {
+    // std::cout << file_iter << "\n";
+    while (file_iter < line_size && IsAsciiNumber(line[file_iter])) {
       ++file_iter;
     }
   }
@@ -412,13 +415,59 @@ size_t GPerceptron::TrackProgress(size_t current, size_t total) {
 }
 
 void GPerceptron::Backpropagation() {
-  // int i = layers_->size() - 2;
-  // CorrectOutputLayerWeights(*(*layers_)[i], *output_layer_);
+  CorrectOutputLayerWeights(*p_output_);
 
-  // for (; i > 0; --i) {
-  //   CorrectHiddenLayerWeights(*(*layers_)[i - 1], *(*layers_)[i],
-  //                             *(*layers_)[i + 1]);
-  // }
+  for (int i = layers_.size() - 2; i > 0; --i) {
+    CorrectHiddenLayerWeights(layers_[i]);
+  }
+}
+
+void GPerceptron::CorrectOutputLayerWeights(vector<GNeuron> &layer) {
+  GetOutputLayerErrors(layer);
+  CalculateGradient(layer);
+}
+
+void GPerceptron::GetOutputLayerErrors(vector<GNeuron> &layer) {
+  for (size_t i = 0; i < layer.size(); ++i) {
+    double value = layer[i].get_value();
+    if (i == state_.expected_sym_) {
+      layer[i].set_error((value - 1) * SigmoidDerivative(value));
+    } else {
+      layer[i].set_error(value * SigmoidDerivative(value));
+    }
+  }
+}
+
+void GPerceptron::CorrectHiddenLayerWeights(vector<GNeuron> &layer) {
+  GetHiddenLayerErrors(layer);
+  CalculateGradient(layer);
+}
+
+void GPerceptron::GetHiddenLayerErrors(vector<GNeuron> &layer) {
+  vector<GNeuron *> *layer_r = layer.front().get_layer_r();
+  size_t neurons_r = layer_r->size();
+  size_t neurons = layer.size();
+
+  for (size_t i = 0; i < neurons; ++i) {
+    double error = 0;
+    for (size_t j = 0; j < neurons_r; ++j) {
+      error += (*layer_r)[j]->get_error() * (*layer_r)[j]->get_weights()[i];
+    }
+    error *= SigmoidDerivative(error);
+    layer[i].set_error(error);
+  }
+}
+
+void GPerceptron::CalculateGradient(vector<GNeuron> &layer) {
+  size_t neurons = layer.size();
+  size_t neurons_l = layer.front().get_weights().size();
+
+  for (size_t i = 0; i < neurons; ++i) {
+    for (size_t j = 0; j < neurons_l; ++j) {
+      layer[i].get_weights()[j] -=
+          layer[i].get_value_l(j) * layer[i].get_error() * train_.rate_;
+    }
+  }
 }
 
 }  // namespace s21
