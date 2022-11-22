@@ -20,7 +20,7 @@ GPerceptron::GPerceptron(int input_neurons, int hidden_layers,
   train_.file.clear();
   train_.epochs_ = 5;
   train_.start_ = 0;
-  train_.rate_ = 0.05;
+  train_.rate_ = 0.01;
 
   test_.dataset_path_ = "";
   test_.progress_ = 0;
@@ -243,7 +243,6 @@ char GPerceptron::GetAnswer() {
 
   for (size_t i = 0; i < neurons; ++i) {
     double value = (*p_output_)[i].get_value();
-
     if (value > higher) {
       higher = value;
       state_.answer_confidence_ = higher * 100;
@@ -315,6 +314,7 @@ bool GPerceptron::UploadDataset(string &dataset_path,
   file_up.push_back(vector<double>());
   if (file.is_open()) {
     while (!getline(file, line, '\n').eof()) {
+      file_up[iter].resize(p_input_->size() + 1);
       LoadLine(line, file_up[iter]);
       file_up.push_back(vector<double>());
       ++iter;
@@ -330,19 +330,22 @@ bool GPerceptron::UploadDataset(string &dataset_path,
 }
 
 void GPerceptron::LoadLine(string &line, vector<double> &num_line) {
-  size_t line_size = line.size();
+  size_t input_size = num_line.size() + 1;
   size_t file_iter = 2;
+  // std::cout << line << "\n\n";
 
-  num_line.push_back(stod(line.data(), nullptr) - 1);
-  for (size_t i = 0; file_iter < line_size && i < line_size; ++i) {
-    while (file_iter < line_size && !IsAsciiNumber(line[file_iter])) {
+  num_line[0] = stod(line.data(), nullptr) - 1;
+  for (size_t i = 1; i < input_size; ++i) {
+    while (!IsAsciiNumber(line[file_iter])) {
       ++file_iter;
     }
-    num_line.push_back(stod(&line.data()[file_iter], nullptr) / 255.0);
-    while (file_iter < line_size && IsAsciiNumber(line[file_iter])) {
+    num_line[i] = stod(&line.data()[file_iter], nullptr) / 255.0;
+    std::cout << num_line[i] << " ";
+    while (IsAsciiNumber(line[file_iter])) {
       ++file_iter;
     }
   }
+  std::cout << "\n\n";
 }
 
 void GPerceptron::DatasetTraining(size_t test_chunk_begin,
@@ -351,7 +354,8 @@ void GPerceptron::DatasetTraining(size_t test_chunk_begin,
 
   train_.progress_ = 0;
   for (size_t i = 0; !state_.terminated_ && i < train_.strings_; ++i) {
-    if (IsOutOfArea(iterator, test_chunk_begin, test_chunk_end)) {
+    if (IsOutOfArea(iterator, test_chunk_begin, test_chunk_end) ||
+        iterator == 0) {
       FillInput(train_.file[i]);
       Run();
       Backpropagation();
@@ -379,6 +383,7 @@ bool GPerceptron::IsOutOfArea(size_t line_number, size_t chunk_begin,
 void GPerceptron::FillInput(vector<double> &num_line) {
   size_t input_size = p_input_->size();
 
+  // std::cout << num_line.size() << " SIZE\n\n";
   state_.expected_sym_ = (char)num_line[0];
   for (size_t i = 0; i < input_size; ++i) {
     if (i < num_line.size()) {
@@ -386,7 +391,9 @@ void GPerceptron::FillInput(vector<double> &num_line) {
     } else {
       (*p_input_)[i].set_value(0);
     }
+    // std::cout << num_line[i + 1] << " ";
   }
+  // std::cout << "\n\n";
 }
 
 size_t GPerceptron::TrackProgress(size_t current, size_t total) {
@@ -445,7 +452,9 @@ void GPerceptron::CalculateGradient(vector<GNeuron> &layer) {
     for (size_t j = 0; j < neurons_l; ++j) {
       layer[i].get_weights()[j] -=
           layer[i].get_value_l(j) * layer[i].get_error() * train_.rate_;
+      // std::cout << layer[i].get_weights()[j] << " ";
     }
+    // std::cout << "\n\n";
   }
 }
 
@@ -453,6 +462,7 @@ bool GPerceptron::Test(const string &dataset_path, double test_sample_coeff) {
   bool returnable = true;
 
   state_.running_ = true;
+  state_.terminated_ = false;
   test_.progress_ = 0;
   test_.dataset_path_ = dataset_path;
   if (test_.file.size() == 0) {
@@ -491,6 +501,7 @@ void GPerceptron::RunTesting(size_t test_chunk_begin, size_t test_chunk_end) {
 
   metric_.avg_accuracy_.push_back(metric_.right_answers_ /
                                   (double)test_.strings_);
+  std::cout << metric_.avg_accuracy_.front() << " AVG\n";
   FinishMetrics(metric_.right_answers_, metric_.letters_);
 }
 

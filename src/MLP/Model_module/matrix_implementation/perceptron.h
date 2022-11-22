@@ -120,7 +120,7 @@ class Perceptron {
   void GetHiddenLayerErrors(const Matrix &weights_r, const Matrix &errors_r,
                             const Matrix &neurons, Matrix &errors);
   void CalculateGradient(const Matrix &neurons_l, const Matrix &errors,
-                         Matrix &d_weights);
+                         Matrix &weights);
   void RunTesting(ifstream &file, size_t test_chunk_begin,
                   size_t test_chunk_end);
   void CleanMetrics();

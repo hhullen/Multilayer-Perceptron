@@ -249,6 +249,7 @@ bool Perceptron::Train(const string &learn_dataset_path,
 
   under_training_ = false;
   running_ = false;
+  terminated_ = false;
   return returnable;
 }
 
@@ -279,8 +280,9 @@ void Perceptron::DatasetLearning(size_t test_chunk_begin,
   training_progress_percent_ = 0;
   file.open(training_dataset_path_);
   if (file.is_open()) {
-    while (!terminated_ && !getline(file, line).eof()) {
-      if (IsOutOfArea(iterator, test_chunk_begin, test_chunk_end)) {
+    while (!terminated_ && !getline(file, line, '\n').eof()) {
+      if (IsOutOfArea(iterator, test_chunk_begin, test_chunk_end) ||
+          iterator == 0) {
         FillInput(line);
         Run();
         Backpropagation();
@@ -303,6 +305,7 @@ void Perceptron::FillInput(string &line) {
   Matrix &p_input = *input_layer_->get_neurons();
   size_t input_size = p_input.get_rows();
   size_t file_iter = 2;
+  // std::cout << line << "\n\n";
 
   expected_sym_ = stod(line.data(), nullptr) - 1;
   for (size_t i = 0; i < input_size; ++i) {
@@ -310,14 +313,16 @@ void Perceptron::FillInput(string &line) {
       while (!IsAsciiNumber(line[file_iter])) {
         ++file_iter;
       }
-      p_input(i, 0) = stod(&line.data()[file_iter], nullptr) / 255;
+      p_input(i, 0) = stod(&line.data()[file_iter], nullptr) / 255.0;
       while (IsAsciiNumber(line[file_iter])) {
         ++file_iter;
       }
     } else {
       p_input(i, 0) = 0;
     }
+    // std::cout << p_input(i, 0) << " ";
   }
+  // std::cout << "\n\n";
 }
 
 bool Perceptron::IsAsciiNumber(const char sym) {
@@ -353,9 +358,9 @@ void Perceptron::CorrectOutputLayerWeights(PerceptronLayer &layer_l,
   Matrix &weights = *layer.get_weights();
 
   GetOutputLayerErrors(neurons, errors);
-  CalculateGradient(neurons_l, errors, d_weights);
-  d_weights.mul_number(training_rate_);
-  weights -= d_weights;
+  CalculateGradient(neurons_l, errors, weights);
+  // d_weights.mul_number(training_rate_);
+  // weights -= d_weights;
 }
 
 void Perceptron::GetOutputLayerErrors(const Matrix &neurons, Matrix &errors) {
@@ -380,9 +385,9 @@ void Perceptron::CorrectHiddenLayerWeights(PerceptronLayer &layer_l,
   Matrix &errors = *layer.get_errors();
 
   GetHiddenLayerErrors(weights_r, errors_r, neurons, errors);
-  CalculateGradient(neurons_l, errors, d_weights);
-  d_weights.mul_number(training_rate_);
-  weights -= d_weights;
+  CalculateGradient(neurons_l, errors, weights);
+  // d_weights.mul_number(training_rate_);
+  // weights -= d_weights;
 }
 
 void Perceptron::GetHiddenLayerErrors(const Matrix &weights_r,
@@ -395,11 +400,13 @@ void Perceptron::GetHiddenLayerErrors(const Matrix &weights_r,
 }
 
 void Perceptron::CalculateGradient(const Matrix &neurons_l,
-                                   const Matrix &errors, Matrix &d_weights) {
+                                   const Matrix &errors, Matrix &weights) {
   for (size_t i = 0; i < errors.get_rows(); ++i) {
     for (size_t j = 0; j < neurons_l.get_rows(); ++j) {
-      d_weights(i, j) = neurons_l(j, 0) * errors(i, 0);
+      weights(i, j) -= neurons_l(j, 0) * errors(i, 0) * training_rate_;
+      // std::cout << weights(i, j) << " ";
     }
+    // std::cout << "\n\n";
   }
 }
 
@@ -426,6 +433,7 @@ bool Perceptron::Test(const string &dataset_path, double test_sample_coeff) {
 
   if (!under_training_) {
     running_ = false;
+    terminated_ = false;
   }
   return returnable;
 }
@@ -436,7 +444,7 @@ void Perceptron::RunTesting(ifstream &file, size_t test_chunk_begin,
   string line;
 
   CleanMetrics();
-  while (!terminated_ && !getline(file, line).eof()) {
+  while (!terminated_ && !getline(file, line, '\n').eof()) {
     if (IsInOfArea(iterator, test_chunk_begin, test_chunk_end)) {
       FillInput(line);
       Run();
@@ -450,6 +458,7 @@ void Perceptron::RunTesting(ifstream &file, size_t test_chunk_begin,
       TrackProgress(iterator + 1, testing_dataset_lines_);
 
   avg_accuracy_.push_back(right_answers_ / (double)testing_strings_);
+  std::cout << avg_accuracy_.front() << " AVG\n";
   FinishMetrics(right_answers_, letters_);
 }
 

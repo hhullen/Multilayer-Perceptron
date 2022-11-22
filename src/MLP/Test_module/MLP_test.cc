@@ -15,27 +15,32 @@ TEST(perceptron_test_01, constructor) {
 }
 
 TEST(perceptron_test_02, save_upload_function) {
-  Perceptron p(784, 5, 26);
+  Perceptron p(784, 2, 26);
 
+  EXPECT_EQ(p.UploadConfig("TEST_784_2_26.wcfg"), true);
   EXPECT_EQ(p.SaveConfig("TEST_"), true);
-  EXPECT_EQ(p.UploadConfig("TEST_784_5_26.wcfg"), true);
 }
 
 TEST(perceptron_test_03, run_function) {
-  Perceptron p(784, 5, 26);
+  Perceptron p(784, 2, 26);
 
   p.FillWithRandom();
+  EXPECT_EQ(p.UploadConfig("TEST_784_2_26.wcfg"), true);
   p.Run();
 }
 
 TEST(perceptron_test_04, cross_validation_function) {
-  Perceptron p(784, 5, 26);
+  Perceptron p(784, 2, 26);
 
-  EXPECT_EQ(p.CrossValidation("MLP/Test_module/emnist_set.txt", 3), true);
+  EXPECT_EQ(p.UploadConfig("TEST_784_2_26.wcfg"), true);
+
+  // EXPECT_EQ(p.CrossValidation("MLP/Test_module/emnist_set.txt", 3), true);
 }
 
 TEST(perceptron_test_05, training_function) {
-  Perceptron p(784, 5, 26);
+  Perceptron p(784, 2, 26);
+
+  EXPECT_EQ(p.UploadConfig("TEST_784_2_26.wcfg"), true);
 
   EXPECT_EQ(p.Train("MLP/Test_module/emnist_set.txt",
                     "MLP/Test_module/emnist_set.txt", 1),
@@ -65,27 +70,32 @@ TEST(graph_perceptron_test_01, constructor) {
 }
 
 TEST(graph_perceptron_test_02, save_upload_function) {
-  GPerceptron p(784, 5, 26);
+  GPerceptron p(784, 2, 26);
 
+  EXPECT_EQ(p.UploadConfig("TEST_784_2_26.wcfg"), true);
   EXPECT_EQ(p.SaveConfig("TEST_"), true);
-  EXPECT_EQ(p.UploadConfig("TEST_784_5_26.wcfg"), true);
 }
 
 TEST(graph_perceptron_test_03, run_function) {
-  GPerceptron p(784, 5, 26);
+  GPerceptron p(784, 2, 26);
 
   p.FillWithRandom();
+  EXPECT_EQ(p.UploadConfig("TEST_784_2_26.wcfg"), true);
   p.Run();
 }
 
 TEST(graph_perceptron_test_04, cross_validation_function) {
-  GPerceptron p(784, 5, 26);
+  GPerceptron p(784, 2, 26);
 
-  EXPECT_EQ(p.CrossValidation("MLP/Test_module/emnist_set.txt", 3), true);
+  EXPECT_EQ(p.UploadConfig("TEST_784_2_26.wcfg"), true);
+
+  // EXPECT_EQ(p.CrossValidation("MLP/Test_module/emnist_set.txt", 3), true);
 }
 
 TEST(graph_perceptron_test_05, training_function) {
-  GPerceptron p(784, 5, 26);
+  GPerceptron p(784, 2, 26);
+
+  EXPECT_EQ(p.UploadConfig("TEST_784_2_26.wcfg"), true);
 
   EXPECT_EQ(p.Train("MLP/Test_module/emnist_set.txt",
                     "MLP/Test_module/emnist_set.txt", 1),
