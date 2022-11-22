@@ -27,8 +27,8 @@ MainWindow::MainWindow(MLPController *controller, QWidget *parent)
 }
 
 MainWindow::~MainWindow() {
-    TerminateTraining();
-    TerminateTesting();
+  TerminateTraining();
+  TerminateTesting();
   if (ui_) delete ui_;
   ui_ = nullptr;
   if (classifier_widget_) delete classifier_widget_;
