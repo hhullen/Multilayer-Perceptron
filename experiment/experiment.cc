@@ -10,7 +10,6 @@ void matrix_implementation(int r);
 void graph_implementation(int r);
 
 int main() {
-  Perceptron m_p(784, 2, 26);
   thread *m_thread10;
   thread *m_thread100;
   thread *m_thread1000;
