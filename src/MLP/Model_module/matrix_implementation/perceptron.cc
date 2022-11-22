@@ -305,7 +305,6 @@ void Perceptron::FillInput(string &line) {
   Matrix &p_input = *input_layer_->get_neurons();
   size_t input_size = p_input.get_rows();
   size_t file_iter = 2;
-  // std::cout << line << "\n\n";
 
   expected_sym_ = stod(line.data(), nullptr) - 1;
   for (size_t i = 0; i < input_size; ++i) {
@@ -320,9 +319,7 @@ void Perceptron::FillInput(string &line) {
     } else {
       p_input(i, 0) = 0;
     }
-    // std::cout << p_input(i, 0) << " ";
   }
-  // std::cout << "\n\n";
 }
 
 bool Perceptron::IsAsciiNumber(const char sym) {
@@ -359,8 +356,6 @@ void Perceptron::CorrectOutputLayerWeights(PerceptronLayer &layer_l,
 
   GetOutputLayerErrors(neurons, errors);
   CalculateGradient(neurons_l, errors, weights);
-  // d_weights.mul_number(training_rate_);
-  // weights -= d_weights;
 }
 
 void Perceptron::GetOutputLayerErrors(const Matrix &neurons, Matrix &errors) {
@@ -386,8 +381,6 @@ void Perceptron::CorrectHiddenLayerWeights(PerceptronLayer &layer_l,
 
   GetHiddenLayerErrors(weights_r, errors_r, neurons, errors);
   CalculateGradient(neurons_l, errors, weights);
-  // d_weights.mul_number(training_rate_);
-  // weights -= d_weights;
 }
 
 void Perceptron::GetHiddenLayerErrors(const Matrix &weights_r,
@@ -404,9 +397,7 @@ void Perceptron::CalculateGradient(const Matrix &neurons_l,
   for (size_t i = 0; i < errors.get_rows(); ++i) {
     for (size_t j = 0; j < neurons_l.get_rows(); ++j) {
       weights(i, j) -= neurons_l(j, 0) * errors(i, 0) * training_rate_;
-      // std::cout << weights(i, j) << " ";
     }
-    // std::cout << "\n\n";
   }
 }
 
@@ -458,7 +449,6 @@ void Perceptron::RunTesting(ifstream &file, size_t test_chunk_begin,
       TrackProgress(iterator + 1, testing_dataset_lines_);
 
   avg_accuracy_.push_back(right_answers_ / (double)testing_strings_);
-  std::cout << avg_accuracy_.front() << " AVG\n";
   FinishMetrics(right_answers_, letters_);
 }
 
