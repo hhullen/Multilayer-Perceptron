@@ -537,6 +537,7 @@ bool GPerceptron::CrossValidation(const string &train_dataset_path,
   state_.running_ = true;
   state_.terminated_ = false;
   train_.dataset_path_ = train_dataset_path;
+  metric_.avg_accuracy_.clear();
   train_.file.clear();
   test_.file.clear();
   returnable = UploadDataset(train_.dataset_path_, train_.file);
@@ -552,6 +553,7 @@ bool GPerceptron::CrossValidation(const string &train_dataset_path,
   }
 
   state_.running_ = false;
+  state_.terminated_ = false;
   return returnable;
 }
 
@@ -562,7 +564,6 @@ void GPerceptron::RunCrossValidating(size_t groups) {
   cross_testing_shift = train_.file.size() / groups;
   test_.strings_ = cross_testing_shift;
   cross_v_.end_ = cross_testing_shift;
-  metric_.avg_accuracy_.clear();
   train_.current_epoch_ = 1;
   while (!(state_.terminated_) && cross_v_.end_ < train_.strings_) {
     DatasetTraining(cross_v_.begin_, cross_v_.end_);

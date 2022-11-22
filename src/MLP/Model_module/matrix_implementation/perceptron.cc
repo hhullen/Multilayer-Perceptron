@@ -491,6 +491,7 @@ bool Perceptron::CrossValidation(const string &learn_dataset_path,
   running_ = true;
   terminated_ = false;
   training_dataset_path_ = learn_dataset_path;
+  avg_accuracy_.clear();
   returnable = CalculateFile(training_dataset_path_, &training_dataset_lines_);
   training_strings_ = training_dataset_lines_;
   testing_dataset_lines_ = training_dataset_lines_;
@@ -503,6 +504,7 @@ bool Perceptron::CrossValidation(const string &learn_dataset_path,
   }
 
   running_ = false;
+  terminated_ = false;
   return returnable;
 }
 
@@ -514,7 +516,6 @@ void Perceptron::RunCrossValidating(size_t groups) {
   cross_testing_shift = training_strings_ / groups;
   testing_strings_ = cross_testing_shift;
   cross_testing_end_ = cross_testing_shift;
-  avg_accuracy_.clear();
   current_epoch_ = 1;
   while (!terminated_ && cross_testing_end_ < training_strings_) {
     DatasetLearning(cross_testing_begin_, cross_testing_end_);
