@@ -331,7 +331,7 @@ bool GPerceptron::UploadDataset(string &dataset_path,
 }
 
 void GPerceptron::LoadLine(string &line, vector<double> &num_line) {
-  size_t input_size = num_line.size() + 1;
+  size_t input_size = num_line.size();
   size_t file_iter = 2;
 
   num_line[0] = stod(line.data(), nullptr) - 1;
@@ -364,7 +364,7 @@ void GPerceptron::DatasetTraining(size_t test_chunk_begin,
   train_.progress_ = TrackProgress(iterator + 1, train_.strings_);
 }
 
-bool GPerceptron::IsAsciiNumber(const char sym) {
+bool GPerceptron::IsAsciiNumber(const char &sym) {
   return sym >= '0' && sym <= '9';
 }
 

@@ -117,7 +117,7 @@ class GPerceptron {
   bool UploadDataset(string &dataset_path, vector<vector<double>> &file_up);
   void LoadLine(string &line, vector<double> &num_line);
   void DatasetTraining(size_t test_chunk_begin, size_t test_chunk_end);
-  bool IsAsciiNumber(const char sym);
+  bool IsAsciiNumber(const char &sym);
   bool IsInOfArea(size_t line_number, size_t chunk_begin, size_t chunk_end);
   bool IsOutOfArea(size_t line_number, size_t chunk_begin, size_t chunk_end);
   void FillInput(vector<double> &num_line);
