@@ -1,7 +1,7 @@
 #ifndef SRC_MLP_MODEL_MODULE_MATRIX_IMPLEMENTATION_PERCEPTRON_LAYER_H
 #define SRC_MLP_MODEL_MODULE_MATRIX_IMPLEMENTATION_PERCEPTRON_LAYER_H
 
-#include "../../include/matrix/matrix.h"
+#include "../../include/matrix_lib/matrix.h"
 
 using hhullen::Matrix;
 
