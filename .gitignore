@@ -39,3 +39,4 @@
 *.wcfg
 *build-src-hhullen_kit*
 *build-MLP-hhullen_kit-*
+*.DS_Store
