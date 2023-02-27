@@ -2,6 +2,8 @@ QT += core gui charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+QMAKE_CXXFLAGS=-finline-functions
+
 INCLUDE_DIR = ../MLP/include
 MODEL_DIR = ../MLP/Model_module
 VIEW_DIR = ../MLP/View_module
